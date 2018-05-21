@@ -1,0 +1,33 @@
+\section{Representation of finite groups}
+In this report $\F_q$ indicates the finite field with $q=p^r$ elements, where $p$ is a prime and $r$ is an integer greater then zero.
+
+Here we are interested in doing Fourier analysis on some subgroups of the \emph{General linear group}, which is defined below. 
+\begin{defn}
+	The {\it General Linear group} of dimension $n$ over the field $\F_q$ is the group of $n\times n$ invertible matrices with entries in $\F_q$:
+	\begin{equation*}
+	\GL(n,\F_q)=\Big\{ A \in \F_q^{n \times n} \colon \det A = \abs A\neq 0 \Big\}.
+	\end{equation*}	
+\end{defn}
+In particular we will focus on $GL(2,\F_q)$ and on its subgroup $\Aff(q)$, \emph{i.e.} the \emph{Affine group}:
+\begin{defn}
+	The {\it Affine group} of dimension two over the field $\F_q$ is:
+	\begin{equation*}
+	\Aff (q)=\Big\{ A=\begin{pmatrix} a & b \\ 0 & 1 \end{pmatrix}\in \GL(2,\F_q) \Big\}=\Big\{ A=\begin{pmatrix} a & b \\ 0 & 1 \end{pmatrix} \colon a,b \in \F_q, \, a \neq 0 \Big \}.
+	\end{equation*}
+\end{defn}
+Since we want to do Fourier analysis on these groups, first of all we must map them (homomorphically) into groups of complex matrices. To do that we need to introduce the concept of representation of finite group $G$.
+
+\begin{defn}
+A (finite dimensional) representation of a finite group $G$ is a group homomorphism
+\[
+\pi:  G \rightarrow \GL(n,\C).
+\]
+If, for $g\in G$, $\pi(g)$ is a matrix with $i,j$ entry $\pi_{i,j}(g)$, we call the functions $\pi_{i,j} : G \rightarrow \C$ the \emph{matrix entries} of $\pi$.
+\end{defn}
+\begin{rem}
+We can identify $\GL(n,\C)$ and
+\[
+\GL(V)=\{T:V\rightarrow V \ | \  T \text{ is linear and invertible}\},
+\]
+where $V$ is an $n$-dimensional vector space over $\C$. However notice that in this case the matrix entries $\pi_{i,j}$ change if change the basis of $V$ and this can cause some issue. In any case, will use the two concepts interchangeably.
+\end{rem}
