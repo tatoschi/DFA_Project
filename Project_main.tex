@@ -42,7 +42,7 @@
 \DeclareMathOperator{\Trace}{\mathfrak{T}}
 \DeclareMathOperator{\Aff}{Aff}
 \DeclareMathOperator{\GL}{GL}
-
+\DeclareMathOperator{\dist}{\mathfrak{d}}
 
 \newcommand{\rd}{\sqrt{\delta}}
 
@@ -55,101 +55,10 @@
 
 \section{Inroduction}
 
-\section{Representation of finite groups}
+\input{Representation_of_finite_group.tex}
 
-\section{Graphs in the finite upper half plane}
-\subsection{Poincaré upper half plane}
+\input{Graphs.tex}
 
-\subsection{The finite upper half plane}
-\begin{defn}
-	An element $\gamma \in \F_q$ is a {\it square} if $\exists \, x \in \F_q \colon \gamma = x^2$.
-\end{defn}
-If $\delta$ is a non square element of $\F_q$, then the polynomial $x^2 - \delta$ has no solutions in $\F_q$.
-Its splitting field is $\F_{q^2}$ and one of its roots will be denoted by $\rd$ (the other is $-\rd$). 
-
-$\rd$ will play the same role of the imaginary unit $i$. Given $z=x+y\rd \in \F_{q^2}$ we define,
-using the notation from complex analysis, the {\it real part} of $z$ as $\Re z = x$;
-the {\it imaginary part} of $z$ as $\Im z = y$;
-the {\it conjugate} of $z$ as $\bar{z} = x-y\rd$; the {\it norm} of $z$ as $\Norm z = z \, \bar{z}$;
-the {\it trace} of $z$ as $\Trace z = z+\bar{z}$.
-\begin{rem}
-The norm and the trace above are the ones usually defined in theory of finite fields (in the special case of the field 
-extension $\F_{q^2}$ over $\F_q$), because $z^q= (x+y\rd)^q = x^q+y^q \rd^q = x+y(-\rd) =\bar{z}$.
-See for instance \cite{lidl1994introduction}.
-\end{rem}
-\begin{defn}
-	The {\it finite upper half plane} is
-	\begin{equation}
-		H_q = \big\{ z=x+y \rd \colon x \in \F_q,\, y \in \F_q^* \big\} 
-	\end{equation} 
-\end{defn}
-
-We recall the definition of group action.
-\begin{defn}
-  A {\it group action} of the group $G$ on the set $X$ is a map
-  \begin{align*}
-	\phi \colon H \times X & \longrightarrow X \\ (g,x) &\longmapsto \phi (g,x) = g \cdot x
-\end{align*}
-such that:
-\begin{itemize}
-\item $\forall \, x \in X,\, \iota \cdot x = x$, where $\iota$ denotes the identity of the group;
-\item $\forall \, h,g \in G, \forall\, x \in X$ we have $(gh)\cdot x=g \cdot (h\cdot x)$.
-\end{itemize} 
-\end{defn}
-
-In our case will have $X=H_q$, while $G$ will be the general linear group $\GL(2,\F_q)$ or its subgroup of
-affine transformations $\Aff (q)$, defined below.
-\begin{defn}
-	The {\it General Linear group} of dimension two over the field $\F_q$ is:
-	\begin{equation*}
-	\GL(2,\F_q)=\Big\{ g=\begin{pmatrix} a_{1,1} & a_{1,2} \\ a_{2,1} & a_{2,2} \end{pmatrix} \colon a_{i,j} \in \F_q,\, \det g \neq 0 \Big\}
-	\end{equation*}	
-\end{defn}
-\begin{defn}
-	The {\it Affine group} of dimension two over the field $\F_q$ is:
-	\begin{equation*}
-	\Aff (q)=\Big\{ g=\begin{pmatrix} a & b \\ 0 & 1 \end{pmatrix}\in \GL(2,\F_q) \Big\}=\Big\{ g=\begin{pmatrix} a & b \\ 0 & 1 \end{pmatrix} \colon a,b \in \F_q, \, a \neq 0 \Big \}
-	\end{equation*}
-\end{defn}
-Now we can define define the action we are interested in, and investigate some of its properties.
-\begin{defn}\label{flt}
-The group $\GL(2,\F_q)$ acts on $H_q$ by {\it fractional linear transformation}:
-\begin{equation}
-	\forall g= \begin{pmatrix} a & b \\ c & d \end{pmatrix}\in \GL(2,\F_q),\, \forall z \in H_q, \quad g \cdot z = \frac{az+b}{cz+d}.
-\end{equation}
-\end{defn}
-
-We check the well definition of the action and find some properties in the following proposition.
-
-\begin{prop}
-Given $\cdot$ the action by fractional linear transformation, the following holds (with the same notations of \ref{flt}):
-\begin{itemize}
-\item[1.] $\Im (g\cdot z) = \frac{\Im z \det g}{\Norm (cz+d)}$ and
-$\Re (g\cdot z) = \frac{ac\Norm z +bd+(ad+bc)\Re z}{\Norm (cz+d)}$;
-\item[2.] the action is well defined;
-\item[3.] the restriction of of the action to the subgroup $\Aff (q)$ is a {\it transitive} action, that is:
-	$\exists \, \bar{z} \in H_q \colon \big( \forall z \in H_q\, \exists g \in \Aff (q)\,\,\text{such that}\,\, z=g \cdot \bar{z} \big) $. 
-\end{itemize}
-\begin{proof}
-To prove 1. we have to show first that $\Norm (cz+d)\neq 0$. 
-By definition of norm it suffices to prove that $cz+d\neq 0$  Let $z=x+y\rd$. Then
-\begin{equation}\label{den}
-	cz+d=0 \iff (cx+d)+(cy)\rd=0 \iff cy=0 \land cx+d=0 \iff c=d=0,
-\end{equation}
-but this cannot happen, because $\det g = ad-bc \neq 0$. Then is enough to perform some calculations.
-
-Now we prove the second part. We already proved that $cz+d\neq 0$ in \ref{den}.
-We have now to show that $g\cdot z \in H_q$, that is $\Im (g\cdot z)\neq 0$. But this follows from point 1:
-$\Im (g\cdot z) = \frac{\Im z \det g}{\Norm (cz+d)}$, where $\Im z \neq 0$ because $z \in H_q$,
-$\det g \neq 0$ because $g \in \GL(2,\F_q)$. (mancante: funziona bene col prodotto di matrici)
-
-For the last part, take $\bar{z} = \rd \in H_q$. Then for any $z=x+y\rd \in H_q$ we have that $\begin{pmatrix} y & x \\ 0 & 1 \end{pmatrix} \cdot \bar{z} = z$ (note that $y\neq 0$ because $z \in H_q$, so the matrix defined belongs to $\Aff (q)$).
-\end{proof}
-\end{prop}
-
-
-
-\subsection{Graphs and their properties}
 
 \printbibliography
 \end{document}
