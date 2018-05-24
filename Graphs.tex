@@ -86,6 +86,9 @@ $\det g \neq 0$ because $g \in \GL(2,\F_q)$. (mancante: funziona bene col prodot
 For the last part, take $\bar{z} = \rd \in H_q$. Then for any $z=x+y\rd \in H_q$ we have that $\begin{pmatrix} y & x \\ 0 & 1 \end{pmatrix} \cdot \bar{z} = z$ (note that $y\neq 0$ because $z \in H_q$, so the matrix defined belongs to $\Aff (q)$).
 \end{proof}
 \end{prop}
+\begin{rem}
+$\Aff q$ is a subgroup of $\GL(2,\F_q)$, so the action of $\GL(2,\F_q)$ is transitive too.
+\end{rem}
 
 Now we can introduce a {\it distance} which is analogous to the arch length in the Poicaré upper half plane.
 \begin{defn}
@@ -118,7 +121,7 @@ Given $g \in \GL(2,\F_q)$ and $z,w \in H_q$, we have that $\dist (z,w)=\dist(g \
 where $\cdot$ is the action by fractal linear transformation.
 \begin{proof}
 We first notice a property of the norm. Let $z\in H_q$, $a\in \F_q$. Then
-\begin{equation}
+\begin{equation}\label{norm_prop}
 \Norm (az) = az \, \overline{az} = az\bar{a}\bar{z}=aza\bar{z}=a^2 z \bar{z}=a^2 \Norm z.
 \end{equation}
 Moreover, we recall that if $z,w \in \F_{q^2}^{*}$, then $\Norm (z\,w)= \Norm z \Norm w$.
@@ -132,11 +135,141 @@ Now we can prove the proposition. With the usual notation
 							  =\frac{\Norm \big((z-w)(ad-bc)\big)}{\Im z \Im w (\det g)^2}=\\
 							  &=\frac{(\det g)^2 \Norm (z-w)}{\Im z \Im w (\det g)^2}=\dist (z,w).
 	\end{align*}
-
 %We can prove the proposition in the case $z=\rd$, because the action is transitive: let $h$ be such that
 %$h \cdot \rd = z$. Then $g^{'} \cdot z = g^{'} h \cdot \rd = g \cdot \rd$, where $g=g^{'} h$, and
 %$g^{'} \cdot w^{'} = g^{'} h h^{-1} \cdot w^{'} = g^{'} h \cdot (h^{-1} \cdot w^{'})= g \cdot w$, where $w= h^{-1} \cdot w^{'}$.
-
 \end{proof}
 \end{prop}
+
 \subsection{Graphs and their properties}
+Now we can finally introduce the graphs we are interested in.
+\begin{defn}
+ Fix $0\neq a\in \F_q$. The graph $\xq a$ is defined with vertexes the elements of $H_q$,
+ and with edges the pairs of vertexes $z,w\in H_q$ such that $\dist (z,w) = a$.
+\end{defn}
+\begin{rem}
+We notice that the graph is undirected because $\dist (z,w) = \dist (w,z)$.
+\end{rem}
+(qui ci vanno gli esempi, sia ripresi dal libro che no)
+(ci sono altre osservazioni carine sulle similutini col caso continuo, ma dovrei studiarci bene e non so se c'è spazio)
+
+We can now state and prove one of the main theorems of the report.
+
+\begin{theorem}
+Let $q=p^r$ , where $p$ is an odd prime. Let $0\neq a\in \F_q$, and let $\delta \in \F_q$ be a non square element.
+Then the following holds:
+\begin{itemize}
+\item[1.] if $a\neq 4\delta$ then the graph is $(q+1)-regular$;
+\item[2.] if $0\neq c\in \F_q$ then the graphs $\xq a$ and $X_q(\delta c^2, a c^2)$ are isomorphic;  
+\item[3.] $\forall 0 \leq s < r, s\in \N$ the graphs $\xq a$ and $X_q (\delta^{p^s}, a^{p^s})$ are isomorphic;
+\item[4.] if $a\neq 4\delta$ then $\xq a$ is the Cayley graph for the group $\Aff q$ with generators:
+\begin{equation}\label{generators}
+	S_q(\delta,a) = \Big\{ \begin{pmatrix} y & x \\ 0 & 1 \end{pmatrix} \in \Aff q \colon x^2=ay+(y-1)^2 \delta \Big\};
+\end{equation}
+\item[5.] if $a\neq 4\delta$ then $\xq a$ is connected.
+\end{itemize}
+
+
+(ci sarebbe un altro punto, non mi sembra né utile né interessante, lo ometto per adesso)
+\begin{proof}
+1. WLOG I can assume $z=\rd$, because of the transitivity of the action and the invariance of the distance.
+In fact, if $g \cdot \rd = z$, then 
+\begin{equation*}
+\lvert \{\bar{w} \colon \dist (\rd, \bar{w})=a\}\rvert=\lvert \{w \colon \dist (z,w)=a \} \rvert.
+\end{equation*}
+So we are interested in the solutions of the equation $\dist (\rd, z)=a$.
+
+Suppose $z=x+y\rd$. Then
+\begin{align} \label{distance}
+	\dist (\rd, z)=a & \iff \Norm (\rd - z) = ay\\		\notag
+					 & \iff (\rd - z)\overline{(\rd - z)}=ay\\ \notag
+					 & \iff (-x+(1-y)\rd)(-x-(1-y)\rd )=ay\\   \notag
+					 & \iff x^2 = ay + (y-1)^2 \delta. 
+\end{align}
+We must be careful: if $z$ is a solution of the previous equation, we must check that $z\in H_q$, that is $y\neq 0$.
+But this is always true: if $y=0$ from the previous equation we obtain $\delta=(x(y-1)^{-1})^2$,
+but this is impossible, since $\delta$ is a non square element.
+So we can simply find solutions of $\Norm (\rd - z) = ay$ in $\F_{q^2}$, and they will belong to $H_q$ as well.
+
+We recall (see \cite{lidl1994introduction}) that $\mathfrak{N}\colon \F_{q^2}^{*} \to \F_q^{*}$ is an onto group omomorphism.
+We want to use this property to find the number of solutions of $\Norm (\rd - z) = ay$:
+\begin{equation}
+	\lvert \mathfrak{N}^{-1}(a)\rvert=\frac{\abs {\F_{q^2}^{*}}}{\abs {\F_q^{*}}}=\frac{q^2+1}{q-1}=q+1.
+\end{equation}
+Fix $c=(\frac{a}{2\delta}-1)\rd$ and $d=(1-\frac{a}{4\delta})a$. Then:
+\begin{align*}
+	\Norm (z+c) = d &\iff (z+c)(\bar{z}+\bar{c})=d \\
+					&\iff ((z-\rd)+\frac{a}{2\delta})((\bar{z}+\rd)-\frac{a}{2\delta})=(1-\frac{a}{4\delta})a \\
+					&\iff (z-\rd)(\bar{z}+\rd)+(\frac{a}{2\delta})(\bar{z}+\delta-z+\delta)+\frac{a^2}{4\delta}=a-\frac{a^2}{4\delta} \\
+					&\iff \Norm (z-\rd)+(\frac{a}{2\delta})(-2y\rd +2\rd)=a \iff \Norm (z - \rd) = ay.
+\end{align*}
+So, if we set $w=z+c$, in the case $d\neq 0$, I can find $q+1$ solutions in $\F_{q^2}^{*}$ of $\Norm w = d$.
+But $d=0 \iff a=0,4\delta$, cases that are excluded by hypothesis.
+(il libro fa altre considerazioni oer concludere che il numero di soluzioni è precisamente q+1, a me pare suff così per concludere).
+
+Hence the equation $\dist (\rd, z)=a$ has exactly $q+1$ solutions, that is the graph is $(q+1)-regular$.
+
+2. We first notice that that $\delta c^2$ is a non square element, so the definition of the graph $X_q(\delta c^2, a c^2)$
+is well posed. Clearly multiplying by $c^2$ is a bijection of $H_q$ to itself, so the vertexes of the two graphs are the same.
+
+In the definition of $\Norm z = z \bar{z}$ seems that the choice of $\rd$ matters; but as we already noticed $\bar{z}=z^q$.
+This means that $\Norm z = z z^q$ is independent from the choice of $\rd$. The same does not hold for the imaginary part:
+if $z=x+y\rd$, then $z=x+yc^{-1} c \rd $. So, with an obvious notation, 
+\begin{equation} \label{ims}
+	\Im_{c\rd} (z) = c^{-1} \Im_{\rd} (z).
+\end{equation}
+What we need to prove can be stated as follows:
+\begin{equation*}
+	\frac{\Norm (z-w)}{\Im_{\rd} (z) \Im_{\rd} (w)}=\dist_{\rd} (z,w)=a \iff 
+	\frac{\Norm (z-w)}{\Im_{c\rd} (z) \Im_{c\rd} (w)}=\dist_{c\rd} (z,w)=ac^2.
+\end{equation*}
+But this is easy thanks to \ref{ims}:
+\begin{align*}
+	\frac{\Norm (z-w)}{\Im_{c\rd} (z) \Im_{c\rd} (w)}=ac^2 &\iff \frac{\Norm (z-w)}{c^{-1}\Im_{\rd} (z)c^{-1} \Im_{\rd} (w)}=ac^2 \\
+															&\iff \frac{\Norm (z-w)}{\Im_{\rd} (z) \Im_{\rd} (w)}=a.
+\end{align*}
+
+3. We can restrict the proof to the case $s=1$, the general statement follows by induction.
+Raising to $p$ is a field automorphisim, hence non square elements are mapped into non square elements 
+and it is a bijection from $H_q$ to itself. So the graph $X_q (\delta^{p}, a^{p})$ is well defined and the vertexes of 
+$\xq a$ and $X_q (\delta^{p}, a^{p})$ are the same. We observe in particular that $(x+y\rd)^p=x^p+y^p\rd^p$.
+Moreover, using a notation similar to the previous point,
+\begin{align*}
+	\dist_{\rd} (z,w)=a & \iff \frac{\Norm (z-w)}{\Im_{\rd} (z) \Im_{\rd} (w)}=a\\
+	& \iff (\frac{\Norm (z-w)}{\Im_{\rd} (z) \Im_{\rd} (w)})^p = a^p \\
+	& \iff \frac{\Norm ((z-w)^p)}{\Im_{\rd^p} (z^p) \Im_{\rd^p} (w^p)}=a^p\\
+	& \iff \frac{\Norm (z^p-w^p)}{\Im_{\rd^p} (z^p) \Im_{\rd^p} (w^p)}=a^p \iff \dist_{\rd^p} (z^p,w^p)=a^p,
+\end{align*}
+and we conclude that the two graphs are isomorphic.
+
+4. In the statement we identify $H_q$ and $\Aff q$ by the bijection given by the action on the point $\rd$:
+$x+y\rd \leftrightarrow \begin{pmatrix} y & x \\ 0 & 1 \end{pmatrix}$.
+Suppose $S_q(\delta,a)$ as in \ref{generators}. We notice that the equation in the definition of $S_q(\delta,a)$
+is the same as in \ref{distance}. So we obtain $s \in S_q(\delta,a) \iff \dist (\rd, s \cdot \rd) = a$. Moreover
+\begin{align*}
+	g,h \in \Aff q \quad \text{are adjacent} &\iff \dist (h \cdot \rd, g \cdot \rd) = a \iff \dist ( \rd, h^{-1}g \cdot \rd) = a\\
+	&\iff h^{-1}g \in S_q(\delta,a) \iff \exists \, s \in S_q(\delta,a)\colon g=hs,
+\end{align*}
+so $S_q(\delta,a)$ is a set of generators for the graph. We only need to check that it is closed under inversion (our graph is undirected):
+but this follows from the fact that $\dist(\rd, s\cdot \rd)=\dist(s^{-1}\rd, s^{-1}s\cdot \rd)=\dist(\rd, s^{-1}\cdot \rd)$.
+Hence $\xq a$ is a Cayley graph with generators $S_q(\delta,a)$.
+
+5. I want to prove that $S_q(\delta,a)$ generates $\Aff q$, that is every $g \in \Aff q$ can be expressed by the product
+of a finite number of elements of $S_q(\delta,a)$. We first observe that
+\begin{equation*}
+	\begin{pmatrix} a & b \\ 0 & 1 \end{pmatrix}=\begin{pmatrix} 1 & b \\ 0 & 1 \end{pmatrix} \begin{pmatrix} a & 0 \\ 0 & 1 \end{pmatrix},
+\end{equation*}
+so it enough to show that $\forall b\in \F_q$ and $\forall a \in \F_q^{*}$ the matrices 
+$\begin{pmatrix} 1 & b \\ 0 & 1 \end{pmatrix}$ and $\begin{pmatrix} a & 0 \\ 0 & 1 \end{pmatrix}$
+belongs to the subgroup generated by $S_q(\delta,a)$.
+
+Now, since $\vert S_q(\delta,a)\vert=q+1$ (this is because its cardinality is exactly the number of points adjacent to $\rd$,
+ and in the case $a\neq 4\delta$ the graph is $q+1$ regular), we have that 
+\end{proof}
+\end{theorem}
+
+
+
+%
+%The quintessential example is when R = Z , {\displaystyle R=\mathbb {Z} ,} {\displaystyle R=\mathbb {Z} ,} and S = { n } {\displaystyle S=\{n\}} {\displaystyle S=\{n\}} for some nonzero n ∈ Z {\displaystyle n\in \mathbb {Z} } n\in\mathbb{Z}. By "considering n {\displaystyle n} n to be zero", we are essentially reducing elements of Z {\displaystyle \mathbb {Z} } \mathbb {Z} to their remainder after dividing by n. Thus I = n Z = { . . . , − 2 n , − n , 0 , n , 2 n , . . . } {\displaystyle I=n\mathbb {Z} =\{...,-2n,-n,0,n,2n,...\}} {\displaystyle I=n\mathbb {Z} =\{...,-2n,-n,0,n,2n,...\}} and R / I = Z / n Z = Z n {\displaystyle R/I=\mathbb {Z} /n\mathbb {Z} =\mathbb {Z} _{n}} {\displaystyle R/I=\mathbb {Z} /n\mathbb {Z} =\mathbb {Z} _{n}} is the set of possible remainders after dividing an integer by n (ie. the cyclic group of order n).
+
