@@ -27,7 +27,106 @@ If, for $g\in G$, $\pi(g)$ is a matrix with $i,j$ entry $\pi_{i,j}(g)$, we call 
 \begin{rem}
 We can identify $\GL(n,\C)$ and
 \[
-\GL(V)=\{T:V\rightarrow V \ | \  T \text{ is linear and invertible}\},
+\GL(V)=\{T\colon V\rightarrow V \ | \  T \text{ is linear and invertible}\},
 \]
 where $V$ is an $n$-dimensional vector space over $\C$. However notice that in this case the matrix entries $\pi_{i,j}$ change if change the basis of $V$ and this can cause some issue. In any case, will use the two concepts interchangeably.
 \end{rem}
+
+We give now some important definition about representations. In the following $G$ indicates a finite group.
+\begin{defn}
+To representations $\alpha$ and $\beta$ of $G$ into $\GL(n,\C)$ are said to be \emph{equivalent}
+if there exists a matrix $T \in \GL(n,\C)$ such that
+\[
+T\alpha(g)T^{-1}=\beta(g), \quad \forall g \in G.
+\]
+This is equivalent to say that we can obtain one representation from the other by a uniform change of basis.
+\end{defn}
+\begin{defn}
+A \emph{unitary} representation is a representation $\pi$ which maps $G$ into the unitary group $\U(n)$, where 
+\[
+\U(n) =\{A\in \GL(n,\C) \colon {}^{t}\!\bar{A}A=I\}.
+\]
+\end{defn}
+\begin{rem}
+If $\Braket{u, \, v} = {}^t\!\bar{u}v$ is the standard Hermitian inner product of vectors of $\C^{n}$, the unitary matrices are those which preserve this product, that is, $\Braket{Au, \, Av} =\Braket{u, \, v} \ \forall u,v \in \C^{n}$.
+Indeed, if $A \in \U(n)$, then by the definition of the inner product, we have $\Braket{Au, \, Av}={}^{t}\!\overline{(Au)}Av={}^t\!\bar{u}{}^t\!\bar{A}Av={}^t\!\bar{u}v=\Braket{u,\, v} \ \forall u,v \in \C^{n}$ and vice versa if $\Braket{Au, \, Av} =\Braket{u, \, v} \ \forall u,v \in \C^{n}$ then, by taking $u_i=(0,\dots ,0, 1, 0,\dots , 0)$ where the $1$ is in the $i$-$th$ coordinate, we see that, indicating with $a_i$ the $i$-$th$ column of $A$, $\delta_{i,j}=\langle u_i, \, u_j\rangle =\langle Au_i, \, Au_j\rangle={}^t\!\bar{a_i}a_j$, that is ${}^{t}\!\bar{A}A=I$.
+\end{rem}
+\begin{defn}
+A \emph{subrepresentation} $\rho$ of a representation $\pi\colon G \rightarrow \GL(V)$ means that $\rho\colon G \rightarrow \GL(W)$, where $W$ is a subspace of $V$ such that $\pi(g)W\subset W \text{ for all }g \in G$ and $\rho(g)$ is the restriction of $\pi(g)$ to $W$, \it{i.e.}
+\[
+\pi(g)_{\mkern 1mu \vrule height 2ex\mkern2mu W}= \rho(g)\ \forall g \in G
+\]
+Using matrix language, this means that there is a basis of $V$ such that $\pi(g)$ has the block form:
+\[
+\begin{pmatrix}
+\rho(g) & \ast \ \\
+0 & \ast \
+\end{pmatrix}
+\]
+\end{defn}
+\begin{defn}
+A representation  $\pi$ is \emph{irreducible} if its only subrepresentations are $\pi$ itself and 0.
+\end{defn}
+When we deal with representations of a finite group $G$, we can just consider the unitary ones, due to the following result:
+\begin{prop}
+If $G$ is a finite group, every representation is equivalent to a unitary representation.
+\end{prop}
+\begin{proof}[Proof sketch.]
+To prove this preposition we'll use the fact (which we aren't going to prove) that if a matrix $M$ leaves invariant some positive definite, Hermitian inner product $c(u,v)$ for $u,v \in \C^n$, then $M$ is conjugate to a unitary matrix.
+So it suffices to find an inner product which is invariant under $\pi(g)$ for all $g \in G$. Such a inner product is given by 
+\[
+c(u,v)= \sum_{g \in G} \Braket{ \pi(g)u, \pi(g)v } , \text{ for } u,v \in \C^n.
+\]
+Indeed, for $h\in G$, $u,v\in \C^n$, we have
+%\begin{fleqn}
+\[
+\begin{split}
+c(\pi(h)u,\pi(h)v) &= \sum_{g \in G} \Braket{ \pi(g)\pi(h)u, \pi(g)\pi(h)v } \\
+&=\sum_{g \in G} \Braket{ \pi(gh)u, \pi(gh)v } \\
+&=\sum_{k \in G} \Braket{ \pi(k)u, \pi(k)v }= c(u,v).\\
+\end{split}
+\]
+%\end{fleqn}
+Where we have made the substitution $gh=k$, so that if $h$ runs through all the elements in $G$, so does $k$. 
+\end{proof}
+Let us now introduce  the space of functions from $G$ to $\C$ 
+\begin{equation*}
+\LL^2(G)=\Set{f\colon G \rightarrow \C},
+\end{equation*}
+which is a vector space over $\C$ of dimension $\abs G$ (it is isomorphic to $\C^n$, with $n=\abs G$).
+We can make $\LL^2(G)$ an algebra by defining the \emph{convolution} $a\ast b$, for $a,b\in \LL^2(G)$, $x\in G$:
+\begin{equation*}
+(a\ast b)(x)=\sum_{t \in G} a(xt^{-1})b(t)=\sum_{y \in G} a(y)b(y^{-1}x)
+\end{equation*}
+\begin{rem}[non necessario]
+This definition of convolution coincides with that given for the commutative group $\Z/{n\Z}$ ($(a\ast b)(x)=\sum_{y \in \Z/{n\Z}} a(y)b(x-y)$). 
+Moreover we have that, given $f\in \LL^2(G)$,
+\begin{equation}
+\label{conv:comm}
+f*h=h*f \quad \forall h \in \LL^2(G)
+\end{equation}
+
+if and only if $f$ is constant on conjugacy classes
+\[
+\Set{g}=\Set{xgx^{-1}\colon x\in G}.
+\]
+Indeed if $f$ is constant on conjugacy classes, then for all $x\in G$
+\[
+\begin{split}
+(f\ast h)(x) &=\sum_{t \in G} f(xt^{-1})h(t)\\
+&=\sum_{xt \in G} f(x(xt)^{-1})h(xt)\\
+&=\sum_{xt \in G} f(xt^{-1}x^{-1})h(xt)\\
+&=\sum_{xt \in G} f(t^{-1})h(xt)\\
+&=\sum_{y \in G} f(y^{-1}x)h(y)= (h*f)(x),
+\end{split}
+\]
+and, conversely, if \ref{conv:comm} holds, then, taking $h=\delta_k$, for $k\in G$, we have that $(f\ast h)(ky)=f(kyk^{-1})$ and $(h*f)(ky)=f(y)$ for all $y \in G$, so that $f$ is constant on conjugacy classes.
+Since if $G$ is commutative the conjugacy class $\{g\}$ contains only $g$, it follows that the convolution is commutative for abelian groups, as we already know.
+\end{rem}
+\begin{ex}
+We define the \emph{Left Regular Representation} $\LL$ of $G$ by 
+\begin{align*}
+\LL\colon G &\rightarrow \GL(\LL^2(G))\\
+		 g&\mapsto \LL(g) 
+\end{align*}
+\end{ex}
