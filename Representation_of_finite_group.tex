@@ -41,7 +41,9 @@ T\alpha(g)T^{-1}=\beta(g), \quad \forall g \in G.
 \]
 This is equivalent to say that we can obtain one representation from the other by a uniform change of basis.
 \end{defn}
+
 \begin{defn}
+\label{def:unitary}
 A \emph{unitary} representation is a representation $\pi$ which maps $G$ into the unitary group $\U(n)$, where 
 \[
 \U(n) =\{A\in \GL(n,\C) \colon {}^{t}\!\bar{A}A=I\}.
@@ -69,6 +71,7 @@ A representation  $\pi$ is \emph{irreducible} if its only subrepresentations are
 \end{defn}
 When we deal with representations of a finite group $G$, we can just consider the unitary ones, due to the following result:
 \begin{prop}
+\label{unit:eqiv}
 If $G$ is a finite group, every representation is equivalent to a unitary representation.
 \end{prop}
 \begin{proof}[Proof sketch.]
@@ -111,22 +114,112 @@ if and only if $f$ is constant on conjugacy classes
 \Set{g}=\Set{xgx^{-1}\colon x\in G}.
 \]
 Indeed if $f$ is constant on conjugacy classes, then for all $x\in G$
-\[
-\begin{split}
-(f\ast h)(x) &=\sum_{t \in G} f(xt^{-1})h(t)\\
-&=\sum_{xt \in G} f(x(xt)^{-1})h(xt)\\
-&=\sum_{xt \in G} f(xt^{-1}x^{-1})h(xt)\\
-&=\sum_{xt \in G} f(t^{-1})h(xt)\\
-&=\sum_{y \in G} f(y^{-1}x)h(y)= (h*f)(x),
-\end{split}
-\]
+%\[
+\begin{multline*}
+(f\ast h)(x) =\sum_{t \in G} f(xt^{-1})h(t)=\sum_{xt \in G} f(x(xt)^{-1})h(xt)\\
+=\sum_{xt \in G} f(xt^{-1}x^{-1})h(xt)
+=\sum_{xt \in G} f(t^{-1})h(xt)
+=\sum_{y \in G} f(y^{-1}x)h(y)= (h*f)(x),
+\end{multline*}
+%\]
 and, conversely, if \ref{conv:comm} holds, then, taking $h=\delta_k$, for $k\in G$, we have that $(f\ast h)(ky)=f(kyk^{-1})$ and $(h*f)(ky)=f(y)$ for all $y \in G$, so that $f$ is constant on conjugacy classes.
 Since if $G$ is commutative the conjugacy class $\{g\}$ contains only $g$, it follows that the convolution is commutative for abelian groups, as we already know.
 \end{rem}
-\begin{ex}
+\begin{exmp}
 We define the \emph{Left Regular Representation} $\LL$ of $G$ by 
 \begin{align*}
 \LL\colon G &\rightarrow \GL(\LL^2(G))\\
 		 g&\mapsto \LL(g) 
 \end{align*}
-\end{ex}
+where 
+\[
+[L(g)a](x)=a(g^{-1}x)
+\]
+for $a \in \LL^2(G)$ and $x,g \in G$.
+We have to check that the function L defined above is indeed a group representation, that is, we have to check $\LL(xy)=\LL(x)\LL(y)$ for all $x,y \in G$. Let's take $a \in \LL^2(G)$ and $g\in G$, then
+\[ [\LL(xy)a](g)=a((xy)^{-1}g)=a(y^{-1}x^{-1}g)
+\]
+and
+\[
+[\LL(x)\LL(y)a](g)=[\LL(x)(\LL(y)a)](g)=[\LL(x)b](g)=b(x^{-1}g)=a(y^{-1}x^{-1}g),
+\]
+where $b=\LL(y)a \in \LL^2(G)$.
+
+[Matrice di L??]
+\end{exmp}
+
+Now we want to decompose a representation $\pi$ of $G$ into irreducible part, \it{i.e.}, considering $\pi$ as a matrix, we want to replace $\pi$ by a matrix which has diagonal blocks that cannot be further decomposed. This is achieved by the following proposition.
+Note that by \ref{unit:eqiv} we can assume all representations are unitary.
+\begin{prop}[Complete Reducibility Theorem] The following hold:
+\begin{enumerate}
+\item Suppose that $\rho\colon G\rightarrow \U(m)$ is a subrepresentation of the representation $\pi\colon G\rightarrow \U(n)$. Then $\pi$ is equivalent to the representation with block diagonal form:
+\[(\rho \oplus \sigma)(g)=
+\begin{pmatrix}
+\rho(g) & 0 \\
+0 		& \sigma(g)
+\end{pmatrix}.
+\]
+\item By induction, $\pi(g)$ is equivalent to
+\[
+(\pi_1(g)\dots \pi_r(g))= 
+\begin{pmatrix}
+\pi_1(g)  &{} &0\\
+{} &\ddots &{} \\
+0 &{}  &\pi_r(g)
+\end{pmatrix},
+\]
+where each subrepresentation $\pi_i$  is irreducible. we say, when this happens, that $\pi$ is \emph{completely reducible}. 
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\begin{enumerate}
+\item We know that, by the remark after definition \ref{def:unitary}, if $\pi(g)$ is unitary then it leaves invariant the standard inner product $\braket{u,\, v}={}^t\!\bar{u}v$ for $u,v \in \C^n$. Moreover, since $\rho$ is a subrepresentation of $\pi$, by definition there is a subspace $W$ of $V=\C^n$ such that $\pi(g)W\subset W$ and, for all $g\in G$, $\pi(g)_{\mkern 1mu \vrule height 2ex\mkern2mu W}= \rho(g)$.  Consider the \emph{orthogonal complement space} $W^\perp$ of $W$:
+\[
+W^{\perp}= \Set{v \in V \colon \braket{u, \, v}=0 \text{ for all } w \in W}.
+\]
+Then we claim that $\pi(g)W^{\perp}\subset W^{\perp}$. Indeed, take $w\in W^{\perp}$, then, for all $v\in W$, we can write (since $\pi(g) \in \GL(n,\C)$) $v=\pi(g)v'$, where $v'=\pi(g)^{-1}v=\pi(g^{-1})v \in W$. Then we have 
+\[
+\braket{\pi(g)w,\, v}=\braket{\pi(g)w,\, \pi(g)v'}=\braket{w,\, v'}=0.
+\]
+And so $\pi(g)w\in W^{\perp}$. This means that the restriction $\pi(g)_{\mkern 1mu \vrule height 2ex\mkern2mu W^{\perp}}= \sigma(g)$ is a subrepresentation of $\pi$.  Then, since we are working in $\C^n$, we can just take a basis of $V$ consisting in a combination of a basis of $W$ and a basis of $W^{\perp}$. If we write $\pi(g)$ in this basis we obtain exactly the matrix given in the statement of the proposition.
+\item This follows easily by induction on $n$.
+\end{enumerate}
+\end{proof}
+The next lemma, due to Issai Schur, is crucial to do Fourier analysis on finite groups.
+\begin{lemma}[Schur's Lemma].
+Suppose that $\pi\colon G\rightarrow \GL(V)$ and $\rho\colon G\rightarrow \GL(W)$ are representations of $G$. We define the space $\I(\pi,\rho)$ of the \emph{intertwining operators} between $\pi$ and $\rho$ as follows
+\[
+\I(\pi,\rho)=\Set{L\colon V\rightarrow W | L \text{ is linear and } L\circ \pi(g)= \rho(g)\circ L , \ \forall g\in G}.
+\]
+Suppose $L\in \I(\pi,\rho)$, then the following hold:
+\begin{enumerate}
+\item The restrictions of $\pi$ to $\ker(L)$ and $\Im(L)$ are subrepresentations of $\pi$.
+\item If $\pi$ and $\rho$ are both irreducible representations and $L$ in not the null map, then $L$ is an isomorphism between $V$ and $W$ (and so $\pi$ and $\rho$ are equivalent).
+\item If $\pi$ is irreducible and $L\in \I(\pi,\pi)$,  then $\exists \lambda \in \C$ such that $Lv=\lambda v$, for all $v\in V$, \emph{i.e.}, $L=\lambda\I$, where $\I$ is the identity operator.
+\item If both $\pi$ and $\rho$ are irreducible, then 
+\[
+\dim_\C\I(\pi, \rho)=
+\begin{cases}
+1 &\text{if $\pi$ and $\rho$ are equivalent,} \\
+0 &\text{otherwise.}
+\end{cases}
+\]
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\begin{enumerate}
+\item See \cite[p. 248]{terras_1999}.
+\item Since $L\neq 0$, we have $\ker(L)\neq V$, so by \emph{1.} and the fact that $\pi$ is irreducible, this means $\ker(L)=\{0\}$. Analogously, since $L\neq 0$, we have $\Im(L)\neq 0$, that is, using again \emph{1.} and the fact that $\rho$ is irreducible, $Im(L)=W$. So $L$ is bijective.
+\item 
+\end{enumerate}
+See \cite[p. 248]{terras_1999}.
+\end{proof}
+\begin{defn}
+Let $\pi\colon G \rightarrow \GL(V)$ be a representation. We define the \emph{degree} $d_{\pi}$ (or dimension) of $\pi$ to be the dimension of the vector space $V$.
+\end{defn}
+\begin{cor}
+Every irreducible representation of an abelian group $G$ must have degree 1.
+\end{cor}
+\begin{proof}
+See \cite{terras_1999}.
+\end{proof}
