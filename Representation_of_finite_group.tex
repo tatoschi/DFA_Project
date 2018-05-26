@@ -34,6 +34,7 @@ where $V$ is an $n$-dimensional vector space over $\C$. However notice that in t
 
 We give now some important definition about representations. In the following $G$ indicates a finite group.
 \begin{defn}
+\label{equiv:repres}
 To representations $\alpha$ and $\beta$ of $G$ into $\GL(n,\C)$ are said to be \emph{equivalent}
 if there exists a matrix $T \in \GL(n,\C)$ such that
 \[
@@ -185,7 +186,9 @@ And so $\pi(g)w\in W^{\perp}$. This means that the restriction $\pi(g)_{\mkern 1
 \item This follows easily by induction on $n$.
 \end{enumerate}
 \end{proof}
+
 The next lemma, due to Issai Schur, is crucial to do Fourier analysis on finite groups.
+
 \begin{lemma}[Schur's Lemma].
 Suppose that $\pi\colon G\rightarrow \GL(V)$ and $\rho\colon G\rightarrow \GL(W)$ are representations of $G$. We define the space $\I(\pi,\rho)$ of the \emph{intertwining operators} between $\pi$ and $\rho$ as follows
 \[
@@ -193,9 +196,9 @@ Suppose that $\pi\colon G\rightarrow \GL(V)$ and $\rho\colon G\rightarrow \GL(W)
 \]
 Suppose $L\in \I(\pi,\rho)$, then the following hold:
 \begin{enumerate}
-\item The restrictions of $\pi$ to $\ker(L)$ and $\Im(L)$ are subrepresentations of $\pi$.
-\item If $\pi$ and $\rho$ are both irreducible representations and $L$ in not the null map, then $L$ is an isomorphism between $V$ and $W$ (and so $\pi$ and $\rho$ are equivalent).
-\item If $\pi$ is irreducible and $L\in \I(\pi,\pi)$,  then $\exists \lambda \in \C$ such that $Lv=\lambda v$, for all $v\in V$, \emph{i.e.}, $L=\lambda\I$, where $\I$ is the identity operator.
+\item The restriction of $\pi$ to $\ker(L)$ is a subrepresentation of $\pi$ and  the restriction of $\rho$ to $\Im(L)$ is a subrepresentation of $\rho$.
+\item If $\pi$ and $\rho$ are both irreducible representations and $L$ is not the null map, then $L$ is an isomorphism between $V$ and $W$ (and so $\pi$ and $\rho$ are equivalent).
+\item If $\pi$ is irreducible and $L\in \I(\pi,\pi)$,  then $\exists \lambda \in \C$ such that $Lv=\lambda v$, for all $v\in V$, \emph{i.e.}, $L=\lambda I$, where $I$ is the identity operator.
 \item If both $\pi$ and $\rho$ are irreducible, then 
 \[
 \dim_\C\I(\pi, \rho)=
@@ -208,11 +211,27 @@ Suppose $L\in \I(\pi,\rho)$, then the following hold:
 \end{lemma}
 \begin{proof}
 \begin{enumerate}
-\item See \cite[p. 248]{terras_1999}.
-\item Since $L\neq 0$, we have $\ker(L)\neq V$, so by \emph{1.} and the fact that $\pi$ is irreducible, this means $\ker(L)=\{0\}$. Analogously, since $L\neq 0$, we have $\Im(L)\neq 0$, that is, using again \emph{1.} and the fact that $\rho$ is irreducible, $Im(L)=W$. So $L$ is bijective.
-\item 
+\item Let $v \in \ker(L)$, then 
+\[
+L(\pi(g)v)=\rho(g)(Lv)=\rho(g)0=0, \quad \forall g\in G,
+\]
+so that $\pi(g)v\in \ker(L)$.
+
+Analogously if $w \in \Im(L)$, then $w=Lv$ for some $v\in V$, thus
+\[
+\rho(g)w=\rho(g)(Lv)=L(\pi(g)v)\in \Im(L), \quad \forall g\in G.
+\]
+
+
+\item Since $L\neq 0$, we have $\ker(L)\neq V$, so by 1. and the fact that $\pi$ is irreducible, this means $\ker(L)=\{0\}$. Analogously, since $L\neq 0$, we have $\Im(L)\neq 0$, that is, using again 1. and the fact that $\rho$ is irreducible, $\Im(L)=W$. So $L$ is bijective.
+\item Since we are working on $\C$, there exist a root $\lambda$ of $\det(xI-L)$, that is, an eigenvalue of $L$. Denote with $V_\lambda$ the eigenspace corresponding to the eigenvalue $\lambda$:
+\[
+V_\lambda=\Set{v\in v \colon Lv=\lambda v}\neq \{0\}.
+\] 
+Then $\pi(g)(V_\lambda)\subset V_\lambda, since L(\pi(g)v)=\pi(g)(Lv)=\pi(g)(\lambda  v)=\lambda\pi(g) v$, and so $\pi(g)v\in V_\lambda$. This means that the restriction of $\pi$ to $V_\lambda$ is a subrepresentation of $\pi$, which is irreducible, thus $V_\lambda = V$ and this implies $L=\lambda I$ on $V$. 
+\item Since every $\I(\pi,\rho)\ni L\neq 0$ is an isomorphism between $V$ and $W$ by point 2., if $\pi$ and $\rho$ are not equivalent, such an isomorphism cannot exist, and so $\I(\pi,\rho)=\{0\}$. Assume then that $\pi$ and $\rho$ are equivalent and consider $K,L\neq 0$ in  $\I(\pi,\rho)$. By point 2. $L$ is an isomorphism, so we can consider the map $M=L^{-1} \circ K\colon V\rightarrow V$. Since both $K$ and $L$ (and so $L^{-1}$) are nonnull, $M$ is a nonzero element of $\I(\pi,\pi)$. Then by 3. we have that there exists $0\neq \mu\in \C$ such that $M=\mu I$, \emph{i.e.} $K=\mu L$ and the dimension of $\I(\pi,\rho)$ is 1.
 \end{enumerate}
-See \cite[p. 248]{terras_1999}.
+
 \end{proof}
 \begin{defn}
 Let $\pi\colon G \rightarrow \GL(V)$ be a representation. We define the \emph{degree} $d_{\pi}$ (or dimension) of $\pi$ to be the dimension of the vector space $V$.
@@ -221,5 +240,24 @@ Let $\pi\colon G \rightarrow \GL(V)$ be a representation. We define the \emph{de
 Every irreducible representation of an abelian group $G$ must have degree 1.
 \end{cor}
 \begin{proof}
-See \cite{terras_1999}.
+See \cite[p. 249]{terras_1999}.
 \end{proof}
+To do Fourier analysis on a finite group $G$ we will need a list of all inequivalent representation of $G$.
+
+\begin{defn}
+Let $G$ be a finite group, we denote with $\hat{G}$ a complete set of irreducible unitary representation of $G$.
+\end{defn}
+\begin{rem}
+Note that every two one-dimensional representations must be inequivalent. This is because if $\pi$ is one-dimensional, then $\pi(G)$ is an element of $\C$ and so if $\rho$ is an equivalent representation, then by definition \ref{equiv:repres}, there exists $T\in \C$ such that $\rho(g)=T\pi(g) T^{-1} = TT^{-1}\pi(g)=\pi(g)$, for all $g\in G$.
+\end{rem}
+\begin{exmp}
+$G=\Z/n\Z$ under addition modulo $n$.
+
+In this case we have that $e_a(x)=\exp(2\pi iax/n)$ for $a,x\in G$ are one-dimensional representation of $G$, also called \emph{characters} of $G$. We will see (maybe) that $\hat{G}=\{e_a\colon a \in G\}$. 
+\end{exmp}
+\begin{defn}
+Given a representation $\pi$ of $G$ we define the \emph{character} of $\pi$ as $\chi_\pi(g)=\text{Tr}(\pi(g))$, for all $g \in G$, where Tr($\pi(g)$) is the trace of the matrix $\pi(g)$.
+\end{defn}
+\begin{rem}
+Note that $\chi_\pi(g)\colon G\rightarrow \C$, so if $\pi$ is one-dimensional, its character coincides with $\pi$ itself. Moreover, by definition we have $\chi_{\pi\oplus\rhù}=\chi_{\pi} + \chi_\rho$.
+\end{rem}
