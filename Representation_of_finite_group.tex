@@ -3,17 +3,17 @@ In this report $\F_q$ indicates the finite field with $q=p^r$ elements, where $p
 
 Here we are interested in doing Fourier analysis on some subgroups of the \emph{General linear group}, which is defined below. 
 \begin{defn}
-	The {\it General Linear group} of dimension $n$ over the field $\F_q$ is the group of $n\times n$ invertible matrices with entries in $\F_q$:
-	\begin{equation*}
-	\GL(n,\F_q)=\Big\{ A \in \F_q^{n \times n} \colon \det A = \abs A\neq 0 \Big\}.
-	\end{equation*}	
+The {\it General Linear group} of dimension $n$ over the field $\F_q$ is the group of $n\times n$ invertible matrices with entries in $\F_q$:
+\begin{equation*}
+\GL(n,\F_q)=\Big\{ A \in \F_q^{n \times n} \colon \det A = \abs A\neq 0 \Big\}.
+\end{equation*}	
 \end{defn}
 In particular we will focus on $GL(2,\F_q)$ and on its subgroup $\Aff(q)$, \emph{i.e.} the \emph{Affine group}:
 \begin{defn}
-	The {\it Affine group} of dimension two over the field $\F_q$ is:
-	\begin{equation*}
-	\Aff (q)=\Big\{ A=\begin{pmatrix} a & b \\ 0 & 1 \end{pmatrix}\in \GL(2,\F_q) \Big\}=\Big\{ A=\begin{pmatrix} a & b \\ 0 & 1 \end{pmatrix} \colon a,b \in \F_q, \, a \neq 0 \Big \}.
-	\end{equation*}
+The {\it Affine group} of dimension two over the field $\F_q$ is:
+\begin{equation*}
+\Aff (q)=\Big\{ A=\begin{pmatrix} a & b \\ 0 & 1 \end{pmatrix}\in \GL(2,\F_q) \Big\}=\Big\{ A=\begin{pmatrix} a & b \\ 0 & 1 \end{pmatrix} \colon a,b \in \F_q, \, a \neq 0 \Big \}.
+\end{equation*}
 \end{defn}
 Since we want to do Fourier analysis on these groups, first of all we must map them (homomorphically) into groups of complex matrices. To do that we need to introduce the concept of representation of finite group $G$.
 
@@ -130,7 +130,7 @@ Since if $G$ is commutative the conjugacy class $\{g\}$ contains only $g$, it fo
 We define the \emph{Left Regular Representation} $\LL$ of $G$ by 
 \begin{align*}
 \LL\colon G &\rightarrow \GL(\LL^2(G))\\
-		 g&\mapsto \LL(g) 
+	 g&\mapsto \LL(g) 
 \end{align*}
 where 
 \[
@@ -151,7 +151,8 @@ where $b=\LL(y)a \in \LL^2(G)$.
 
 Now we want to decompose a representation $\pi$ of $G$ into irreducible part, \it{i.e.}, considering $\pi$ as a matrix, we want to replace $\pi$ by a matrix which has diagonal blocks that cannot be further decomposed. This is achieved by the following proposition.
 Note that by \ref{unit:eqiv} we can assume all representations are unitary.
-\begin{prop}[Complete Reducibility Theorem] The following hold:
+\begin{prop}[Complete Reducibility Theorem]~ 
+\label{thm:complred}
 \begin{enumerate}
 \item Suppose that $\rho\colon G\rightarrow \U(m)$ is a subrepresentation of the representation $\pi\colon G\rightarrow \U(n)$. Then $\pi$ is equivalent to the representation with block diagonal form:
 \[(\rho \oplus \sigma)(g)=
@@ -172,7 +173,7 @@ Note that by \ref{unit:eqiv} we can assume all representations are unitary.
 where each subrepresentation $\pi_i$  is irreducible. we say, when this happens, that $\pi$ is \emph{completely reducible}. 
 \end{enumerate}
 \end{prop}
-\begin{proof}
+\begin{proof}~ 
 \begin{enumerate}
 \item We know that, by the remark after definition \ref{def:unitary}, if $\pi(g)$ is unitary then it leaves invariant the standard inner product $\braket{u,\, v}={}^t\!\bar{u}v$ for $u,v \in \C^n$. Moreover, since $\rho$ is a subrepresentation of $\pi$, by definition there is a subspace $W$ of $V=\C^n$ such that $\pi(g)W\subset W$ and, for all $g\in G$, $\pi(g)_{\mkern 1mu \vrule height 2ex\mkern2mu W}= \rho(g)$.  Consider the \emph{orthogonal complement space} $W^\perp$ of $W$:
 \[
@@ -209,7 +210,7 @@ Suppose $L\in \I(\pi,\rho)$, then the following hold:
 \]
 \end{enumerate}
 \end{lemma}
-\begin{proof}
+\begin{proof}~ 
 \begin{enumerate}
 \item Let $v \in \ker(L)$, then 
 \[
@@ -261,3 +262,95 @@ Given a representation $\pi$ of $G$ we define the \emph{character} of $\pi$ as $
 \begin{rem}
 Note that $\chi_\pi(g)\colon G\rightarrow \C$, so if $\pi$ is one-dimensional, its character coincides with $\pi$ itself. Moreover, by definition we have $\chi_{\pi\oplus\rho}=\chi_{\pi} + \chi_\rho$.
 \end{rem}
+\begin{theorem}[Schur's Orthogonality Relations]~ 
+\label{thm:schurel}
+\begin{enumerate}
+\item Suppose $\pi\colon G\rightarrow \U(n)$ and $\rho\colon G\rightarrow \U(m)$ are two inequivalent irreducible unitary representations of $G$. Then, using the standard inner product of $\LL^2(G)$, we have that the matrix entries of $\pi$ and $\rho$ are pairwise orthogonal:
+\[
+\braket{\pi_{ij},\, \rho_{rs}}=\sum_{g\in G}\pi_{ij}(g)\overline{\rho_{rs}(g)}=0, \quad \text{for all $i,j,r,s.$}
+\]
+\item if $\pi$ is as above, then 
+\[
+\braket{\pi_{ij},\, \pi_{rs}}=\frac{\abs G}{d_\pi}\delta_{ir}\delta_{js}.
+\]
+\item Let $\pi$ and $\rho$ be two irreducible unitary representations of $G$. Then the characters of $\pi$ and $\rho$ are also orthogonal, in particular we have:
+\[
+\braket{\chi_\pi,\, \chi_\rho}=
+\begin{cases}
+0 &\text{if $\pi$ and $\rho$ are inequivalent} \\
+\abs G &\text{otherwise}
+\end{cases}
+\]
+\end{enumerate}
+\end{theorem}
+\begin{proof}~ 
+\begin{enumerate}
+\item Consider an $n\times m$ complex matrix $C$, then define
+\begin{equation*}
+P=\sum_{g\in G}\pi(g)C\rho(g^{-1}),
+\end{equation*}
+which is also an $n\times m$ matrix. We have that $P\in \I(\pi, \, \rho)$, since
+\[
+\pi(g)P=\sum_{g \in G}\pi(hg)C\rho(g^{-1})=\sum_{g\in G}\pi(u)C\rho(u^{-1}h)=P\rho(h).
+\]
+were we have made the substitution $u=hg$ and  used the fact that both $\pi$ and $\rho$ are homomorphism. For point 2. of Schur's lemma we must have (since $\pi$ and $\rho$ are inequivalent) $P=0$. Now choose $C=E_{js}$, the matrix which is 1 in the $j,s$ entry and 0 elsewhere. This choice of $c$ forces the $i,r$ entry of $P$ to be 
+\[
+P_{ir}=\sum_{g\in G}\pi_{ij}\overline{\rho_{rs}(g)}=0.
+\]
+\item Analogously to the previous point we define 
+\begin{equation}
+\label{P:equation}
+P=\sum_{g\in G}\pi(g)C\pi(g^{-1}), \quad \text{for any $n\times n$ matrix $C$.}
+\end{equation}
+
+By 3. of Schur's lemma, we have $P=\lambda_CI$, for some $\lambda_C\in \C$. Then, taking the trace in \ref{P:equation} we obtain
+\[
+\text{$\sum_{g\in G}$Tr$(C)=$Tr$(P)=$Tr$(\lambda_CI)=\lambda_C$Tr$(I).$}
+\]  
+Where we have used the facts that the trace is linear and it satisfies the \emph{cyclic property} (for all $A,B,C$ matrices we have Tr$(ABC)=$Tr$(BCA)$). So we obtain $\lambda_C=\abs G \text{Tr$(C)d_\pi^{-1}$}$. Now we set $C=E_{js}$, as before, and obtain 
+\[
+\braket{\pi_{ij},\, \pi_{rs}}=\sum_{g\in G}\pi_{ij}(g)\overline{\pi_{rs}(g)}=P_{ir}=\frac{\abs G}{d_\pi}\delta_{ir}\delta_{js}.
+\]
+\item This follows from the previous points. Indeed if $\pi$ and $\rho$ are inequivalent, then by 1. and the definition of character we have
+\[
+\braket{\chi_\pi,\, \chi_\rho}=\braket{\sum_{i=1}^n\pi_{ii},\, \sum_{j=1}^n\rho_{jj} }=\sum_{i,j}\braket{\pi_{ii},\, \rho_{jj} }=0
+\]
+If $\rho$ and $\pi$ are equivalent, we can assume $\rho=\pi$, and then by 2. we have
+\[
+\begin{split}
+\braket{\chi_\pi,\, \chi_\pi}&=\braket{\sum_{i=1}^n\pi_{ii},\, \sum_{j=1}^n\pi_{jj} }=\sum_{i,j}\braket{\pi_{ii},\, \pi_{jj} }\\
+&=\sum_{i}\braket{\pi_{ii},\, \pi_{ii} }=d_\pi\cdot\frac{\abs G}{d_\pi}=\abs G.
+\end{split}
+\]
+\end{enumerate}
+\end{proof}
+The next theorem, which we state without proof (but it follows easily from theorems \ref{thm:complred} and \ref{thm:schurel}), is a version of the previous one in the case when $\pi$ and $\rho$ are not irreducible.
+\begin{theorem}
+Suppose $\pi$ and $\rho$ are two representation of $G$ and that we have the following decompositions:
+\[
+\pi\cong n_1\pi_1\oplus\cdots n_r\pi_r\text{ and $\rho=m_1\rho_1\oplus\cdots m_r\rho_r,$}
+\]
+where the $n_i$ and $m_j$ are nonnegative integers and $\pi_i$ are irreducible. Then the following formulas hold:
+\begin{enumerate}
+\item $\braket{\chi_\pi,\, \chi_\rho}=\abs G \sum_{j=1}^rn_jm_j$,
+\item $ \dim_\C\I(\pi, \, \rho)={\abs G}^{-1}\braket{\chi_\pi,\, \chi_\rho}.$
+\end{enumerate}
+\end{theorem}
+\begin{cor}~ 
+\begin{enumerate}
+\item Two representations are equivalent if and only if they have the same character.
+\item There are only a finite number of inequivalent irreducible unitary representations of a finite group $G$.
+\end{enumerate}
+\end{cor}
+\begin{proof}~
+\begin{enumerate}
+\item If $\rho$ and $\pi$ are two equivalent representations of $G$, then there exist  an invertible matrix $T$ such that $\pi(g)=T\rho(g)T^{-1}$, for all $g\in G$. Thus by definition of character and by the cyclic property of the norm we have, for all $g\in G$, $\chi_\pi(g)=$Tr$(\pi(g))=$Tr$(T\rho(g)T^{-1})=$Tr$(T^{-1}T\rho(g))= \\
+$Tr$(\rho(g))=\chi_\rho(g)$.
+
+On the other hand if $\chi_\pi=\chi_\rho=\chi$ then $\braket{\chi_\pi,\, \chi_\rho}=\braket{\chi,\, \chi} \neq 0$ and so by part 3. of theorem \ref{thm:schurel} $\pi$ and $\rho$ must be equivalent.
+\item  This  follows  from  the orthogonality  of  the matrix  entries  since $\LL^{2}(G)$ is a finite-dimensional inner product  space when $G$ is finite.
+\end{enumerate}
+
+\end{proof}
+From the preceding corollary we see that the characters are extremely important. But they do not give us the complete  story  of Fourier  analysis on a finite
+group $G$. The fact that $\chi_\pi$ determines $\pi$ up to equivalence does not mean that there is an algorithm for writing down the matrix entries  of $\pi$ from $\chi_\pi$.
