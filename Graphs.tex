@@ -155,7 +155,7 @@ We notice that the graph is undirected because $\dist (z,w) = \dist (w,z)$.
 
 We can now state and prove one of the main theorems of the report.
 
-\begin{theorem}
+\begin{theorem}\label{important}
 Let $q=p^r$ , where $p$ is an odd prime. Let $0\neq a\in \F_q$, and let $\delta \in \F_q$ be a non square element.
 Then the following holds:
 \begin{itemize}
@@ -318,3 +318,94 @@ If we remember \ref{gatto}, the only thing left to prove is that $\forall a\in \
 and this (finally) completes the proof.
 \end{proof}
 \end{theorem}
+
+Now we are interested in finding properties of these graphs, and of course we are interested in its adjacency matrix.
+\begin{defn}
+	Given a character $\chi$ of $\F_q^{*}$, we define th \emph{finite power function} $p_{\chi}$:
+	\begin{align*}
+		p_{\chi} \colon H_q & \longrightarrow \C \\
+		z & \longmapsto p_{\chi}(z)=\chi (\Im z).
+	\end{align*}
+\end{defn}
+We are interested in these functions because they are eigenfunctions of our graphs, as the following proposition shows.
+\begin{prop}
+Let $A$ be the adjacency matrix of our graph $\xq a$. Then for all characters $\chi$, the function $p_{\chi}$
+defined above is an eigenfunction for $A$. Moreover their eigenvalues are explicitly:
+\begin{equation}\label{eigen}
+	\lambda_{chi}=\sum_{w\in S_q(\delta,a)} \chi (\Im w).
+\end{equation}
+\begin{proof}
+By theorem \ref{important} we recall that our graph is a Cayley one, so two vertexes are connected by an edge if and only if
+we can obtain one from the other multiplying by an element of the sets of generators.
+So we have by definition of adjacency operator:
+\begin{align*}
+	Ap_{\chi}(\begin{pmatrix} y & x \\ 0 & 1 \end{pmatrix} \delta) &=
+	 \sum_{\begin{pmatrix} v & u \\ 0 & 1 \end{pmatrix} \in S_q(\delta,a)} p_{\chi}(\begin{pmatrix} v & u \\ 0 & 1 \end{pmatrix}
+	 \begin{pmatrix} y & x \\ 0 & 1 \end{pmatrix} \delta)=\\
+	 &=\sum_{\begin{pmatrix} v & u \\ 0 & 1 \end{pmatrix} \in S_q(\delta,a)} \chi (\Im (\begin{pmatrix} v & u \\ 0 & 1 \end{pmatrix}
+	 \begin{pmatrix} y & x \\ 0 & 1 \end{pmatrix} \delta))=\\
+	 &=\sum_{\begin{pmatrix} v & u \\ 0 & 1 \end{pmatrix} \in S_q(\delta,a)}\chi (vy)=\\
+	 &=(\sum_{\begin{pmatrix} v & u \\ 0 & 1 \end{pmatrix} \in S_q(\delta,a)}\chi (\Im \begin{pmatrix} v & u \\ 0 & 1 \end{pmatrix}))\chi (\Im  \begin{pmatrix} y & x \\ 0 & 1 \end{pmatrix})=\\
+	 &=\lambda_{\chi} p_{\chi} (\begin{pmatrix} y & x \\ 0 & 1 \end{pmatrix} \delta).
+\end{align*}
+\end{proof}
+\end{prop}We could have simply seen this as a consequence of (mettere qui ref a roba su rapp di aff), which proves that the eigenvalues are one dimensional.
+
+We are niterested in bounds on the absolute value of \ref{eigen}, to see for instance that the graph is Ramanujan. 
+To find these bounds we need some more advanced theory of finite fields: we will follow \cite{schmidt1976equations},
+giving results and only sketches of the proofs for shortness.
+\begin{defn}
+Let $\K$ be a field and $\F$ a subfield. We say that $\K$ is an \emph{algebraic extension} of $\F$ if
+$\forall k \in \K \, \exists f(x) \in \F[x] \colon f(k)=0$.
+\end{defn}
+\begin{defn}
+$f(x,y)\in \F_q[x,y]$ is said \emph{absolutely irreducible} if it is irreducible over $\F_q$ and over all its algebraic extensions.
+\end{defn}
+The following lemma will be useful later.
+
+\begin{lemma}
+	Let $y^d-f(x)\in \K[x,y]$. Then the following conditions are equivalent:
+	\begin{itemize}
+	\item[1.] $y^d-f(x)$ is absolutely irreducible;
+	\item[2.] $y^d-cf(x)$ is absolutely irreducible for every $c \in \K^{*}$;
+	\item[3.] if $f(x)=a \prod_{i=1}^s (x-\alpha_i)^{d_i}, \, \alpha_i \neq \alpha_j$ is the factorization of $f(x)$ over
+	 its algebraic closure $\bar{\K}$, then $\gcd(d_1,\dots ,d_s)=1$.
+	\end{itemize}
+\begin{proof} We will give only a sketch of the proof.
+
+$1. \Rightarrow 2.$ Just observe that $y^d-cf(x)=c(z-f(x)),\, z=\frac{y}{\sqrt[d]{c}}$.
+
+$2. \Rightarrow 3.$ Let $t=\gcd(d_1,\dots ,d_s)$. By contradiction suppose $t > 1$.
+Define $g(x)=a \prod_{i=1}^s (x-\alpha_i)^{d_i/t}$. Then $y^{d/t}-g(x)$ divides $y^d-\frac{1}{a}f(x)=y^d-\frac{1}{a}g(x)^t$,
+against the hypothesis.
+
+$3. \Rightarrow 1.$ We will denote by $\L=\bar{\K}(x)$ the field of fractions in one variable.
+We will see $y^d-f(x) \in \L[y]$.
+In $\bar{\K}[x]$ factorize $y^d-1=\prod_{i=1}^d (y-\beta_i)$.  .
+Then in the algebraic closure $\bar{L}$ of $L$ we have $y^d-f(x)=\prod_{i=1}^{s}(y-\beta_i \eta)$,
+where $\eta \in \bar{\L}$ is an arbitrary root of $y^d-f(x)$.
+Then by contrary we suppose that $y^d-f(x)$ is reducible. Let $l$ be the minimum positive integer such that
+$\eta^l=h(x)\in \bar{K}[x]$. Then, using the fact that $\eta^d=f(x)$, we see that $f(x)=h(x)^{d/l}$, against the hypothesis. 
+\end{proof}
+\end{lemma}
+Now we can prove a theorem, whose corollary is the bound we need.
+\begin{theorem}
+Let $\chi$ be a (non trivial) character of $\F_q{*}$, and let $d$ be its order. Let $f(x) \in \F_q[x]$ have exactly
+$m$ distinct zeros, and suppose that $y^d-f(x)$ is absolutely irreducible. Then:
+\begin{equation}
+	\vert \sum_{xa \in \F_q} \chi (f(a)) \vert=(m-1)\sqrt{q}. 
+\end{equation}
+\begin{proof}
+Let $\chi$, $f(x)$ be as in the hypothesis. (mi fermo qua, è tutto molto, molto complicato, forse meglio dare i dettagli del lemma precedente piuttosto che imbarcarsi in questo caos).
+\end{proof}
+\end{theorem}
+
+\begin{cor}
+	The one dimensional eigenvalues of the adjacency operator of $\xq a$ satisfy the Ramanujan bound, that is:
+\begin{equation*}
+	\vert \lambda_{\chi} \vert \le 2\sqrt{q}
+\end{equation*}
+\begin{proof}
+	
+\end{proof}
+\end{cor}
