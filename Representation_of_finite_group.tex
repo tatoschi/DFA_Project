@@ -82,7 +82,7 @@ So it suffices to find an inner product which is invariant under $\pi(g)$ for al
 c(u,v)= \sum_{g \in G} \Braket{ \pi(g)u, \pi(g)v } , \text{ for } u,v \in \C^n.
 \]
 Indeed, for $h\in G$, $u,v\in \C^n$, we have
-%\begin{fleqn}
+
 \[
 \begin{split}
 c(\pi(h)u,\pi(h)v) &= \sum_{g \in G} \Braket{ \pi(g)\pi(h)u, \pi(g)\pi(h)v } \\
@@ -90,7 +90,7 @@ c(\pi(h)u,\pi(h)v) &= \sum_{g \in G} \Braket{ \pi(g)\pi(h)u, \pi(g)\pi(h)v } \\
 &=\sum_{k \in G} \Braket{ \pi(k)u, \pi(k)v }= c(u,v).\\
 \end{split}
 \]
-%\end{fleqn}
+
 Where we have made the substitution $gh=k$, so that if $h$ runs through all the elements in $G$, so does $k$. 
 \end{proof}
 Let us now introduce  the space of functions from $G$ to $\C$ 
@@ -127,29 +127,30 @@ and, conversely, if \ref{conv:comm} holds, then, taking $h=\delta_k$, for $k\in 
 Since if $G$ is commutative the conjugacy class $\{g\}$ contains only $g$, it follows that the convolution is commutative for abelian groups, as we already know.
 \end{rem}
 \begin{exmp}
-We define the \emph{Left Regular Representation} $\LL$ of $G$ by 
+\label{exa:lrr}
+We define the \emph{Left Regular Representation} $L$ of $G$ by 
 \begin{align*}
-\LL\colon G &\rightarrow \GL(\LL^2(G))\\
-	 g&\mapsto \LL(g) 
+L\colon G &\rightarrow \GL(\LL^2(G))\\
+	 g&\mapsto L(g) 
 \end{align*}
 where 
 \[
 [L(g)a](x)=a(g^{-1}x)
 \]
 for $a \in \LL^2(G)$ and $x,g \in G$.
-We have to check that the function L defined above is indeed a group representation, that is, we have to check $\LL(xy)=\LL(x)\LL(y)$ for all $x,y \in G$. Let's take $a \in \LL^2(G)$ and $g\in G$, then
-\[ [\LL(xy)a](g)=a((xy)^{-1}g)=a(y^{-1}x^{-1}g)
+We have to check that the function $L$ defined above is indeed a group representation, that is, we have to check $L(xy)=L(x)L(y)$ for all $x,y \in G$. Let's take $a \in \LL^2(G)$ and $g\in G$, then
+\[ [L(xy)a](g)=a((xy)^{-1}g)=a(y^{-1}x^{-1}g)
 \]
 and
 \[
-[\LL(x)\LL(y)a](g)=[\LL(x)(\LL(y)a)](g)=[\LL(x)b](g)=b(x^{-1}g)=a(y^{-1}x^{-1}g),
+[L(x) L(y)a](g)=[L(x)(L(y)a)](g)=[L(x)b](g)=b(x^{-1}g)=a(y^{-1}x^{-1}g),
 \]
-where $b=\LL(y)a \in \LL^2(G)$.
+where $b=L(y)a \in \LL^2(G)$.
 
-[Matrice di L??]
+Fix now $g\in G$, we want to write the matrix of $L(g)$ in the basis of $\LL^2(G)$ consisting of delta functions $\delta_g(x)=1$ if $x=g$ and 0 otherwise. For all $h,x\in G$, we have $[L(g)\delta_h](x)=\delta_h(g^{-1}x)=1 \iff g^{-1}x=h \iff x=gh$, so that $L(g)\delta_h=\delta_{gh}$. Thus if we write $G=\{g_1,g_2,\dots , g_n\}$ we have that the $j$-th column of $L(g)$ is $([L(g)\delta_{g_j}](g_1),\dots [L(g)\delta_{g_j}](g_n))=(\delta_{gg_j}(g_1),\dots \delta_{gg_j}(g_n))=$, but then we have $\delta_{gg_j}(g_i)=1\iff g_i=gg_j\iff g=g_ig_j^{-1}$ and so we can conclude that the $i,j$ entry of $L(g)$ is $\delta_{g_ig_j^{-1}}(g)$. This means that in every row and in every column of $L(g)$ there is only one entry equal to 1 and all the others are zero. So $L(g)$ is obtained from the identity matrix by a permutation of its rows (or columns). Note that if $g$ is not the identity element $e$ of $G$, then $L(g)_{ii}=\delta_{g_ig_i^{-1}}(g)=\delta_{e}(g)=0$.
 \end{exmp}
 
-Now we want to decompose a representation $\pi$ of $G$ into irreducible part, \it{i.e.}, considering $\pi$ as a matrix, we want to replace $\pi$ by a matrix which has diagonal blocks that cannot be further decomposed. This is achieved by the following proposition.
+Now we want to decompose a representation $\pi$ of $G$ into irreducible part, \textit{i.e.}, considering $\pi$ as a matrix, we want to replace $\pi$ by a matrix which has diagonal blocks that cannot be further decomposed. This is achieved by the following proposition.
 Note that by \ref{unit:eqiv} we can assume all representations are unitary.
 \begin{prop}[Complete Reducibility Theorem]~ 
 \label{thm:complred}
@@ -252,6 +253,7 @@ Let $G$ be a finite group, we denote with $\hat{G}$ a complete set of irreducibl
 Note that every two one-dimensional representations must be inequivalent. This is because if $\pi$ is one-dimensional, then $\pi(G)$ is an element of $\C$ and so if $\rho$ is an equivalent representation, then by definition \ref{equiv:repres}, there exists $T\in \C$ such that $\rho(g)=T\pi(g) T^{-1} = TT^{-1}\pi(g)=\pi(g)$, for all $g\in G$.
 \end{rem}
 \begin{exmp}
+\label{exa:characters}
 $G=\Z/n\Z$ under addition modulo $n$.
 
 In this case we have that $e_a(x)=\exp(2\pi iax/n)$ for $a,x\in G$ are one-dimensional representation of $G$, also called \emph{characters} of $G$. We will see (maybe) that $\hat{G}=\{e_a\colon a \in G\}$. 
@@ -326,6 +328,7 @@ If $\rho$ and $\pi$ are equivalent, we can assume $\rho=\pi$, and then by 2. we 
 \end{proof}
 The next theorem, which we state without proof (but it follows easily from theorems \ref{thm:complred} and \ref{thm:schurel}), is a version of the previous one in the case when $\pi$ and $\rho$ are not irreducible.
 \begin{theorem}
+\label{thm:non_irreducible_rel}
 Suppose $\pi$ and $\rho$ are two representation of $G$ and that we have the following decompositions:
 \[
 \pi\cong n_1\pi_1\oplus\cdots n_r\pi_r\text{ and $\rho=m_1\rho_1\oplus\cdots m_r\rho_r,$}
@@ -347,10 +350,55 @@ where the $n_i$ and $m_j$ are nonnegative integers and $\pi_i$ are irreducible. 
 \item If $\rho$ and $\pi$ are two equivalent representations of $G$, then there exist  an invertible matrix $T$ such that $\pi(g)=T\rho(g)T^{-1}$, for all $g\in G$. Thus by definition of character and by the cyclic property of the norm we have, for all $g\in G$, $\chi_\pi(g)=$Tr$(\pi(g))=$Tr$(T\rho(g)T^{-1})=$Tr$(T^{-1}T\rho(g))= \\
 $Tr$(\rho(g))=\chi_\rho(g)$.
 
-On the other hand if $\chi_\pi=\chi_\rho=\chi$ then $\braket{\chi_\pi,\, \chi_\rho}=\braket{\chi,\, \chi} \neq 0$ and so by part 3. of theorem \ref{thm:schurel} $\pi$ and $\rho$ must be equivalent.
+On the other hand if $\chi_\pi=\chi_\rho$ then $\braket{\chi_\pi,\, \chi_\pi} \neq 0$ and so by part 3. of theorem \ref{thm:schurel} $\pi$ and $\rho$ must be equivalent.
 \item  This  follows  from  the orthogonality  of  the matrix  entries  since $\LL^{2}(G)$ is a finite-dimensional inner product  space when $G$ is finite.
 \end{enumerate}
 
 \end{proof}
 From the preceding corollary we see that the characters are extremely important. But they do not give us the complete  story  of Fourier  analysis on a finite
 group $G$. The fact that $\chi_\pi$ determines $\pi$ up to equivalence does not mean that there is an algorithm for writing down the matrix entries  of $\pi$ from $\chi_\pi$.
+The importance of characters is emphasized by the fact that in many science books there are character tables of useful group (for example, the  chemists  seem  to  know  these  tables  by heart for certain space groups, which are symmetry groups of certain chemical substances).
+
+\begin{defn}
+The \emph{character table} of $G$ is a matrix with column indexed by conjugacy classes $\{g\}$ of $G$ and rows indexed by inequivalent, irreducible, unitary representations $\pi \in \hat{G}$. The entry of   the character table corresponding to $\pi$ and $\{g\}$ is $\chi_\pi(g)$.
+\end{defn}
+\begin{rem}
+The definition is well posed because the characters are constant on conjugacy classes, indeed for $x,g\in G$ we have, given a character $\chi_\pi$, $\chi_\pi(xgx^{-1})=$Tr$(\pi(xgx^{-1}))=$Tr$(\pi(x)\pi(g)\pi(x)^{-1})=$Tr$(\pi(g))=\chi_\pi(g)$.
+Where we have used again the cyclic property of the trace.
+\end{rem}
+\begin{exmp}[$\Z/{n\Z}$]
+Since $\Z/{n\Z}$ is abelian, all irreducible representations  have  degree  1 (by the corollary after Schur's lemma)  and  there  are $n$ of them. Indeed in this case  the $e_a$'s of the example \ref{exa:characters}  are  distinct one-dimensional representation of $G$ and each representation coincides with its own character. Since $\abs {\Set{e_a\colon a \in G}}= n $ and $\dim(\LL^{2}(Z/{n\Z}))=n$ these are all possible characters of $\Z/{n\Z}$. Moreover, since the group is abelian, each conjugacy class contains only one element. Thus the character table is an $n\times n$ matrix with $a,b$ entry equal to  $\exp(2\pi iab/n)$, for $a,b \in \Z/{n\Z}$. So in this case the character table coincides with the matrix of the Fourier transform on  $\Z/{n\Z}$, using the usual basis of $\LL^{2}(G)$ of delta functions.	
+\end{exmp}
+
+Now we are ready to give the definition of Fourier transform on a group $G$, but , before that we prove a result about the left regular representation which will be useful later on.
+\begin{lemma}
+Let $L$ denote the left regular representation of $G$, then
+\begin{enumerate}
+\item $\displaystyle
+\chi_{L}(g)=
+\begin{cases}
+\abs G &\text{if $g=$ the identity of $G$},\\
+0	   &\text{otherwise}.
+\end{cases}
+$
+\item Every irreducible representation $\pi \in \hat{G}$ is contained in $L$ with multiplicity $d_\pi$, the degree of $\pi$. That is, if $\hat{G}=\{\pi_1,\dots ,\pi_r\}$, $L$ is similar to a direct sum of copies of all the  $\pi_j$:
+\[
+L\cong d_{\pi_1}\pi_1\oplus\dots\oplus d_{\pi_r}\pi_r.
+\]
+\item $\displaystyle\sum_{g\in G}d_{\pi}^2=\abs G.$	
+\end{enumerate}
+\end{lemma}  
+\begin{proof}
+\begin{enumerate}
+\item We know by example \ref{exa:lrr} that the matrix of $L(g)$ is  is a permutation matrix (\emph{i.e.} the identity matrix with permuted rows) with $L(g)_{ii}=0 \ \forall i$ and thus its trace is 0 unless $g$ is the identity of $G$ (in such a case $L(g)=I$).
+\item By theorem \ref{thm:non_irreducible_rel}, the multiplicity of $\pi$ in $L$ s found by computing the inner product  of  the  characters  of  the  two  representations  and  dividing  by $\abs G$:
+\[
+\frac{1}{\abs G}\braket{\chi_L,\, \chi_\pi}=\frac{1}{\abs G}\sum_{y \in G}\chi_L(y) \overline{\chi_\pi(y)}=\frac{1}{\abs G}\abs G \chi_\pi(e)=d_\pi.
+\]
+Here  we have used  part  a to  see that  every  term  in  the  sum is  zero  except
+that coming from $y=e$, the identity of $G$.
+\item Compare the degree of $L$ with the degree of the right-hand side of the formula given in 2.
+ 
+
+\end{enumerate}
+\end{proof}
