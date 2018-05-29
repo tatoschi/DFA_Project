@@ -351,7 +351,7 @@ So we have by definition of adjacency operator:
 \end{proof}
 \end{prop}We could have simply seen this as a consequence of (mettere qui ref a roba su rapp di aff), which proves that the eigenvalues are one dimensional.
 
-We are niterested in bounds on the absolute value of \ref{eigen}, to see for instance that the graph is Ramanujan. 
+We are interested in bounds on the absolute value of \ref{eigen}, to see for instance that the graph is Ramanujan. 
 To find these bounds we need some more advanced theory of finite fields: we will follow \cite{schmidt1976equations},
 giving results and only sketches of the proofs for shortness.
 \begin{defn}
@@ -363,7 +363,7 @@ $f(x,y)\in \F_q[x,y]$ is said \emph{absolutely irreducible} if it is irreducible
 \end{defn}
 The following lemma will be useful later.
 
-\begin{lemma}
+\begin{lemma}\label{tre}
 	Let $y^d-f(x)\in \K[x,y]$. Then the following conditions are equivalent:
 	\begin{itemize}
 	\item[1.] $y^d-f(x)$ is absolutely irreducible;
@@ -388,7 +388,13 @@ Then by contrary we suppose that $y^d-f(x)$ is reducible. Let $l$ be the minimum
 $\eta^l=h(x)\in \bar{K}[x]$. Then, using the fact that $\eta^d=f(x)$, we see that $f(x)=h(x)^{d/l}$, against the hypothesis. 
 \end{proof}
 \end{lemma}
-Now we can prove a theorem, whose corollary is the bound we need.
+In the following if will be  convenient to extend the definition of characters $\chi$ of $\F_q^{*}$
+to 0 in the following way:
+\begin{equation*}
+	\chi (0)=\begin{cases}&1\quad \text{if $\chi$ is the trivial character}\\ &0 \quad\text{otherwise} \end{cases}.
+\end{equation*}
+
+Now we can state a theorem, whose corollary is the bound we need.
 \begin{theorem}
 Let $\chi$ be a (non trivial) character of $\F_q{*}$, and let $d$ be its order. Let $f(x) \in \F_q[x]$ have exactly
 $m$ distinct zeros, and suppose that $y^d-f(x)$ is absolutely irreducible. Then:
@@ -396,16 +402,51 @@ $m$ distinct zeros, and suppose that $y^d-f(x)$ is absolutely irreducible. Then:
 	\vert \sum_{xa \in \F_q} \chi (f(a)) \vert=(m-1)\sqrt{q}. 
 \end{equation}
 \begin{proof}
-Let $\chi$, $f(x)$ be as in the hypothesis. (mi fermo qua, è tutto molto, molto complicato, forse meglio dare i dettagli del lemma precedente piuttosto che imbarcarsi in questo caos).
+	See \cite{•}.
 \end{proof}
 \end{theorem}
 
 \begin{cor}
 	The one dimensional eigenvalues of the adjacency operator of $\xq a$ satisfy the Ramanujan bound, that is:
 \begin{equation*}
-	\vert \lambda_{\chi} \vert \le 2\sqrt{q}
+	\vert \lambda_{\chi} \vert \le 2\sqrt{q}.
 \end{equation*}
 \begin{proof}
-	
+	Define $\epsilon$ as the quadratic character on $\F_q$:
+\begin{equation*}
+	\epsilon (x)=\begin{cases}&1 \quad \text{if $x$ is a square}\\ -&1 \quad \text{if $x$ is a non square}\\ &0 \quad x=0 \end{cases}.
+\end{equation*}
+Let $g(y)=ay+(y-1)^2 \delta$ and $w=x+y\rd$. Then
+\begin{equation}\label{equivalence}
+w \in S_q(\delta,a) \iff x^2=g(y) \iff g(y) \text{is a square and} x \text{is one of its roots}.
+\end{equation}
+In particular if $g(y)=0$ then $x=0$ (only $1=\epsilon(0)+1$ solution), while if $g(y)\neq 0$ and $g(y)$ is a square then we have
+$2=\epsilon (g(y)+1)$; if $g(y)\neq 0$ and $g(y)$ is a non square then we have $0=\epsilon (g(y)+1$ solutions.
+
+By the previous observation and by \ref{equivalence} we get:
+\begin{equation}
+\lambda_{chi}=\sum_{y \in \F_q} \chi (y)(\epsilon(g(y))+1)=(\lambda_{chi}=
+\sum_{y \in \F_q}\chi (y)\epsilon(g(y)))+(\lambda_{chi}\chi (y)).
+\end{equation}
+The second sum is equal to zero due to the orthogonality of the characters (aggiungere ref).
+We have reached a form similar to the previous theorem: we need only to express the two different characters in a common form.
+
+But the characters of a cyclic group form a cyclic group of the same order ($q-1$ in our case). So let $\eta$ be a generator character.
+Then, if $d$ is the order of $\chi$, then we can write $\chi=\eta^{\frac{q-1}{d}}$ and $\epsilon=\eta^{\frac{q-1}{2}}$
+(since the order of $\epsilon$ is trivially 2). Hence we have:
+\begin{equation}
+	\lambda_{\chi}=\sum_{y \in \F_q} \eta^{\frac{q-1}{d}}(y)\eta^{\frac{q-1}{2}}(g(y))=\lambda_{\chi}=\sum_{y \in \F_q}
+	\eta^m(y^{\frac{q-1}{md}}g(y)^{\frac{q-1}{2m}}),
+\end{equation}
+where $m=\gcd(\frac{q-1}{d},\frac{q-1}{2})$. We want to use point 3. of lemma \ref{tre} to prove that $z^{\frac{q-1}{m}}-f(y)$
+is absolutely irreducible, where $f(y)=y^{\frac{q-1}{md}}g(y)^{\frac{q-1}{2m}}$ and $\frac{q-\}{m}$ is trivially the order
+of $\eta^m$. Now, $g(y)=\delta y^2+(a-2\delta)y+\delta$
+and its discriminant is $a(a-4\delta)$. Since $a\neq 0, 4\delta$ by hypothesis then its roots are non zero
+and distinct, say $\alpha_1. \alpha_2$. Hence $f(y)$ has 3 distinct roots $0,\alpha_1,\alpha_2$ with multiplicity 
+$\frac{q-1}{md}, \frac{q-1}{2m},\frac{q-1}{2m}$ respectively.
+Looking at point 3. of the lemma, we see that we must prove that $r=\gcd(\frac{q-1}{m},\frac{q-1}{md},\frac{q-1}{2m})=1$.
+But this is true because $r\vert \gcd(\frac{q-1}{md},\frac{q-1}{2m})=1$, where the last equality holds by definition of $m$.
+So the polynomial $z^{\frac{q-1}{m}}-f(y)$ is absolutely irreducible by the lemma and the bound we where looking holds 
+by the previous theorem.
 \end{proof}
 \end{cor}
