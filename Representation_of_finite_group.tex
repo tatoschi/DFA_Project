@@ -230,7 +230,7 @@ Analogously if $w \in \Im(L)$, then $w=Lv$ for some $v\in V$, thus
 \[
 V_\lambda=\Set{v\in v \colon Lv=\lambda v}\neq \{0\}.
 \] 
-Then $\pi(g)(V_\lambda)\subset V_\lambda, since L(\pi(g)v)=\pi(g)(Lv)=\pi(g)(\lambda  v)=\lambda\pi(g) v$, and so $\pi(g)v\in V_\lambda$. This means that the restriction of $\pi$ to $V_\lambda$ is a subrepresentation of $\pi$, which is irreducible, thus $V_\lambda = V$ and this implies $L=\lambda I$ on $V$. 
+Then $\pi(g)(V_\lambda)\subset V_\lambda$, since $L(\pi(g)v)=\pi(g)(Lv)=\pi(g)(\lambda  v)=\lambda\pi(g) v$, and so $\pi(g)v\in V_\lambda$. This means that the restriction of $\pi$ to $V_\lambda$ is a subrepresentation of $\pi$, which is irreducible, thus $V_\lambda = V$ and this implies $L=\lambda I$ on $V$. 
 \item Since every $\I(\pi,\rho)\ni L\neq 0$ is an isomorphism between $V$ and $W$ by point 2., if $\pi$ and $\rho$ are not equivalent, such an isomorphism cannot exist, and so $\I(\pi,\rho)=\{0\}$. Assume then that $\pi$ and $\rho$ are equivalent and consider $K,L\neq 0$ in  $\I(\pi,\rho)$. By point 2. $L$ is an isomorphism, so we can consider the map $M=L^{-1} \circ K\colon V\rightarrow V$. Since both $K$ and $L$ (and so $L^{-1}$) are nonnull, $M$ is a nonzero element of $\I(\pi,\pi)$. Then by 3. we have that there exists $0\neq \mu\in \C$ such that $M=\mu I$, \emph{i.e.} $K=\mu L$ and the dimension of $\I(\pi,\rho)$ is 1.
 \end{enumerate}
 
@@ -307,7 +307,7 @@ P=\sum_{g\in G}\pi(g)C\pi(g^{-1}), \quad \text{for any $n\times n$ matrix $C$.}
 
 By 3. of Schur's lemma, we have $P=\lambda_CI$, for some $\lambda_C\in \C$. Then, taking the trace in \ref{P:equation} we obtain
 \[
-\text{$\sum_{g\in G}$Tr$(C)=$Tr$(P)=$Tr$(\lambda_CI)=\lambda_C$Tr$(I).$}
+\text{$\sum_{g\in G}$Tr$(C)=$Tr$(P)=$Tr$(\lambda_CI)=\lambda_C$Tr$(I)=\lambda_C\sum_{i=1}^n 1=\lambda_Cn=\lambda_Cd_\pi.$}
 \]  
 Where we have used the facts that the trace is linear and it satisfies the \emph{cyclic property} (for all $A,B,C$ matrices we have Tr$(ABC)=$Tr$(BCA)$). So we obtain $\lambda_C=\abs G \text{Tr$(C)d_\pi^{-1}$}$. Now we set $C=E_{js}$, as before, and obtain 
 \[
@@ -402,3 +402,54 @@ that coming from $y=e$, the identity of $G$.
 
 \end{enumerate}
 \end{proof}
+Note that an analogous result of the above theorem is valid for the right regular representation.
+\begin{ex}
+Suppose  that $S$  is  a  symmetric  set  of  generators  of  the finite group $G$ ($s\in S \implies s^{-1}\in S$). Consider the Cayley graph $X(G,S)$   with vertices the elements  of $G$  and edges between $x \in G$   and $xs$  for  all $s\in S$.  This is a connected undirected  graph. Then we have:
+\begin{enumerate}
+\item The adjacency operator $\A$ on $X(G,S)$ has the form
+\[
+\A f = \sum_{s\in S}R(s)f, \quad \text{where $R$ is the right regular representation of $G$} \]
+This is true because we know that for a Cayley graph we have $y$ is adjacent to $x \iff y=xs$ for $s\in S$ and $[R(s)f](x)=f(xs)$.
+\item Now, since by previous lemma (with $R$ instead of $L$) we have $\cong d_{\pi_1}\pi_1\oplus\dots\oplus d_{\pi_r}\pi_r$, and by point 1. $\A=\sum_{s\in S}R(s)$, it follows that $A$ is similar to a block diagonal matrix $\A\simeq \sum_{s\in S}R(s)=\sum_{s\in S}(d_{\pi_1}\pi_1(s)\oplus\dots\oplus d_{\pi_r}\pi_r(s))= d_{\pi_1}M_{\pi_1}\oplus\dots\oplus d_{\pi_r}M_{\pi_r}$, where $M_\pi=\sum_{s\in S}\pi(s)$ and $\hat{G}=\{\pi_1\dots\pi_r\}$.
+\end{enumerate}
+\end{ex}
+Now we can finally give the main definition of this section.
+\begin{defn}
+The \emph{Fourier transform} of $f\colon G\rightarrow \C$ is
+\begin{equation}
+\label{def:foureir_transform}
+\mathscr{F}f(\pi)=\hat{f}(\pi)=\sum_{g\in G} f(g)\pi(g).
+\end{equation}
+\end{defn}
+\begin{rem}
+Note first of all that$\hat{f}(\pi)$ is matrix valued (it is a $d_\pi\times d_\pi$ matrix). Moreover the Fourier transform  defined  above is not consistent with the definition given for abelian groups in chapter 2 of \cite{terras_1999}. To make the two definition agree we should replace $\pi(g)$ with $\pi(g^{-1})$ in \eqref{def:foureir_transform}.    We won't  worry  about this inconsistency. It is more convenient for computations to use this  definition.
+\end{rem}
+All the results about the Fourier transform on abelian groups, still hold in this context. We collect the most significant facts about Fourier transform on a finite group in the following theorem (for a proof, see \cite{terras_1999}).
+\begin{theorem}~
+\begin{enumerate}
+\item \textbf{Peter-Weyl Theorem.} Let
+\[\hat{G}=\{\text{inequivalent irreducible unitary representation $\pi$ of $G$}.\]
+The matrix entries of representations $\pi\in\hat{G}$ form a complete orthogonal set in $\LL^2(G)$.
+\item \textbf{Plancherel Theorem.} For all $f,g\in \LL^2(G)$, we have the standard inner product
+\[
+\braket{f,\,g}=\sum_{x\in G}f(x)\overline{g(x)}.
+\]
+Then, defining ${\norm f}_2^2=\braket{f,\, f},$ we have 
+\[
+{\norm f}_2^2={\abs G}^{-1} \sum_{\substack{\pi \in \hat{G} \\1\leq i,j\leq d_\pi}}d_\pi \abs{\braket{f,\pi_{i,j}}}^2.
+\]
+\item \textbf{Fourier Inversion.} For all $f\in \LL^2(G)$, we have
+\[
+f(x)=\abs{G}^{-1}\sum_{\substack{\pi \in \hat{G} \\1\leq i,j\leq d_\pi }}d_\pi\braket{f,\pi_{i,j}}\pi_{i,j}(x).
+\]
+\item \textbf{Convolution Property of Fourier Transform on G.} 
+\[
+\mathscr{F}(f*g)(\pi)=\mathscr{F}f(\pi)\cdot \mathscr{F}g(\pi).
+\]
+\item \textbf{  Fourier Transform changes left regular representation to multiplication by $\pi$.} For $f\in \LL^2(G)$, define $[L(g)f](x)=f(g^{-1}x)=f^g(x)$, if $x,g\in G$. Then we have 
+\[
+\mathscr{F}[f^g](\pi)=\pi(g)\mathscr{F}f(\pi), \textbf{ for all $\pi \in \hat{G}$}
+\]  
+\item \textbf{Explicit Similarity Transform} Using the appropriate basis, $\mathscr{F}\circ L(g)\circ \mathscr{F}^{-1}$ is a block diagonal matrix with diagonal blocks given by the $\pi(g)$ each listed $d_\pi$ times for $\pi \in \hat{G}$.
+\end{enumerate}
+\end{theorem}
