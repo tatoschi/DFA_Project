@@ -6,7 +6,7 @@
 \usepackage[english]{babel}
 \usepackage{kpfonts}
 \usepackage[autostyle]{csquotes}
-
+\usepackage{mathrsfs}
 \usepackage[style=alphabetic,backend=biber]{biblatex}
 \addbibresource{References.bib}
 \usepackage{hyperref}
@@ -37,7 +37,7 @@
 \newcommand{\sdir}{\mathbb{o}}
 \newcommand{\nil}{\mathfrak N}
 \newcommand{\abs}[1]{\lvert#1\rvert}
-%\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \renewcommand{\epsilon}{\varepsilon}
 
 \DeclareMathOperator{\Norm}{\mathfrak{N}}
@@ -50,6 +50,7 @@
 \newcommand{\xq}[1]{X_q (\delta ,#1)}
 \newcommand{\rd}{\sqrt{\delta}}
 \DeclareMathOperator{\I}{I}
+\DeclareMathOperator{\A}{A\!}
 
 \begin{document}
 \author{Lorenzo Baldi, Salvatore Schiavulli}
