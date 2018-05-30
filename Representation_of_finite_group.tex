@@ -10,10 +10,11 @@ The {\it General Linear group} of dimension $n$ over the field $\F_q$ is the gro
 \end{defn}
 In particular we will focus on $GL(2,\F_q)$ and on its subgroup $\Aff(q)$, \emph{i.e.} the \emph{Affine group}:
 \begin{defn}
-The {\it Affine group} of dimension two over the field $\F_q$ is:
-\begin{equation*}
+The {\emph{ Affine group}} of dimension two over the field $\F_q$ is:
+\begin{equation}
+\label{def:aff_group}
 \Aff (q)=\Big\{ A=\begin{pmatrix} a & b \\ 0 & 1 \end{pmatrix}\in \GL(2,\F_q) \Big\}=\Big\{ A=\begin{pmatrix} a & b \\ 0 & 1 \end{pmatrix} \colon a,b \in \F_q, \, a \neq 0 \Big \}.
-\end{equation*}
+\end{equation}
 \end{defn}
 Since we want to do Fourier analysis on these groups, first of all we must map them (homomorphically) into groups of complex matrices. To do that we need to introduce the concept of representation of finite group $G$.
 
@@ -372,6 +373,7 @@ Since $\Z/{n\Z}$ is abelian, all irreducible representations  have  degree  1 (b
 
 Now we are ready to give the definition of Fourier transform on a group $G$, but , before that we prove a result about the left regular representation which will be useful later on.
 \begin{lemma}
+\label{lemma:lrr}
 Let $L$ denote the left regular representation of $G$, then
 \begin{enumerate}
 \item $\displaystyle
@@ -403,7 +405,7 @@ that coming from $y=e$, the identity of $G$.
 \end{enumerate}
 \end{proof}
 Note that an analogous result of the above theorem is valid for the right regular representation.
-\begin{ex}
+\begin{rem}
 Suppose  that $S$  is  a  symmetric  set  of  generators  of  the finite group $G$ ($s\in S \implies s^{-1}\in S$). Consider the Cayley graph $X(G,S)$   with vertices the elements  of $G$  and edges between $x \in G$   and $xs$  for  all $s\in S$.  This is a connected undirected  graph. Then we have:
 \begin{enumerate}
 \item The adjacency operator $\A$ on $X(G,S)$ has the form
@@ -412,7 +414,7 @@ Suppose  that $S$  is  a  symmetric  set  of  generators  of  the finite group $
 This is true because we know that for a Cayley graph we have $y$ is adjacent to $x \iff y=xs$ for $s\in S$ and $[R(s)f](x)=f(xs)$.
 \item Now, since by previous lemma (with $R$ instead of $L$) we have $\cong d_{\pi_1}\pi_1\oplus\dots\oplus d_{\pi_r}\pi_r$, and by point 1. $\A=\sum_{s\in S}R(s)$, it follows that $A$ is similar to a block diagonal matrix $\A\simeq \sum_{s\in S}R(s)=\sum_{s\in S}(d_{\pi_1}\pi_1(s)\oplus\dots\oplus d_{\pi_r}\pi_r(s))= d_{\pi_1}M_{\pi_1}\oplus\dots\oplus d_{\pi_r}M_{\pi_r}$, where $M_\pi=\sum_{s\in S}\pi(s)$ and $\hat{G}=\{\pi_1\dots\pi_r\}$.
 \end{enumerate}
-\end{ex}
+\end{rem}
 Now we can finally give the main definition of this section.
 \begin{defn}
 The \emph{Fourier transform} of $f\colon G\rightarrow \C$ is
@@ -453,3 +455,47 @@ f(x)=\abs{G}^{-1}\sum_{\substack{\pi \in \hat{G} \\1\leq i,j\leq d_\pi }}d_\pi\b
 \item \textbf{Explicit Similarity Transform} Using the appropriate basis, $\mathscr{F}\circ L(g)\circ \mathscr{F}^{-1}$ is a block diagonal matrix with diagonal blocks given by the $\pi(g)$ each listed $d_\pi$ times for $\pi \in \hat{G}$.
 \end{enumerate}
 \end{theorem}
+\subsection{ Irreducible Representations of the Affine Group.}
+Now we want to give some partial result about representations of the affine group over $\F_q$ defined in \eqref{def:aff_group}, which are needed in the next section. In particular we are interested in the one-dimensional representations of $\Aff(q)$. Since explaining all the details would require to write another 20 pages-report we'll just state the result we need later. If you are curious, see \cite[Chapters~16-17]{terras_1999}.
+\begin{theorem}
+A complete  list  of  the representations  in $\hat{G}$, for $G=\Aff(q)$, s  given  by the two types  of representations  below.
+\begin{enumerate}
+\item The one-dimensional representations have de form
+\[
+\widetilde{\chi}
+\begin{pmatrix}
+y &x\\
+0 &1
+\end{pmatrix}
+=\chi(y),
+\]
+where $\chi$ is a character of the multiplicative group of $\F_q$
+\item The ($q-1$)-dimensional  irreducible unitary representation.
+\end{enumerate}
+
+\end{theorem}
+Now we want to use the previous theorem to compute the adjacency operator of  the Cayley graph $X(G,S)$, where $G=\Aff(q)$ and $S$ is a symmetric set of generators of $G$.
+
+We know by the remark after lemma \ref{lemma:lrr} that the  adjacency operator of $X(G,S)$ is a sum  of right regular representations $R$ of $G$:
+\[
+\A f = \sum_{s\in S}R(s)f 
+\]
+Then part 2. of lemma \ref{lemma:lrr}, diagonalizes the right regular representation and finally, we can use the previous theorem to conclude that $A$ is similar to a block diagonal matrix
+\[
+A\cong \begin{pmatrix}
+R &0 \\
+0 &\widetilde{M}
+\end{pmatrix}
+\] 
+where $R$ is $q\times q$ diagonal matrix with diagonal entries indexed  by  the  1-dimensional representations  of $\Aff(q)$ coming  from  characters $\chi$  of the multiplicative group $F_q^{*}$. The corresponding  diagonal entry  of $R$ is 
+\[
+R_\chi=\sum_{\bigl(\begin{smallmatrix}
+y &x\\
+0 &1
+\end{smallmatrix}\bigr) \in S }\chi(y).
+\]
+While $\widetilde{M}$   is a block diagonal matrix with $q-1$ identical blocks, each block given by
+\[
+M_\pi=\sum_{s\in S}\pi(s).
+\]
+Here $\pi$ is the $(q-1)$-dimensional representation of $\Aff(q)$.
