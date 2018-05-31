@@ -168,7 +168,7 @@ $q$ & $\delta$ & $a$ & girth & diameter & degree & eigenvalues with multiplicity
 \caption{Principal characteristics of the graph for soma values of $q$, $\delta$ and $a$.}\label{tab}
 \end{table}
 The degree in the table stands for the degree of an arbitrary vertex, since the graphs are (experimentally, for now) regular.
-Looking at \ref{tab} that we computed we can see that in all the cases that the graph is $q+1$ regular except for
+Looking at table \ref{tab} that we computed we can see that in all the cases that the graph is $q+1$ regular except for
 one row (the first with $q=7$). But this happened because there is an error: 2 is a square in $\F_7$, so it is not of our interest.
 
 We computed more values, and we find that the degree and the girth never exceed 4. We weren't able to prove this, but we found
@@ -179,7 +179,9 @@ We will analyze the spectra of the graph, even if in an incomplete way, and we w
 eigenvalues satisfy this bound. Anyway this bound holds for all eigenvalues (as shown in \cite{terras_1999}),
 but prove this would require other 30 pages in the report.
 
-\begin{figure*}[!htbp]
+In figures \ref{fig1} and \ref{fig2} we put as an example the  plot of two of the graph of table \ref{tab} (${\text{X}}_3(2,1)$ and ${\text{X}}_5(2,2)$, but we actually plotted all of them). SAGE can plot graphs in different layouts, arranging vertices in different ways, so we exploited this possibility.
+
+\begin{figure}[!htbp]
 \centering
 \hspace*{-1.5cm}
 %\begin{subfigure}[b]{0.4\linewidth}
@@ -198,8 +200,9 @@ but prove this would require other 30 pages in the report.
 %\caption{Circular layout}
 %\end{subfigure}
 \caption{Different layouts for ${\text{X}}_3(2,1)$}
-\end{figure*}
-\begin{figure*}[!h]
+\label{fig1}
+\end{figure}
+\begin{figure}[!h]
 \centering
 %\hspace*{-1.5cm}
 %\begin{subfigure}[b]{0.5\linewidth}
@@ -213,7 +216,8 @@ but prove this would require other 30 pages in the report.
 %\caption{Circular layout}
 %\end{subfigure}%
 \caption{Different layouts for ${\text{X}}_5(2,2)$}
-\end{figure*}
+\label{fig2}
+\end{figure}
 %(qui ci vanno gli esempi, sia ripresi dal libro che no)
 %(ci sono altre osservazioni carine sulle similutini col caso continuo, ma dovrei studiarci bene e non so se c'è spazio)
 We can now state and prove one of the main theorems of the report.

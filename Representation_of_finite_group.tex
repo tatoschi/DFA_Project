@@ -1,4 +1,4 @@
-\section{Representation of finite groups}
+\section{Representations of finite groups}
 In this report $\F_q$ indicates the finite field with $q=p^r$ elements, where $p$ is a prime and $r$ is an integer greater then zero.
 
 Here we are interested in doing Fourier analysis on some subgroups of the \emph{General linear group}, which is defined below. 
@@ -8,7 +8,7 @@ The {\it General Linear group} of dimension $n$ over the field $\F_q$ is the gro
 \GL(n,\F_q)=\Big\{ A \in \F_q^{n \times n} \colon \det A = \abs A\neq 0 \Big\}.
 \end{equation*}	
 \end{defn}
-In particular we will focus on $GL(2,\F_q)$ and on its subgroup $\Aff(q)$, \emph{i.e.} the \emph{Affine group}:
+In particular we will focus on $GL(2,\F_q)$ and on its subgroup $\Aff(q)$, \emph{i.e.}, the \emph{Affine group}:
 \begin{defn}
 The {\emph{ Affine group}} of dimension two over the field $\F_q$ is:
 \begin{equation}
@@ -16,7 +16,7 @@ The {\emph{ Affine group}} of dimension two over the field $\F_q$ is:
 \Aff (q)=\Big\{ A=\begin{pmatrix} a & b \\ 0 & 1 \end{pmatrix}\in \GL(2,\F_q) \Big\}=\Big\{ A=\begin{pmatrix} a & b \\ 0 & 1 \end{pmatrix} \colon a,b \in \F_q, \, a \neq 0 \Big \}.
 \end{equation}
 \end{defn}
-Since we want to do Fourier analysis on these groups, first of all we must map them (homomorphically) into groups of complex matrices. To do that we need to introduce the concept of representation of finite group $G$.
+Since we want to do Fourier analysis on these groups, first of all we must map them (homomorphically) into groups of complex matrices. To do that we need to introduce the concept of representation of a finite group $G$.
 
 \begin{defn}
 A (finite dimensional) representation of a finite group $G$ is a group homomorphism
@@ -30,10 +30,10 @@ We can identify $\GL(n,\C)$ and
 \[
 \GL(V)=\{T\colon V\rightarrow V \ | \  T \text{ is linear and invertible}\},
 \]
-where $V$ is an $n$-dimensional vector space over $\C$. However notice that in this case the matrix entries $\pi_{i,j}$ change if change the basis of $V$ and this can cause some issue. In any case, will use the two concepts interchangeably.
+where $V$ is an $n$-dimensional vector space over $\C$. However notice that in this case the matrix entries $\pi_{i,j}$ change if we change the basis of $V$ and this can cause some issue. In any case, will use the two concepts interchangeably.
 \end{rem}
 
-We give now some important definition about representations. In the following $G$ indicates a finite group.
+We give now some important definition about representations. In all the following $G$ indicates a finite group.
 \begin{defn}
 \label{equiv:repres}
 To representations $\alpha$ and $\beta$ of $G$ into $\GL(n,\C)$ are said to be \emph{equivalent}
@@ -48,17 +48,18 @@ This is equivalent to say that we can obtain one representation from the other b
 \label{def:unitary}
 A \emph{unitary} representation is a representation $\pi$ which maps $G$ into the unitary group $\U(n)$, where 
 \[
-\U(n) =\{A\in \GL(n,\C) \colon {}^{t}\!\bar{A}A=I\}.
+\U(n) =\{A\in \GL(n,\C) \colon {}^{t}\!\bar{A}A=I\},
 \]
+where ${}^{t}\!\bar{A}$ is the transpose conjugate matrix of $A$.
 \end{defn}
 \begin{rem}
 If $\Braket{u, \, v} = {}^t\!\bar{u}v$ is the standard Hermitian inner product of vectors of $\C^{n}$, the unitary matrices are those which preserve this product, that is, $\Braket{Au, \, Av} =\Braket{u, \, v} \ \forall u,v \in \C^{n}$.
 Indeed, if $A \in \U(n)$, then by the definition of the inner product, we have $\Braket{Au, \, Av}={}^{t}\!\overline{(Au)}Av={}^t\!\bar{u}{}^t\!\bar{A}Av={}^t\!\bar{u}v=\Braket{u,\, v} \ \forall u,v \in \C^{n}$ and vice versa if $\Braket{Au, \, Av} =\Braket{u, \, v} \ \forall u,v \in \C^{n}$ then, by taking $u_i=(0,\dots ,0, 1, 0,\dots , 0)$ where the $1$ is in the $i$-$th$ coordinate, we see that, indicating with $a_i$ the $i$-$th$ column of $A$, $\delta_{i,j}=\langle u_i, \, u_j\rangle =\langle Au_i, \, Au_j\rangle={}^t\!\bar{a_i}a_j$, that is ${}^{t}\!\bar{A}A=I$.
 \end{rem}
 \begin{defn}
-A \emph{subrepresentation} $\rho$ of a representation $\pi\colon G \rightarrow \GL(V)$ means that $\rho\colon G \rightarrow \GL(W)$, where $W$ is a subspace of $V$ such that $\pi(g)W\subset W \text{ for all }g \in G$ and $\rho(g)$ is the restriction of $\pi(g)$ to $W$, \it{i.e.}
+A \emph{subrepresentation} $\rho$ of a representation $\pi\colon G \rightarrow \GL(V)$ means that $\rho\colon G \rightarrow \GL(W)$, where $W$ is a subspace of $V$ such that $\pi(g)W\subset W \text{ for all }g \in G$ and $\rho(g)$ is the restriction of $\pi(g)$ to $W$, \emph{i.e.},
 \[
-\pi(g)_{\mkern 1mu \vrule height 2ex\mkern2mu W}= \rho(g)\ \forall g \in G
+\pi(g)_{\mkern 1mu \vrule height 2ex\mkern2mu W}= \rho(g)\ \forall g \in G.
 \]
 Using matrix language, this means that there is a basis of $V$ such that $\pi(g)$ has the block form:
 \[
@@ -80,19 +81,20 @@ If $G$ is a finite group, every representation is equivalent to a unitary repres
 To prove this preposition we'll use the fact (which we aren't going to prove) that if a matrix $M$ leaves invariant some positive definite, Hermitian inner product $c(u,v)$ for $u,v \in \C^n$, then $M$ is conjugate to a unitary matrix.
 So it suffices to find an inner product which is invariant under $\pi(g)$ for all $g \in G$. Such a inner product is given by 
 \[
-c(u,v)= \sum_{g \in G} \Braket{ \pi(g)u, \pi(g)v } , \text{ for } u,v \in \C^n.
+c(u,v)= \sum_{g \in G} \Braket{ \pi(g)u, \pi(g)v } , \text{ for } u,v \in \C^n,
 \]
-Indeed, for $h\in G$, $u,v\in \C^n$, we have
+as one can easily check.
+%Indeed, for $h\in G$, $u,v\in \C^n$, we have
+%
+%\[
+%\begin{split}
+%c(\pi(h)u,\pi(h)v) &= \sum_{g \in G} \Braket{ \pi(g)\pi(h)u, \pi(g)\pi(h)v } \\
+%&=\sum_{g \in G} \Braket{ \pi(gh)u, \pi(gh)v } \\
+%&=\sum_{k \in G} \Braket{ \pi(k)u, \pi(k)v }= c(u,v).\\
+%\end{split}
+%\]
 
-\[
-\begin{split}
-c(\pi(h)u,\pi(h)v) &= \sum_{g \in G} \Braket{ \pi(g)\pi(h)u, \pi(g)\pi(h)v } \\
-&=\sum_{g \in G} \Braket{ \pi(gh)u, \pi(gh)v } \\
-&=\sum_{k \in G} \Braket{ \pi(k)u, \pi(k)v }= c(u,v).\\
-\end{split}
-\]
-
-Where we have made the substitution $gh=k$, so that if $h$ runs through all the elements in $G$, so does $k$. 
+%Where we have made the substitution $gh=k$, so that if $h$ runs through all the elements in $G$, so does $k$. 
 \end{proof}
 Let us now introduce  the space of functions from $G$ to $\C$ 
 \begin{equation*}
@@ -101,9 +103,9 @@ Let us now introduce  the space of functions from $G$ to $\C$
 which is a vector space over $\C$ of dimension $\abs G$ (it is isomorphic to $\C^n$, with $n=\abs G$).
 We can make $\LL^2(G)$ an algebra by defining the \emph{convolution} $a\ast b$, for $a,b\in \LL^2(G)$, $x\in G$:
 \begin{equation*}
-(a\ast b)(x)=\sum_{t \in G} a(xt^{-1})b(t)=\sum_{y \in G} a(y)b(y^{-1}x)
+(a\ast b)(x)=\sum_{t \in G} a(xt^{-1})b(t)=\sum_{y \in G} a(y)b(y^{-1}x).
 \end{equation*}
-\begin{rem}[non necessario]
+\begin{rem}
 This definition of convolution coincides with that given for the commutative group $\Z/{n\Z}$ ($(a\ast b)(x)=\sum_{y \in \Z/{n\Z}} a(y)b(x-y)$). 
 Moreover we have that, given $f\in \LL^2(G)$,
 \begin{equation}
@@ -132,13 +134,17 @@ Since if $G$ is commutative the conjugacy class $\{g\}$ contains only $g$, it fo
 We define the \emph{Left Regular Representation} $L$ of $G$ by 
 \begin{align*}
 L\colon G &\rightarrow \GL(\LL^2(G))\\
-	 g&\mapsto L(g) 
+	 g&\mapsto L(g),
 \end{align*}
 where 
 \[
-[L(g)a](x)=a(g^{-1}x)
+[L(g)a](x)=a(g^{-1}x),
 \]
 for $a \in \LL^2(G)$ and $x,g \in G$.
+Equivalently, we can define the \emph{right regular representation} $R$ of $G$ by
+\[
+[R(g)a](x)=a(xg)\quad \forall a \in \LL^2(G)\text{ and $x,g\in G$}.
+\] 
 We have to check that the function $L$ defined above is indeed a group representation, that is, we have to check $L(xy)=L(x)L(y)$ for all $x,y \in G$. Let's take $a \in \LL^2(G)$ and $g\in G$, then
 \[ [L(xy)a](g)=a((xy)^{-1}g)=a(y^{-1}x^{-1}g)
 \]
@@ -148,7 +154,7 @@ and
 \]
 where $b=L(y)a \in \LL^2(G)$.
 
-Fix now $g\in G$, we want to write the matrix of $L(g)$ in the basis of $\LL^2(G)$ consisting of delta functions $\delta_g(x)=1$ if $x=g$ and 0 otherwise. For all $h,x\in G$, we have $[L(g)\delta_h](x)=\delta_h(g^{-1}x)=1 \iff g^{-1}x=h \iff x=gh$, so that $L(g)\delta_h=\delta_{gh}$. Thus if we write $G=\{g_1,g_2,\dots , g_n\}$ we have that the $j$-th column of $L(g)$ is $([L(g)\delta_{g_j}](g_1),\dots [L(g)\delta_{g_j}](g_n))=(\delta_{gg_j}(g_1),\dots \delta_{gg_j}(g_n))=$, but then we have $\delta_{gg_j}(g_i)=1\iff g_i=gg_j\iff g=g_ig_j^{-1}$ and so we can conclude that the $i,j$ entry of $L(g)$ is $\delta_{g_ig_j^{-1}}(g)$. This means that in every row and in every column of $L(g)$ there is only one entry equal to 1 and all the others are zero. So $L(g)$ is obtained from the identity matrix by a permutation of its rows (or columns). Note that if $g$ is not the identity element $e$ of $G$, then $L(g)_{ii}=\delta_{g_ig_i^{-1}}(g)=\delta_{e}(g)=0$.
+Fix now $g\in G$, we want to write the matrix of $L(g)$ in the basis of $\LL^2(G)$ consisting of delta functions $\delta_g(x)=1$ if $x=g$ and 0 otherwise. For all $h,x\in G$, we have $[L(g)\delta_h](x)=\delta_h(g^{-1}x)=1 \iff g^{-1}x=h \iff x=gh$, so that $L(g)\delta_h=\delta_{gh}$. Thus if we write $G=\{g_1,g_2,\dots , g_n\}$ we have that the $j$-th column of $L(g)$ is $([L(g)\delta_{g_j}](g_1),\dots , [L(g)\delta_{g_j}](g_n))=(\delta_{gg_j}(g_1),\dots \delta_{gg_j}(g_n))$, but then we have $\delta_{gg_j}(g_i)=1\iff g_i=gg_j\iff g=g_ig_j^{-1}$ and so we can conclude that the $i,j$ entry of $L(g)$ is $\delta_{g_ig_j^{-1}}(g)$. This means that in every row and in every column of $L(g)$ there is only one entry equal to 1 and all the others are zero. So $L(g)$ is obtained from the identity matrix by a permutation of its rows (or columns). Note that if $g$ is not the identity element $e$ of $G$, then $L(g)_{ii}=\delta_{g_ig_i^{-1}}(g)=\delta_{e}(g)=0$.
 \end{exmp}
 
 Now we want to decompose a representation $\pi$ of $G$ into irreducible part, \textit{i.e.}, considering $\pi$ as a matrix, we want to replace $\pi$ by a matrix which has diagonal blocks that cannot be further decomposed. This is achieved by the following proposition.
@@ -165,19 +171,19 @@ Note that by \ref{unit:eqiv} we can assume all representations are unitary.
 \]
 \item By induction, $\pi(g)$ is equivalent to
 \[
-(\pi_1(g)\dots \pi_r(g))= 
+(\pi_1\oplus\dots \oplus \pi_r)(g)= 
 \begin{pmatrix}
 \pi_1(g)  &{} &0\\
 {} &\ddots &{} \\
 0 &{}  &\pi_r(g)
 \end{pmatrix},
 \]
-where each subrepresentation $\pi_i$  is irreducible. we say, when this happens, that $\pi$ is \emph{completely reducible}. 
+where each subrepresentation $\pi_i$  is irreducible. We say, when this happens, that $\pi$ is \emph{completely reducible}. 
 \end{enumerate}
 \end{prop}
 \begin{proof}~ 
 \begin{enumerate}
-\item We know that, by the remark after definition \ref{def:unitary}, if $\pi(g)$ is unitary then it leaves invariant the standard inner product $\braket{u,\, v}={}^t\!\bar{u}v$ for $u,v \in \C^n$. Moreover, since $\rho$ is a subrepresentation of $\pi$, by definition there is a subspace $W$ of $V=\C^n$ such that $\pi(g)W\subset W$ and, for all $g\in G$, $\pi(g)_{\mkern 1mu \vrule height 2ex\mkern2mu W}= \rho(g)$.  Consider the \emph{orthogonal complement space} $W^\perp$ of $W$:
+\item We know that, by the remark after definition \ref{def:unitary}, if $\pi(g)$ is unitary then it leaves invariant the standard inner product $\braket{u,\, v}={}^t\!\bar{u}v$ for $u,v \in \C^n$. Moreover, since $\rho$ is a subrepresentation of $\pi$, by definition there is a subspace $W$ of $V=\C^n$ such that, for all $g\in G$, $\pi(g)W\subset W$ and $\pi(g)_{\mkern 1mu \vrule height 2ex\mkern2mu W}= \rho(g)$.  Consider the \emph{orthogonal complement space} $W^\perp$ of $W$:
 \[
 W^{\perp}= \Set{v \in V \colon \braket{u, \, v}=0 \text{ for all } w \in W}.
 \]
@@ -231,7 +237,7 @@ Analogously if $w \in \Im(L)$, then $w=Lv$ for some $v\in V$, thus
 \[
 V_\lambda=\Set{v\in v \colon Lv=\lambda v}\neq \{0\}.
 \] 
-Then $\pi(g)(V_\lambda)\subset V_\lambda$, since $L(\pi(g)v)=\pi(g)(Lv)=\pi(g)(\lambda  v)=\lambda\pi(g) v$, and so $\pi(g)v\in V_\lambda$. This means that the restriction of $\pi$ to $V_\lambda$ is a subrepresentation of $\pi$, which is irreducible, thus $V_\lambda = V$ and this implies $L=\lambda I$ on $V$. 
+Then $\pi(g)(V_\lambda)\subset V_\lambda$, since, for $v\in V_\lambda$, $L(\pi(g)v)=\pi(g)(Lv)=\pi(g)(\lambda  v)=\lambda\pi(g) v$, and so $\pi(g)v\in V_\lambda$. This means that the restriction of $\pi$ to $V_\lambda$ is a subrepresentation of $\pi$, which is irreducible, thus $V_\lambda = V$ and this implies $L=\lambda I$ on $V$. 
 \item Since every $\I(\pi,\rho)\ni L\neq 0$ is an isomorphism between $V$ and $W$ by point 2., if $\pi$ and $\rho$ are not equivalent, such an isomorphism cannot exist, and so $\I(\pi,\rho)=\{0\}$. Assume then that $\pi$ and $\rho$ are equivalent and consider $K,L\neq 0$ in  $\I(\pi,\rho)$. By point 2. $L$ is an isomorphism, so we can consider the map $M=L^{-1} \circ K\colon V\rightarrow V$. Since both $K$ and $L$ (and so $L^{-1}$) are nonnull, $M$ is a nonzero element of $\I(\pi,\pi)$. Then by 3. we have that there exists $0\neq \mu\in \C$ such that $M=\mu I$, \emph{i.e.} $K=\mu L$ and the dimension of $\I(\pi,\rho)$ is 1.
 \end{enumerate}
 
@@ -257,7 +263,7 @@ Note that every two one-dimensional representations must be inequivalent. This i
 \label{exa:characters}
 $G=\Z/n\Z$ under addition modulo $n$.
 
-In this case we have that $e_a(x)=\exp(2\pi iax/n)$ for $a,x\in G$ are one-dimensional representation of $G$, also called \emph{characters} of $G$. We will see (maybe) that $\hat{G}=\{e_a\colon a \in G\}$. 
+In this case we have that $e_a\colon G\rightarrow \C$ defined by, $e_a(x)=\exp(2\pi iax/n)$ for $a,x\in G$ are one-dimensional representation of $G$ (because $e_{a+b}=e_a\cdot e_b$), also called \emph{characters} of $G$. We will see that $\hat{G}=\{e_a\colon a \in G\}$. 
 \end{exmp}
 \begin{defn}
 Given a representation $\pi$ of $G$ we define the \emph{character} of $\pi$ as $\chi_\pi(g)=\text{Tr}(\pi(g))$, for all $g \in G$, where Tr($\pi(g)$) is the trace of the matrix $\pi(g)$.
@@ -281,7 +287,7 @@ Note that $\chi_\pi(g)\colon G\rightarrow \C$, so if $\pi$ is one-dimensional, i
 \braket{\chi_\pi,\, \chi_\rho}=
 \begin{cases}
 0 &\text{if $\pi$ and $\rho$ are inequivalent} \\
-\abs G &\text{otherwise}
+\abs G &\text{otherwise}.
 \end{cases}
 \]
 \end{enumerate}
@@ -318,7 +324,7 @@ Where we have used the facts that the trace is linear and it satisfies the \emph
 \[
 \braket{\chi_\pi,\, \chi_\rho}=\braket{\sum_{i=1}^n\pi_{ii},\, \sum_{j=1}^n\rho_{jj} }=\sum_{i,j}\braket{\pi_{ii},\, \rho_{jj} }=0
 \]
-If $\rho$ and $\pi$ are equivalent, we can assume $\rho=\pi$, and then by 2. we have
+If $\rho$ and $\pi$ are equivalent, we can assume $\rho=\pi$. Indeed if $\rho$ and $\pi$ are two equivalent representations of $G$, then there exist  an invertible matrix $T$ such that $\pi(g)=T\rho(g)T^{-1}$, for all $g\in G$. Thus by definition of character and by the cyclic property of the trace we have, for all $g\in G$, $\chi_\pi(g)=$Tr$(\pi(g))=$Tr$(T\rho(g)T^{-1})=$Tr$(T^{-1}T\rho(g))= $Tr$(\rho(g))=\chi_\rho(g)$. Then by 2. we have
 \[
 \begin{split}
 \braket{\chi_\pi,\, \chi_\pi}&=\braket{\sum_{i=1}^n\pi_{ii},\, \sum_{j=1}^n\pi_{jj} }=\sum_{i,j}\braket{\pi_{ii},\, \pi_{jj} }\\
@@ -344,15 +350,17 @@ where the $n_i$ and $m_j$ are nonnegative integers and $\pi_i$ are irreducible. 
 \begin{enumerate}
 \item Two representations are equivalent if and only if they have the same character.
 \item There are only a finite number of inequivalent irreducible unitary representations of a finite group $G$.
+\item $\braket{\chi_\pi,\, \chi_\pi}=\abs{G}$ if and only if $\pi$ is irreducible.
 \end{enumerate}
 \end{cor}
 \begin{proof}~
 \begin{enumerate}
-\item If $\rho$ and $\pi$ are two equivalent representations of $G$, then there exist  an invertible matrix $T$ such that $\pi(g)=T\rho(g)T^{-1}$, for all $g\in G$. Thus by definition of character and by the cyclic property of the norm we have, for all $g\in G$, $\chi_\pi(g)=$Tr$(\pi(g))=$Tr$(T\rho(g)T^{-1})=$Tr$(T^{-1}T\rho(g))= \\
-$Tr$(\rho(g))=\chi_\rho(g)$.
-
-On the other hand if $\chi_\pi=\chi_\rho$ then $\braket{\chi_\pi,\, \chi_\pi} \neq 0$ and so by part 3. of theorem \ref{thm:schurel} $\pi$ and $\rho$ must be equivalent.
+\item One implication has been already noted in part 3. of theorem \ref{thm:schurel}. 
+%\item If $\rho$ and $\pi$ are two equivalent representations of $G$, then there exist  an invertible matrix $T$ such that $\pi(g)=T\rho(g)T^{-1}$, for all $g\in G$. Thus by definition of character and by the cyclic property of the norm we have, for all $g\in G$, $\chi_\pi(g)=$Tr$(\pi(g))=$Tr$(T\rho(g)T^{-1})=$Tr$(T^{-1}T\rho(g))= \\
+%$Tr$(\rho(g))=\chi_\rho(g)$.
+For the  other one, if $\chi_\pi=\chi_\rho$ then $\braket{\chi_\pi,\, \chi_\pi} \neq 0$ and so by part 3. of theorem \ref{thm:schurel} $\pi$ and $\rho$ must be equivalent.
 \item  This  follows  from  the orthogonality  of  the matrix  entries  since $\LL^{2}(G)$ is a finite-dimensional inner product  space when $G$ is finite.
+\item If $\pi$ is irreducible, this is just 3. of theorem \ref{thm:schurel}. If $\pi$ is not irreducible then in 1. of theorem \ref{thm:non_irreducible_rel} $\sum_{j=1}^rn_jm_j\geq 2$, and so  $\braket{\chi_\pi,\, \chi_\pi}>\abs{G}$ 
 \end{enumerate}
 
 \end{proof}
