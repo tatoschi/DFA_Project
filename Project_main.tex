@@ -1,0 +1,85 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{kpfonts}
+\usepackage[autostyle]{csquotes}
+\usepackage{mathrsfs}
+\usepackage[style=alphabetic,backend=biber]{biblatex}
+\addbibresource{References.bib}
+\usepackage{hyperref}
+\usepackage{braket}
+
+
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subfig}
+%\usepackage{subcaption}
+%\usepackage[export]{adjustbox}
+
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem*{cor}{Corollary}
+\newtheorem*{ex}{Exercise}
+
+\theoremstyle{definition}
+\newtheorem{defn}[theorem]{Definition}
+\newtheorem{exmp}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\Q}{{\mathbb Q}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\F}{{\mathbb F}}
+\newcommand{\K}{{\mathbb K}}
+\renewcommand{\L}{{\mathbb L}}
+\newcommand{\sdir}{\mathbb{o}}
+\newcommand{\nil}{\mathfrak N}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\renewcommand{\epsilon}{\varepsilon}
+
+\DeclareMathOperator{\Norm}{\mathfrak{N}}
+\DeclareMathOperator{\Trace}{\mathfrak{T}}
+\DeclareMathOperator{\Aff}{Aff}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\dist}{\mathfrak{d}}
+\DeclareMathOperator{\U}{U}
+\DeclareMathOperator{\LL}{L}
+\newcommand{\xq}[1]{X_q (\delta ,#1)}
+\newcommand{\rd}{\sqrt{\delta}}
+\DeclareMathOperator{\I}{I}
+\DeclareMathOperator{\A}{A\!}
+
+\begin{document}
+
+\author{Lorenzo Baldi, Salvatore Schiavulli}
+\title{Discrete Fourier Analysis report}
+\maketitle
+\tableofcontents
+\input{Introduction.tex}
+
+%\author{Lorenzo Baldi, Salvatore Schiavulli}
+%\title{Discrete Fourier Analysis report}
+%\maketitle
+%\newpage
+%\tableofcontents
+%\input{title.tex}
+
+
+\input{Representation_of_finite_group.tex}
+
+\input{Graphs.tex}
+
+
+\printbibliography
+\end{document}
