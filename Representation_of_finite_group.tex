@@ -1,4 +1,4 @@
-\section{Representation of finite groups}
+\section{Representations of finite groups}
 In this report $\F_q$ indicates the finite field with $q=p^r$ elements, where $p$ is a prime and $r$ is an integer greater then zero.
 
 Here we are interested in doing Fourier analysis on some subgroups of the \emph{General linear group}, which is defined below. 
@@ -8,7 +8,7 @@ The {\it General Linear group} of dimension $n$ over the field $\F_q$ is the gro
 \GL(n,\F_q)=\Big\{ A \in \F_q^{n \times n} \colon \det A = \abs A\neq 0 \Big\}.
 \end{equation*}	
 \end{defn}
-In particular we will focus on $GL(2,\F_q)$ and on its subgroup $\Aff(q)$, \emph{i.e.} the \emph{Affine group}:
+In particular we will focus on $GL(2,\F_q)$ and on its subgroup $\Aff(q)$, \emph{i.e.}, the \emph{Affine group}:
 \begin{defn}
 The {\emph{ Affine group}} of dimension two over the field $\F_q$ is:
 \begin{equation}
@@ -16,7 +16,7 @@ The {\emph{ Affine group}} of dimension two over the field $\F_q$ is:
 \Aff (q)=\Big\{ A=\begin{pmatrix} a & b \\ 0 & 1 \end{pmatrix}\in \GL(2,\F_q) \Big\}=\Big\{ A=\begin{pmatrix} a & b \\ 0 & 1 \end{pmatrix} \colon a,b \in \F_q, \, a \neq 0 \Big \}.
 \end{equation}
 \end{defn}
-Since we want to do Fourier analysis on these groups, first of all we must map them (homomorphically) into groups of complex matrices. To do that we need to introduce the concept of representation of finite group $G$.
+Since we want to do Fourier analysis on these groups, first of all we must map them (homomorphically) into groups of complex matrices. To do that we need to introduce the concept of representation of a finite group $G$.
 
 \begin{defn}
 A (finite dimensional) representation of a finite group $G$ is a group homomorphism
@@ -80,17 +80,18 @@ If $G$ is a finite group, every representation is equivalent to a unitary repres
 To prove this preposition we'll use the fact (which we aren't going to prove) that if a matrix $M$ leaves invariant some positive definite, Hermitian inner product $c(u,v)$ for $u,v \in \C^n$, then $M$ is conjugate to a unitary matrix.
 So it suffices to find an inner product which is invariant under $\pi(g)$ for all $g \in G$. Such a inner product is given by 
 \[
-c(u,v)= \sum_{g \in G} \Braket{ \pi(g)u, \pi(g)v } , \text{ for } u,v \in \C^n.
+c(u,v)= \sum_{g \in G} \Braket{ \pi(g)u, \pi(g)v } , \text{ for } u,v \in \C^n,
 \]
-Indeed, for $h\in G$, $u,v\in \C^n$, we have
-
-\[
-\begin{split}
-c(\pi(h)u,\pi(h)v) &= \sum_{g \in G} \Braket{ \pi(g)\pi(h)u, \pi(g)\pi(h)v } \\
-&=\sum_{g \in G} \Braket{ \pi(gh)u, \pi(gh)v } \\
-&=\sum_{k \in G} \Braket{ \pi(k)u, \pi(k)v }= c(u,v).\\
-\end{split}
-\]
+as one can easily check.
+%Indeed, for $h\in G$, $u,v\in \C^n$, we have
+%
+%\[
+%\begin{split}
+%c(\pi(h)u,\pi(h)v) &= \sum_{g \in G} \Braket{ \pi(g)\pi(h)u, \pi(g)\pi(h)v } \\
+%&=\sum_{g \in G} \Braket{ \pi(gh)u, \pi(gh)v } \\
+%&=\sum_{k \in G} \Braket{ \pi(k)u, \pi(k)v }= c(u,v).\\
+%\end{split}
+%\]
 
 Where we have made the substitution $gh=k$, so that if $h$ runs through all the elements in $G$, so does $k$. 
 \end{proof}
@@ -318,7 +319,7 @@ Where we have used the facts that the trace is linear and it satisfies the \emph
 \[
 \braket{\chi_\pi,\, \chi_\rho}=\braket{\sum_{i=1}^n\pi_{ii},\, \sum_{j=1}^n\rho_{jj} }=\sum_{i,j}\braket{\pi_{ii},\, \rho_{jj} }=0
 \]
-If $\rho$ and $\pi$ are equivalent, we can assume $\rho=\pi$, and then by 2. we have
+If $\rho$ and $\pi$ are equivalent, we can assume $\rho=\pi$. Indeed if $\rho$ and $\pi$ are two equivalent representations of $G$, then there exist  an invertible matrix $T$ such that $\pi(g)=T\rho(g)T^{-1}$, for all $g\in G$. Thus by definition of character and by the cyclic property of the trace we have, for all $g\in G$, $\chi_\pi(g)=$Tr$(\pi(g))=$Tr$(T\rho(g)T^{-1})=$Tr$(T^{-1}T\rho(g))= $Tr$(\rho(g))=\chi_\rho(g)$. Then by 2. we have
 \[
 \begin{split}
 \braket{\chi_\pi,\, \chi_\pi}&=\braket{\sum_{i=1}^n\pi_{ii},\, \sum_{j=1}^n\pi_{jj} }=\sum_{i,j}\braket{\pi_{ii},\, \pi_{jj} }\\
@@ -344,15 +345,17 @@ where the $n_i$ and $m_j$ are nonnegative integers and $\pi_i$ are irreducible. 
 \begin{enumerate}
 \item Two representations are equivalent if and only if they have the same character.
 \item There are only a finite number of inequivalent irreducible unitary representations of a finite group $G$.
+\item $\braket{\chi_\pi,\, \chi_\pi}=\abs{G}$ if and only if $\pi$ is irreducible.
 \end{enumerate}
 \end{cor}
 \begin{proof}~
 \begin{enumerate}
-\item If $\rho$ and $\pi$ are two equivalent representations of $G$, then there exist  an invertible matrix $T$ such that $\pi(g)=T\rho(g)T^{-1}$, for all $g\in G$. Thus by definition of character and by the cyclic property of the norm we have, for all $g\in G$, $\chi_\pi(g)=$Tr$(\pi(g))=$Tr$(T\rho(g)T^{-1})=$Tr$(T^{-1}T\rho(g))= \\
-$Tr$(\rho(g))=\chi_\rho(g)$.
-
-On the other hand if $\chi_\pi=\chi_\rho$ then $\braket{\chi_\pi,\, \chi_\pi} \neq 0$ and so by part 3. of theorem \ref{thm:schurel} $\pi$ and $\rho$ must be equivalent.
+\item One implication has been already noted in part 3. of theorem \ref{thm:schurel}. 
+%\item If $\rho$ and $\pi$ are two equivalent representations of $G$, then there exist  an invertible matrix $T$ such that $\pi(g)=T\rho(g)T^{-1}$, for all $g\in G$. Thus by definition of character and by the cyclic property of the norm we have, for all $g\in G$, $\chi_\pi(g)=$Tr$(\pi(g))=$Tr$(T\rho(g)T^{-1})=$Tr$(T^{-1}T\rho(g))= \\
+%$Tr$(\rho(g))=\chi_\rho(g)$.
+For the  other one, if $\chi_\pi=\chi_\rho$ then $\braket{\chi_\pi,\, \chi_\pi} \neq 0$ and so by part 3. of theorem \ref{thm:schurel} $\pi$ and $\rho$ must be equivalent.
 \item  This  follows  from  the orthogonality  of  the matrix  entries  since $\LL^{2}(G)$ is a finite-dimensional inner product  space when $G$ is finite.
+\item If $\pi$ is irreducible, this is just 3. of theorem \ref{thm:schurel}. If $\pi$ is not irreducible then in 1. of theorem \ref{thm:non_irreducible_rel} $\sum_{j=1}^rn_jm_j\geq 2$, and so  $\braket{\chi_\pi,\, \chi_\pi}>\abs{G}$ 
 \end{enumerate}
 
 \end{proof}
