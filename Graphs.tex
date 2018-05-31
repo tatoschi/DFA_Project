@@ -235,9 +235,6 @@ Then the following holds:
 \end{equation}
 \item[5.] if $a\neq 4\delta$ then $\xq a$ is connected.
 \end{itemize}
-
-
-(ci sarebbe un altro punto, non mi sembra né utile né interessante, lo ometto per adesso)
 \begin{proof}
 1. WLOG I can assume $z=\rd$, because of the transitivity of the action and the invariance of the distance.
 In fact, if $g \cdot \rd = z$, then 
@@ -248,10 +245,10 @@ So we are interested in the solutions of the equation $\dist (\rd, z)=a$.
 
 Suppose $z=x+y\rd$. Then
 \begin{align} \label{distance}
-	\dist (\rd, z)=a & \iff \Norm (\rd - z) = ay\\		\notag
-					 & \iff (\rd - z)\overline{(\rd - z)}=ay\\ \notag
-					 & \iff (-x+(1-y)\rd)(-x-(1-y)\rd )=ay\\   \notag
-					 & \iff x^2 = ay + (y-1)^2 \delta. 
+	\dist (\rd, z)=a & \iff \Norm (\rd - z) = ay
+					  \iff (\rd - z)\overline{(\rd - z)}=ay\\ \notag
+					 & \iff (-x+(1-y)\rd)(-x-(1-y)\rd )=ay
+					  \iff x^2 = ay + (y-1)^2 \delta. \notag
 \end{align}
 We must be careful: if $z$ is a solution of the previous equation, we must check that $z\in H_q$, that is $y\neq 0$.
 But this is always true: if $y=0$ from the previous equation we obtain $\delta=(x(y-1)^{-1})^2$,
@@ -272,7 +269,6 @@ Fix $c=(\frac{a}{2\delta}-1)\rd$ and $d=(1-\frac{a}{4\delta})a$. Then:
 \end{align*}
 So, if we set $w=z+c$, in the case $d\neq 0$, I can find $q+1$ solutions in $\F_{q^2}^{*}$ of $\Norm w = d$.
 But $d=0 \iff a=0,4\delta$, cases that are excluded by hypothesis.
-(il libro fa altre considerazioni oer concludere che il numero di soluzioni è precisamente q+1, a me pare suff così per concludere).
 
 Hence the equation $\dist (\rd, z)=a$ has exactly $q+1$ solutions, that is the graph is $(q+1)-regular$.
 
@@ -302,10 +298,10 @@ and it is a bijection from $H_q$ to itself. So the graph $X_q (\delta^{p}, a^{p}
 $\xq a$ and $X_q (\delta^{p}, a^{p})$ are the same. We observe in particular that $(x+y\rd)^p=x^p+y^p\rd^p$.
 Moreover, using a notation similar to the previous point,
 \begin{align*}
-	\dist_{\rd} (z,w)=a & \iff \frac{\Norm (z-w)}{\Im_{\rd} (z) \Im_{\rd} (w)}=a\\
-	& \iff (\frac{\Norm (z-w)}{\Im_{\rd} (z) \Im_{\rd} (w)})^p = a^p \\
-	& \iff \frac{\Norm ((z-w)^p)}{\Im_{\rd^p} (z^p) \Im_{\rd^p} (w^p)}=a^p\\
-	& \iff \frac{\Norm (z^p-w^p)}{\Im_{\rd^p} (z^p) \Im_{\rd^p} (w^p)}=a^p \iff \dist_{\rd^p} (z^p,w^p)=a^p,
+	\dist_{\rd} (z,w)=a & \iff \frac{\Norm (z-w)}{\Im_{\rd} (z) \Im_{\rd} (w)}=a
+	 \iff (\frac{\Norm (z-w)}{\Im_{\rd} (z) \Im_{\rd} (w)})^p = a^p \\
+	& \iff \frac{\Norm ((z-w)^p)}{\Im_{\rd^p} (z^p) \Im_{\rd^p} (w^p)}=a^p
+	 \iff \frac{\Norm (z^p-w^p)}{\Im_{\rd^p} (z^p) \Im_{\rd^p} (w^p)}=a^p \\ &\iff \dist_{\rd^p} (z^p,w^p)=a^p,
 \end{align*}
 and we conclude that the two graphs are isomorphic.
 
@@ -399,25 +395,11 @@ We are interested in these functions because they are eigenfunctions of our grap
 Let $A$ be the adjacency matrix of our graph $\xq a$. Then for all characters $\chi$, the function $p_{\chi}$
 defined above is an eigenfunction for $A$. Moreover their eigenvalues are explicitly:
 \begin{equation}\label{eigen}
-	\lambda_{chi}=\sum_{w\in S_q(\delta,a)} \chi (\Im w).
+	\lambda_{\chi}=\sum_{w\in S_q(\delta,a)} \chi (\Im w).
 \end{equation}
-\begin{proof}
-By theorem \ref{important} we recall that our graph is a Cayley one, so two vertexes are connected by an edge if and only if
-we can obtain one from the other multiplying by an element of the sets of generators.
-So we have by definition of adjacency operator($w = \begin{pmatrix} v & u \\ 0 & 1 \end{pmatrix}$):
-\begin{align*}
-	Ap_{\chi}(\begin{pmatrix} y & x \\ 0 & 1 \end{pmatrix} \delta) &=
-	 \sum_{w \in S_q(\delta,a)} p_{\chi}(\begin{pmatrix} v & u \\ 0 & 1 \end{pmatrix}
-	 \begin{pmatrix} y & x \\ 0 & 1 \end{pmatrix} \delta)=\\
-	 &=\sum_{w \in S_q(\delta,a)} \chi (\Im (\begin{pmatrix} v & u \\ 0 & 1 \end{pmatrix}
-	 \begin{pmatrix} y & x \\ 0 & 1 \end{pmatrix} \delta))=\\
-	 &=\sum_{w \in S_q(\delta,a)}\chi (vy)=\\
-	 &=(\sum_{w \in S_q(\delta,a)}\chi (\Im \begin{pmatrix} v & u \\ 0 & 1 \end{pmatrix}))\chi (\Im  \begin{pmatrix} y & x \\ 0 & 1 \end{pmatrix})=\\
-	 &=\lambda_{\chi} p_{\chi} (\begin{pmatrix} y & x \\ 0 & 1 \end{pmatrix} \delta).
-\end{align*}
+\begin{proof}\ref{thm:eigen}
 \end{proof}
-\end{prop}We could have simply seen this as a consequence of (mettere qui ref a roba su rapp di aff), which proves that the eigenvalues are one dimensional.
-
+\end{prop}
 We are interested in bounds on the absolute value of \ref{eigen}, to see for instance that the graph is Ramanujan. 
 To find these bounds we need some more advanced theory of finite fields: we will follow \cite{schmidt1976equations},
 giving results and only sketches of the proofs for shortness.
@@ -475,9 +457,7 @@ $m$ distinct zeros, and suppose that $y^d-f(x)$ is absolutely irreducible. Then:
 
 \begin{cor}
 	The one dimensional eigenvalues of the adjacency operator of $\xq a$ satisfy the Ramanujan bound, that is:
-\begin{equation*}
-	\vert \lambda_{\chi} \vert \le 2\sqrt{q}.
-\end{equation*}
+	$\vert \lambda_{\chi} \vert \le 2\sqrt{q}$.
 \begin{proof}
 	Define $\epsilon$ as the quadratic character on $\F_q$:
 \begin{equation*}
@@ -485,24 +465,25 @@ $m$ distinct zeros, and suppose that $y^d-f(x)$ is absolutely irreducible. Then:
 \end{equation*}
 Let $g(y)=ay+(y-1)^2 \delta$ and $w=x+y\rd$. Then
 \begin{equation}\label{equivalence}
-w \in S_q(\delta,a) \iff x^2=g(y) \iff g(y) \text{is a square and} x \text{is one of its roots}.
+w \in S_q(\delta,a) \iff x^2=g(y) \iff
+\begin{cases} &g(y)\quad \text{is a square} \\ &x \quad \text{is one of its roots}.\end{cases}
 \end{equation}
 In particular if $g(y)=0$ then $x=0$ (only $1=\epsilon(0)+1$ solution), while if $g(y)\neq 0$ and $g(y)$ is a square then we have
-$2=\epsilon (g(y)+1)$; if $g(y)\neq 0$ and $g(y)$ is a non square then we have $0=\epsilon (g(y)+1$ solutions.
+$2=\epsilon (g(y)+1)$; if $g(y)\neq 0$ and $g(y)$ is a non square then we have $0=\epsilon (g(y))+1$ solutions.
 
 By the previous observation and by \ref{equivalence} we get:
 \begin{equation}
-\lambda_{chi}=\sum_{y \in \F_q} \chi (y)(\epsilon(g(y))+1)=(\lambda_{chi}=
-\sum_{y \in \F_q}\chi (y)\epsilon(g(y)))+(\lambda_{chi}\chi (y)).
+\lambda_{\chi}=\sum_{y \in \F_q} \chi (y)(\epsilon(g(y))+1)=
+\sum_{y \in \F_q}\chi (y)\epsilon(g(y)))+\sum_{y \in \F_q}\lambda_{\chi}\chi (y).
 \end{equation}
-The second sum is equal to zero due to the orthogonality of the characters (aggiungere ref).
+The second sum is equal to zero due to the orthogonality of the characters (\ref{thm:schurel}).
 We have reached a form similar to the previous theorem: we need only to express the two different characters in a common form.
 
 But the characters of a cyclic group form a cyclic group of the same order ($q-1$ in our case). So let $\eta$ be a generator character.
 Then, if $d$ is the order of $\chi$, then we can write $\chi=\eta^{\frac{q-1}{d}}$ and $\epsilon=\eta^{\frac{q-1}{2}}$
 (since the order of $\epsilon$ is trivially 2). Hence we have:
 \begin{equation}
-	\lambda_{\chi}=\sum_{y \in \F_q} \eta^{\frac{q-1}{d}}(y)\eta^{\frac{q-1}{2}}(g(y))=\lambda_{\chi}=\sum_{y \in \F_q}
+	\lambda_{\chi}=\sum_{y \in \F_q} \eta^{\frac{q-1}{d}}(y)\eta^{\frac{q-1}{2}}(g(y))=\sum_{y \in \F_q}
 	\eta^m(y^{\frac{q-1}{md}}g(y)^{\frac{q-1}{2m}}),
 \end{equation}
 where $m=\gcd(\frac{q-1}{d},\frac{q-1}{2})$. We want to use point 3. of lemma \ref{tre} to prove that $z^{\frac{q-1}{m}}-f(y)$
