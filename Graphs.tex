@@ -1,5 +1,9 @@
 \section{Graphs in the finite upper half plane}
-\subsection{Poincaré upper half plane}
+After passing by the representation theory of groups we can try to apply it to the study of some kinds of graphs constructed
+over the finite upper half plane. There is a nice connection between the ideas above and the complex Poincaré upper half plane. We
+do not have enough space to deal with it. See for instance \cite{terras_1999}.
+
+Now we start with main definitions and proofs.
 \subsection{The finite upper half plane}
 \begin{defn}
 	An element $\gamma \in \F_q$ is a {\it square} if $\exists \, x \in \F_q \colon \gamma = x^2$.
@@ -38,19 +42,8 @@ such that:
 \end{defn}
 
 In our case will have $X=H_q$, while $G$ will be the general linear group $\GL(2,\F_q)$ or its subgroup of
-affine transformations $\Aff (q)$, defined below.
-\begin{defn}
-	The {\it General Linear group} of dimension two over the field $\F_q$ is:
-	\begin{equation*}
-	\GL(2,\F_q)=\Big\{ g=\begin{pmatrix} a_{1,1} & a_{1,2} \\ a_{2,1} & a_{2,2} \end{pmatrix} \colon a_{i,j} \in \F_q,\, \det g \neq 0 \Big\}
-	\end{equation*}	
-\end{defn}
-\begin{defn}
-	The {\it Affine group} of dimension two over the field $\F_q$ is:
-	\begin{equation*}
-	\Aff (q)=\Big\{ g=\begin{pmatrix} a & b \\ 0 & 1 \end{pmatrix}\in \GL(2,\F_q) \Big\}=\Big\{ g=\begin{pmatrix} a & b \\ 0 & 1 \end{pmatrix} \colon a,b \in \F_q, \, a \neq 0 \Big \}
-	\end{equation*}
-\end{defn}
+affine transformations $\Aff (q)$.
+
 Now we can define define the action we are interested in, and investigate some of its properties.
 \begin{defn}\label{flt}
 The group $\GL(2,\F_q)$ acts on $H_q$ by {\it fractional linear transformation}:
@@ -72,16 +65,18 @@ $\Re (g\cdot z) = \frac{ac\Norm z +bd+(ad+bc)\Re z}{\Norm (cz+d)}$;
 \end{itemize}
 \begin{proof}
 To prove 1. we have to show first that $\Norm (cz+d)\neq 0$. 
-By definition of norm it suffices to prove that $cz+d\neq 0$  Let $z=x+y\rd$. Then
+By definition of norm it suffices to prove that $cz+d \neq 0$  Let $z=x+y\rd$. Then
 \begin{equation}\label{den}
 	cz+d=0 \iff (cx+d)+(cy)\rd=0 \iff cy=0 \land cx+d=0 \iff c=d=0,
 \end{equation}
-but this cannot happen, because $\det g = ad-bc \neq 0$. Then is enough to perform some calculations.
+but this cannot happen, because $\det g = ad-bc \neq 0$. Then is enough to write down the definition of $g\cdot z$.
 
 Now we prove the second part. We already proved that $cz+d\neq 0$ in \ref{den}.
 We have now to show that $g\cdot z \in H_q$, that is $\Im (g\cdot z)\neq 0$. But this follows from point 1:
 $\Im (g\cdot z) = \frac{\Im z \det g}{\Norm (cz+d)}$, where $\Im z \neq 0$ because $z \in H_q$,
-$\det g \neq 0$ because $g \in \GL(2,\F_q)$. (mancante: funziona bene col prodotto di matrici)
+$\det g \neq 0$ because $g \in \GL(2,\F_q)$. The only thing left is to show that
+$\forall \, h,g \in \GL(2,\F_q), \forall\, z \in H_q$ we have $(gh)\cdot z=g \cdot (h\cdot z)$, but this follows simply 
+writing the definition of the action and the matrix product.
 
 For the last part, take $\bar{z} = \rd \in H_q$. Then for any $z=x+y\rd \in H_q$ we have that $\begin{pmatrix} y & x \\ 0 & 1 \end{pmatrix} \cdot \bar{z} = z$ (note that $y\neq 0$ because $z \in H_q$, so the matrix defined belongs to $\Aff (q)$).
 \end{proof}
@@ -90,7 +85,7 @@ For the last part, take $\bar{z} = \rd \in H_q$. Then for any $z=x+y\rd \in H_q$
 $\Aff q$ is a subgroup of $\GL(2,\F_q)$, so the action of $\GL(2,\F_q)$ is transitive too.
 \end{rem}
 
-Now we can introduce a {\it distance} which is analogous to the arch length in the Poicaré upper half plane.
+Now we can introduce a {\it distance} (which is analogous to the arch length in the Poincaré upper half plane).
 \begin{defn}
 	The {\it distance} of two elements of $H_q$ is defined by:
 	\begin{align*}
@@ -150,6 +145,10 @@ Now we can finally introduce the graphs we are interested in.
 \begin{rem}
 We notice that the graph is undirected because $\dist (z,w) = \dist (w,z)$.
 \end{rem}
+
+We performed some calculations using MAGMA and plot the graphs with SAGE to have the feeling of the properties of the
+graphs we defined.
+
 \begin{table}\centering
 \begin{tabular}{|c|c|c|c|c|c| p{4.2cm} |}
 \hline
@@ -169,16 +168,16 @@ $q$ & $\delta$ & $a$ & girth & diameter & degree & eigenvalues with multiplicity
 \caption{Principal characteristics of the graph for soma values of $q$, $\delta$ and $a$.}\label{tab}
 \end{table}
 The degree in the table stands for the degree of an arbitrary vertex, since the graphs are (experimentally, for now) regular.
-Looking at \ref{tab} that we computed with magma we can see that in all the cases that the graph is $q+1$ regular except for
+Looking at \ref{tab} that we computed we can see that in all the cases that the graph is $q+1$ regular except for
 one row (the first with $q=7$). But this happened because there is an error: 2 is a square in $\F_7$, so it is not of our interest.
 
 We computed more values, and we find that the degree and the girth never exceed 4. We weren't able to prove this, but we found
-a reference \cite{•} where this fact is proved. We will not explain the proof for reason of space.
+a reference \cite{ANGEL199662} where this fact is proved. We will not explain the proof for reason of space.
 
 Moreover we see that all the eigenvalues satisfy the Ramanujan bound, that is in our case $\vert \lambda \vert \le 2\sqrt{q}$.
 We will analyze the spectra of the graph, even if in an incomplete way, and we will prove that all the one dimensional
-eigenvalues satisfy this bound. Anyway this bound holds for all eigenvalues, but this would require other 30 pages in the report.
-
+eigenvalues satisfy this bound. Anyway this bound holds for all eigenvalues (as shown in \cite{terras_1999}),
+but prove this would require other 30 pages in the report.
 
 \begin{figure*}[!htbp]
 \centering
