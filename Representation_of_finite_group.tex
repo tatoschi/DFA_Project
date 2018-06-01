@@ -36,7 +36,7 @@ where $V$ is an $n$-dimensional vector space over $\C$. However notice that in t
 We give now some important definition about representations. In all the following $G$ indicates a finite group.
 \begin{defn}
 \label{equiv:repres}
-To representations $\alpha$ and $\beta$ of $G$ into $\GL(n,\C)$ are said to be \emph{equivalent}
+Two representations $\alpha$ and $\beta$ of $G$ into $\GL(n,\C)$ are said to be \emph{equivalent}
 if there exists a matrix $T \in \GL(n,\C)$ such that
 \[
 T\alpha(g)T^{-1}=\beta(g), \quad \forall g \in G.
@@ -78,7 +78,7 @@ When we deal with representations of a finite group $G$, we can just consider th
 If $G$ is a finite group, every representation is equivalent to a unitary representation.
 \end{prop}
 \begin{proof}[Proof sketch.]
-To prove this preposition we'll use the fact (which we aren't going to prove) that if a matrix $M$ leaves invariant some positive definite, Hermitian inner product $c(u,v)$ for $u,v \in \C^n$, then $M$ is conjugate to a unitary matrix.
+To prove this preposition we'll use the fact (which we are not going to prove) that if a matrix $M$ leaves invariant some positive definite, Hermitian inner product $c(u,v)$ for $u,v \in \C^n$, then $M$ is conjugate to a unitary matrix.
 So it suffices to find an inner product which is invariant under $\pi(g)$ for all $g \in G$. Such a inner product is given by 
 \[
 c(u,v)= \sum_{g \in G} \Braket{ \pi(g)u, \pi(g)v } , \text{ for } u,v \in \C^n,
@@ -112,7 +112,6 @@ Moreover we have that, given $f\in \LL^2(G)$,
 \label{conv:comm}
 f*h=h*f \quad \forall h \in \LL^2(G)
 \end{equation}
-
 if and only if $f$ is constant on conjugacy classes
 \[
 \Set{g}=\Set{xgx^{-1}\colon x\in G}.
@@ -154,7 +153,7 @@ and
 \]
 where $b=L(y)a \in \LL^2(G)$.
 
-Fix now $g\in G$, we want to write the matrix of $L(g)$ in the basis of $\LL^2(G)$ consisting of delta functions $\delta_g(x)=1$ if $x=g$ and 0 otherwise. For all $h,x\in G$, we have $[L(g)\delta_h](x)=\delta_h(g^{-1}x)=1 \iff g^{-1}x=h \iff x=gh$, so that $L(g)\delta_h=\delta_{gh}$. Thus if we write $G=\{g_1,g_2,\dots , g_n\}$ we have that the $j$-th column of $L(g)$ is $([L(g)\delta_{g_j}](g_1),\dots , [L(g)\delta_{g_j}](g_n))=(\delta_{gg_j}(g_1),\dots \delta_{gg_j}(g_n))$, but then we have $\delta_{gg_j}(g_i)=1\iff g_i=gg_j\iff g=g_ig_j^{-1}$ and so we can conclude that the $i,j$ entry of $L(g)$ is $\delta_{g_ig_j^{-1}}(g)$. This means that in every row and in every column of $L(g)$ there is only one entry equal to 1 and all the others are zero. So $L(g)$ is obtained from the identity matrix by a permutation of its rows (or columns). Note that if $g$ is not the identity element $e$ of $G$, then $L(g)_{ii}=\delta_{g_ig_i^{-1}}(g)=\delta_{e}(g)=0$.
+Fix now $g\in G$, we want to write the matrix of $L(g)$ in the basis of $\LL^2(G)$ consisting of delta functions $\delta_g(x)=1$ if $x=g$ and 0 otherwise. For all $h,x\in G$, we have $[L(g)\delta_h](x)=\delta_h(g^{-1}x)=1 \iff g^{-1}x=h \iff x=gh$, so that $L(g)\delta_h=\delta_{gh}$. Thus if we write $G=\{g_1,g_2,\dots , g_n\}$ we have that the $j$-th column of $L(g)$ is $([L(g)\delta_{g_j}](g_1),\dots , [L(g)\delta_{g_j}](g_n))=(\delta_{gg_j}(g_1),\dots ,\delta_{gg_j}(g_n))$, but then we have $\delta_{gg_j}(g_i)=1\iff g_i=gg_j\iff g=g_ig_j^{-1}$ and so we can conclude that the $i,j$ entry of $L(g)$ is $\delta_{g_ig_j^{-1}}(g)$. This means that in every row and in every column of $L(g)$ there is only one entry equal to 1 and all the others are zero. So $L(g)$ is obtained from the identity matrix by a permutation of its rows (or columns). Note that if $g$ is not the identity element $e$ of $G$, then $L(g)_{ii}=\delta_{g_ig_i^{-1}}(g)=\delta_{e}(g)=0$.
 \end{exmp}
 
 Now we want to decompose a representation $\pi$ of $G$ into irreducible part, \textit{i.e.}, considering $\pi$ as a matrix, we want to replace $\pi$ by a matrix which has diagonal blocks that cannot be further decomposed. This is achieved by the following proposition.
@@ -181,9 +180,8 @@ Note that by \ref{unit:eqiv} we can assume all representations are unitary.
 where each subrepresentation $\pi_i$  is irreducible. We say, when this happens, that $\pi$ is \emph{completely reducible}. 
 \end{enumerate}
 \end{prop}
-\begin{proof}~ 
-\begin{enumerate}
-\item We know that, by the remark after definition \ref{def:unitary}, if $\pi(g)$ is unitary then it leaves invariant the standard inner product $\braket{u,\, v}={}^t\!\bar{u}v$ for $u,v \in \C^n$. Moreover, since $\rho$ is a subrepresentation of $\pi$, by definition there is a subspace $W$ of $V=\C^n$ such that, for all $g\in G$, $\pi(g)W\subset W$ and $\pi(g)_{\mkern 1mu \vrule height 2ex\mkern2mu W}= \rho(g)$.  Consider the \emph{orthogonal complement space} $W^\perp$ of $W$:
+\begin{proof}~
+1. We know that, by the remark after definition \ref{def:unitary}, if $\pi(g)$ is unitary then it leaves invariant the standard inner product $\braket{u,\, v}={}^t\!\bar{u}v$ for $u,v \in \C^n$. Moreover, since $\rho$ is a subrepresentation of $\pi$, by definition there is a subspace $W$ of $V=\C^n$ such that, for all $g\in G$, $\pi(g)W\subset W$ and $\pi(g)_{\mkern 1mu \vrule height 2ex\mkern2mu W}= \rho(g)$.  Consider the \emph{orthogonal complement space} $W^\perp$ of $W$:
 \[
 W^{\perp}= \Set{v \in V \colon \braket{u, \, v}=0 \text{ for all } w \in W}.
 \]
@@ -192,8 +190,8 @@ Then we claim that $\pi(g)W^{\perp}\subset W^{\perp}$. Indeed, take $w\in W^{\pe
 \braket{\pi(g)w,\, v}=\braket{\pi(g)w,\, \pi(g)v'}=\braket{w,\, v'}=0.
 \]
 And so $\pi(g)w\in W^{\perp}$. This means that the restriction $\pi(g)_{\mkern 1mu \vrule height 2ex\mkern2mu W^{\perp}}= \sigma(g)$ is a subrepresentation of $\pi$.  Then, since we are working in $\C^n$, we can just take a basis of $V$ consisting in a combination of a basis of $W$ and a basis of $W^{\perp}$. If we write $\pi(g)$ in this basis we obtain exactly the matrix given in the statement of the proposition.
-\item This follows easily by induction on $n$.
-\end{enumerate}
+
+2. This follows easily by induction on $n$.
 \end{proof}
 
 The next lemma, due to Issai Schur, is crucial to do Fourier analysis on finite groups.
@@ -218,9 +216,8 @@ Suppose $L\in \I(\pi,\rho)$, then the following hold:
 \]
 \end{enumerate}
 \end{lemma}
-\begin{proof}~ 
-\begin{enumerate}
-\item Let $v \in \ker(L)$, then 
+\begin{proof}~
+1. Let $v \in \ker(L)$, then 
 \[
 L(\pi(g)v)=\rho(g)(Lv)=\rho(g)0=0, \quad \forall g\in G,
 \]
@@ -231,16 +228,15 @@ Analogously if $w \in \Im(L)$, then $w=Lv$ for some $v\in V$, thus
 \rho(g)w=\rho(g)(Lv)=L(\pi(g)v)\in \Im(L), \quad \forall g\in G.
 \]
 
+2. Since $L\neq 0$, we have $\ker(L)\neq V$, so by 1. and the fact that $\pi$ is irreducible, this means $\ker(L)=\{0\}$. Analogously, since $L\neq 0$, we have $\Im(L)\neq 0$, that is, using again 1. and the fact that $\rho$ is irreducible, $\Im(L)=W$. So $L$ is bijective.
 
-\item Since $L\neq 0$, we have $\ker(L)\neq V$, so by 1. and the fact that $\pi$ is irreducible, this means $\ker(L)=\{0\}$. Analogously, since $L\neq 0$, we have $\Im(L)\neq 0$, that is, using again 1. and the fact that $\rho$ is irreducible, $\Im(L)=W$. So $L$ is bijective.
-\item Since we are working on $\C$, there exist a root $\lambda$ of $\det(xI-L)$, that is, an eigenvalue of $L$. Denote with $V_\lambda$ the eigenspace corresponding to the eigenvalue $\lambda$:
+3. Since we are working on $\C$, there exist a root $\lambda$ of $\det(xI-L)$, that is, an eigenvalue of $L$. Denote with $V_\lambda$ the eigenspace corresponding to the eigenvalue $\lambda$:
 \[
-V_\lambda=\Set{v\in v \colon Lv=\lambda v}\neq \{0\}.
+V_\lambda=\Set{v\in V \colon Lv=\lambda v}\neq \{0\}.
 \] 
 Then $\pi(g)(V_\lambda)\subset V_\lambda$, since, for $v\in V_\lambda$, $L(\pi(g)v)=\pi(g)(Lv)=\pi(g)(\lambda  v)=\lambda\pi(g) v$, and so $\pi(g)v\in V_\lambda$. This means that the restriction of $\pi$ to $V_\lambda$ is a subrepresentation of $\pi$, which is irreducible, thus $V_\lambda = V$ and this implies $L=\lambda I$ on $V$. 
-\item Since every $\I(\pi,\rho)\ni L\neq 0$ is an isomorphism between $V$ and $W$ by point 2., if $\pi$ and $\rho$ are not equivalent, such an isomorphism cannot exist, and so $\I(\pi,\rho)=\{0\}$. Assume then that $\pi$ and $\rho$ are equivalent and consider $K,L\neq 0$ in  $\I(\pi,\rho)$. By point 2. $L$ is an isomorphism, so we can consider the map $M=L^{-1} \circ K\colon V\rightarrow V$. Since both $K$ and $L$ (and so $L^{-1}$) are nonnull, $M$ is a nonzero element of $\I(\pi,\pi)$. Then by 3. we have that there exists $0\neq \mu\in \C$ such that $M=\mu I$, \emph{i.e.} $K=\mu L$ and the dimension of $\I(\pi,\rho)$ is 1.
-\end{enumerate}
 
+4. Since every $\I(\pi,\rho)\ni L\neq 0$ is an isomorphism between $V$ and $W$ by point 2., if $\pi$ and $\rho$ are not equivalent, such an isomorphism cannot exist, and so $\I(\pi,\rho)=\{0\}$. Assume then that $\pi$ and $\rho$ are equivalent and consider $K,L\neq 0$ in  $\I(\pi,\rho)$. By point 2. $L$ is an isomorphism, so we can consider the map $M=L^{-1} \circ K\colon V\rightarrow V$. Since both $K$ and $L$ (and so $L^{-1}$) are nonnull, $M$ is a nonzero element of $\I(\pi,\pi)$. Then by 3. we have that there exists $0\neq \mu\in \C$ such that $M=\mu I$, \emph{i.e.} $K=\mu L$ and the dimension of $\I(\pi,\rho)$ is 1.
 \end{proof}
 \begin{defn}
 Let $\pi\colon G \rightarrow \GL(V)$ be a representation. We define the \emph{degree} $d_{\pi}$ (or dimension) of $\pi$ to be the dimension of the vector space $V$.
@@ -293,8 +289,7 @@ Note that $\chi_\pi(g)\colon G\rightarrow \C$, so if $\pi$ is one-dimensional, i
 \end{enumerate}
 \end{theorem}
 \begin{proof}~ 
-\begin{enumerate}
-\item Consider an $n\times m$ complex matrix $C$, then define
+1. Consider an $n\times m$ complex matrix $C$, then define
 \begin{equation*}
 P=\sum_{g\in G}\pi(g)C\rho(g^{-1}),
 \end{equation*}
@@ -306,7 +301,8 @@ were we have made the substitution $u=hg$ and  used the fact that both $\pi$ and
 \[
 P_{ir}=\sum_{g\in G}\pi_{ij}\overline{\rho_{rs}(g)}=0.
 \]
-\item Analogously to the previous point we define 
+
+2. Analogously to the previous point we define 
 \begin{equation}
 \label{P:equation}
 P=\sum_{g\in G}\pi(g)C\pi(g^{-1}), \quad \text{for any $n\times n$ matrix $C$.}
@@ -320,7 +316,8 @@ Where we have used the facts that the trace is linear and it satisfies the \emph
 \[
 \braket{\pi_{ij},\, \pi_{rs}}=\sum_{g\in G}\pi_{ij}(g)\overline{\pi_{rs}(g)}=P_{ir}=\frac{\abs G}{d_\pi}\delta_{ir}\delta_{js}.
 \]
-\item This follows from the previous points. Indeed if $\pi$ and $\rho$ are inequivalent, then by 1. and the definition of character we have
+
+3. This follows from the previous points. Indeed if $\pi$ and $\rho$ are inequivalent, then by 1. and the definition of character we have
 \[
 \braket{\chi_\pi,\, \chi_\rho}=\braket{\sum_{i=1}^n\pi_{ii},\, \sum_{j=1}^n\rho_{jj} }=\sum_{i,j}\braket{\pi_{ii},\, \rho_{jj} }=0
 \]
@@ -331,14 +328,13 @@ If $\rho$ and $\pi$ are equivalent, we can assume $\rho=\pi$. Indeed if $\rho$ a
 &=\sum_{i}\braket{\pi_{ii},\, \pi_{ii} }=d_\pi\cdot\frac{\abs G}{d_\pi}=\abs G.
 \end{split}
 \]
-\end{enumerate}
 \end{proof}
 The next theorem, which we state without proof (but it follows easily from theorems \ref{thm:complred} and \ref{thm:schurel}), is a version of the previous one in the case when $\pi$ and $\rho$ are not irreducible.
 \begin{theorem}
 \label{thm:non_irreducible_rel}
 Suppose $\pi$ and $\rho$ are two representation of $G$ and that we have the following decompositions:
 \[
-\pi\cong n_1\pi_1\oplus\cdots n_r\pi_r\text{ and $\rho=m_1\rho_1\oplus\cdots m_r\rho_r,$}
+\pi\cong n_1\pi_1\oplus\cdots \oplus n_r\pi_r\text{ and $\rho=m_1\rho_1\oplus\cdots \oplus m_r\rho_r,$}
 \]
 where the $n_i$ and $m_j$ are nonnegative integers and $\pi_i$ are irreducible. Then the following formulas hold:
 \begin{enumerate}
@@ -354,15 +350,22 @@ where the $n_i$ and $m_j$ are nonnegative integers and $\pi_i$ are irreducible. 
 \end{enumerate}
 \end{cor}
 \begin{proof}~
-\begin{enumerate}
-\item One implication has been already noted in part 3. of theorem \ref{thm:schurel}. 
+1. One implication has been already noted in part 3. of theorem \ref{thm:schurel}. 
 %\item If $\rho$ and $\pi$ are two equivalent representations of $G$, then there exist  an invertible matrix $T$ such that $\pi(g)=T\rho(g)T^{-1}$, for all $g\in G$. Thus by definition of character and by the cyclic property of the norm we have, for all $g\in G$, $\chi_\pi(g)=$Tr$(\pi(g))=$Tr$(T\rho(g)T^{-1})=$Tr$(T^{-1}T\rho(g))= \\
 %$Tr$(\rho(g))=\chi_\rho(g)$.
-For the  other one, if $\chi_\pi=\chi_\rho$ then $\braket{\chi_\pi,\, \chi_\rho}=\braket{\chi_\pi,\, \chi_\pi} \neq 0$ and so by part 3. of theorem \ref{thm:schurel} $\pi$ and $\rho$ must be equivalent.
-\item  This  follows  from  the orthogonality  of  the matrix  entries  since $\LL^{2}(G)$ is a finite-dimensional inner product  space when $G$ is finite.
-\item If $\pi$ is irreducible, this is just 3. of theorem \ref{thm:schurel}. If $\pi$ is not irreducible then in 1. of theorem \ref{thm:non_irreducible_rel} $\sum_{j=1}^rn_jm_j\geq 2$, and so  $\braket{\chi_\pi,\, \chi_\pi}>\abs{G}$ .
-\end{enumerate}
 
+For the  other one, if $\chi_\pi=\chi_\rho$ then $\braket{\chi_\pi,\, \chi_\pi} \neq 0$ and so by part 3. of theorem \ref{thm:schurel} $\pi$ and $\rho$ must be equivalent.
+
+For the  other one, if $\chi_\pi=\chi_\rho$ then $\braket{\chi_\pi,\, \chi_\rho}=\braket{\chi_\pi,\, \chi_\pi} \neq 0$ and so by part 3. of theorem \ref{thm:schurel} $\pi$ and $\rho$ must be equivalent.
+
+2.  This  follows  from  the orthogonality  of  the matrix  entries  since $\LL^{2}(G)$ is a finite-dimensional inner product  space when $G$ is finite.
+
+3. If $\pi$ is irreducible, this is just 3. of theorem \ref{thm:schurel}. If $\pi$ is not irreducible then in 1. of theorem \ref{thm:non_irreducible_rel} $\sum_{j=1}^rn_jm_j\geq 2$, and so  $\braket{\chi_\pi,\, \chi_\pi}>\abs{G}$ .
+%\end{enumerate}
+%
+%2.  This  follows  from  the orthogonality  of  the matrix  entries  since $\LL^{2}(G)$ is a finite-dimensional inner product  space when $G$ is finite.
+%
+%3. If $\pi$ is irreducible, this is just 3. of theorem \ref{thm:schurel}. If $\pi$ is not irreducible then in 1. of theorem \ref{thm:non_irreducible_rel} $\sum_{j=1}^rn_jm_j\geq 2$, and so  $\braket{\chi_\pi,\, \chi_\pi}>\abs{G}$ 
 \end{proof}
 From the preceding corollary we see that the characters are extremely important. But they do not give us the complete  story  of Fourier  analysis on a finite
 group $G$. Indeed there is not an algorithm for writing down the matrix entries  of $\pi$ from $\chi_\pi$.
@@ -399,18 +402,16 @@ L\cong d_{\pi_1}\pi_1\oplus\dots\oplus d_{\pi_r}\pi_r.
 \end{enumerate}
 \end{lemma}  
 \begin{proof}
-\begin{enumerate}
-\item We know by example \ref{exa:lrr} that the matrix of $L(g)$ is  is a permutation matrix (\emph{i.e.} the identity matrix with permuted rows) with $L(g)_{ii}=0 \ \forall i$ and thus its trace is 0 unless $g$ is the identity of $G$ (in such a case $L(g)=I$).
-\item By theorem \ref{thm:non_irreducible_rel}, the multiplicity of $\pi$ in $L$ s found by computing the inner product  of  the  characters  of  the  two  representations  and  dividing  by $\abs G$:
+1. We know by example \ref{exa:lrr} that the matrix of $L(g)$ is  is a permutation matrix (\emph{i.e.} the identity matrix with permuted rows) with $L(g)_{ii}=0 \ \forall i$ and thus its trace is 0 unless $g$ is the identity of $G$ (in such a case $L(g)=I$).
+
+2. By theorem \ref{thm:non_irreducible_rel}, the multiplicity of $\pi$ in $L$ s found by computing the inner product  of  the  characters  of  the  two  representations  and  dividing  by $\abs G$:
 \[
 \frac{1}{\abs G}\braket{\chi_L,\, \chi_\pi}=\frac{1}{\abs G}\sum_{y \in G}\chi_L(y) \overline{\chi_\pi(y)}=\frac{1}{\abs G}\abs G \chi_\pi(e)=d_\pi.
 \]
 Here we have used $\chi_\pi(e)=\text{Tr$(I)=d_\pi$}$ and  part  a to  see that  every  term  in  the  sum is  zero  except
 that coming from $y=e$, the identity of $G$.
-\item Compare the degree of $L$ with the degree of the right-hand side of the formula given in 2.
- 
 
-\end{enumerate}
+3. Compare the degree of $L$ with the degree of the right-hand side of the formula given in 2.
 \end{proof}
 Note that an analogous result of the above theorem is valid for the right regular representation $R$.
 \begin{rem}
@@ -420,7 +421,7 @@ Suppose  that $S$  is  a  symmetric  set  of  generators  of  the finite group $
 \[
 \A f = \sum_{s\in S}R(s)f, \quad \text{where $R$ is the right regular representation of $G$} \]
 This is true because we know that for a Cayley graph we have $y$ is adjacent to $x \iff y=xs$ for $s\in S$ and $[R(s)f](x)=f(xs)$.
-\item Now, since by previous lemma (with $R$ instead of $L$) we have $\cong d_{\pi_1}\pi_1\oplus\dots\oplus d_{\pi_r}\pi_r$, and by point 1. $\A=\sum_{s\in S}R(s)$, it follows that $A$ is similar to a block diagonal matrix $\A\simeq \sum_{s\in S}R(s)=\sum_{s\in S}(d_{\pi_1}\pi_1\oplus\dots\oplus d_{\pi_r}\pi_r)(s)= d_{\pi_1}M_{\pi_1}\oplus\dots\oplus d_{\pi_r}M_{\pi_r}$, where $M_\pi=\sum_{s\in S}\pi(s)$ and $\hat{G}=\{\pi_1\dots\pi_r\}$.
+\item Now, since by previous lemma (with $R$ instead of $L$) we have $\cong d_{\pi_1}\pi_1\oplus\dots\oplus d_{\pi_r}\pi_r$, and by point 1. $\A=\sum_{s\in S}R(s)$, it follows that $A$ is similar to a block diagonal matrix $\A \simeq \sum_{s\in S}R(s)=\sum_{s\in S}(d_{\pi_1}\pi_1\oplus\dots\oplus d_{\pi_r}\pi_r)(s)= d_{\pi_1}M_{\pi_1}\oplus\dots\oplus d_{\pi_r}M_{\pi_r}$, where $M_\pi=\sum_{s\in S}\pi(s)$ and $\hat{G}=\{\pi_1\dots\pi_r\}$.
 \end{enumerate}
 \end{rem}
 Now we can finally give the main definition of this section.
@@ -466,7 +467,7 @@ f(x)=\abs{G}^{-1}\sum_{\substack{\pi \in \hat{G} \\1\leq i,j\leq d_\pi }}d_\pi\b
 \end{theorem}
 \subsection{ Irreducible Representations of the Affine Group.}
 Now we want to give some partial result about representations of the affine group over $\F_q$ defined in \eqref{def:aff_group}, which are needed in the next section. In particular we are interested in the one-dimensional representations of $\Aff(q)$. Since explaining all the details would require to write another 20 pages-report we'll just state the result we need later. If you are curious, see \cite[Chapters~16-17]{terras_1999}.
-\begin{theorem}
+\begin{theorem}\label{thm:eigen}
 A complete  list  of  the representations  in $\hat{G}$, for $G=\Aff(q)$, is  given  by the two types  of representations  below.
 \begin{enumerate}
 \item The one-dimensional representations have the form
