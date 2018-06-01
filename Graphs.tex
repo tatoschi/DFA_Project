@@ -1,12 +1,12 @@
 \section{Graphs in the finite upper half plane}
 After passing by the representation theory of groups we can try to apply it to the study of some kinds of graphs constructed
-over the finite upper half plane. There is a nice connection between the ideas above and the complex Poincaré upper half plane. We
+over the finite upper half plane. There is a nice connection between the ideas below and the complex Poincaré upper half plane. We
 do not have enough space to deal with it. See for instance \cite{terras_1999}.
 
 Now we start with main definitions and proofs.
 \subsection{The finite upper half plane}
 \begin{defn}
-	An element $\gamma \in \F_q$ is a {\it square} if $\exists \, x \in \F_q \colon \gamma = x^2$.
+	An element $\gamma \in \F_q^{*}$ is a {\it square} if $\exists \, x \in \F_q^{*} \colon \gamma = x^2$.
 \end{defn}
 If $\delta$ is a non square element of $\F_q$, then the polynomial $x^2 - \delta$ has no solutions in $\F_q$.
 Its splitting field is $\F_{q^2}$ and one of its roots will be denoted by $\rd$ (the other is $-\rd$). 
@@ -28,7 +28,7 @@ See for instance \cite{lidl1994introduction}.
 	\end{equation} 
 \end{defn}
 
-We recall the definition of group action.
+Now we recall the definition of group action.
 \begin{defn}
   A {\it group action} of the group $G$ on the set $X$ is a map
   \begin{align*}
@@ -41,7 +41,7 @@ such that:
 \end{itemize} 
 \end{defn}
 
-In our case will have $X=H_q$, while $G$ will be the general linear group $\GL(2,\F_q)$ or its subgroup of
+In our case we will have $X=H_q$, while $G$ will be the general linear group $\GL(2,\F_q)$ or its subgroup of
 affine transformations $\Aff (q)$.
 
 Now we can define define the action we are interested in, and investigate some of its properties.
@@ -65,7 +65,7 @@ $\Re (g\cdot z) = \frac{ac\Norm z +bd+(ad+bc)\Re z}{\Norm (cz+d)}$;
 \end{itemize}
 \begin{proof}
 To prove 1. we have to show first that $\Norm (cz+d)\neq 0$. 
-By definition of norm it suffices to prove that $cz+d \neq 0$  Let $z=x+y\rd$. Then
+By definition of norm it suffices to prove that $cz+d \neq 0$.  Let $z=x+y\rd$. Then
 \begin{equation}\label{den}
 	cz+d=0 \iff (cx+d)+(cy)\rd=0 \iff cy=0 \land cx+d=0 \iff c=d=0,
 \end{equation}
@@ -82,7 +82,7 @@ For the last part, take $\bar{z} = \rd \in H_q$. Then for any $z=x+y\rd \in H_q$
 \end{proof}
 \end{prop}
 \begin{rem}
-$\Aff q$ is a subgroup of $\GL(2,\F_q)$, so the action of $\GL(2,\F_q)$ is transitive too.
+$\Aff (q)$ is a subgroup of $\GL(2,\F_q)$, so the action of $\GL(2,\F_q)$ is transitive too.
 \end{rem}
 
 Now we can introduce a {\it distance} (which is analogous to the arch length in the Poincaré upper half plane).
@@ -299,7 +299,7 @@ $\xq a$ and $X_q (\delta^{p}, a^{p})$ are the same. We observe in particular tha
 Moreover, using a notation similar to the previous point,
 \begin{align*}
 	\dist_{\rd} (z,w)=a & \iff \frac{\Norm (z-w)}{\Im_{\rd} (z) \Im_{\rd} (w)}=a
-	 \iff (\frac{\Norm (z-w)}{\Im_{\rd} (z) \Im_{\rd} (w)})^p = a^p \\
+	 \iff \big(\frac{\Norm (z-w)}{\Im_{\rd} (z) \Im_{\rd} (w)}\big)^p = a^p \\
 	& \iff \frac{\Norm ((z-w)^p)}{\Im_{\rd^p} (z^p) \Im_{\rd^p} (w^p)}=a^p
 	 \iff \frac{\Norm (z^p-w^p)}{\Im_{\rd^p} (z^p) \Im_{\rd^p} (w^p)}=a^p \\ &\iff \dist_{\rd^p} (z^p,w^p)=a^p,
 \end{align*}
@@ -339,8 +339,8 @@ Define $t$ as the g.c.d. of the elements of $E$
 
 We define the map
 \begin{align*}
-	\phi \colon & S_q(\delta,a) \longrightarrow \{kt \colon k \in \{1, \dots ,\frac{q-1}{t}\}\}\\
-				&  \begin{pmatrix} \alpha^e & x \\ 0 & 1 \end{pmatrix} \longmapsto e.
+	\phi \colon  S_q(\delta,a) &\longrightarrow \{kt \colon k \in \{1, \dots ,\frac{q-1}{t}\}\}\\
+				 \begin{pmatrix} \alpha^e & x \\ 0 & 1 \end{pmatrix} &\longmapsto e.
 \end{align*}
 The map is well defined by definition of $t$.
 We notice that
@@ -348,12 +348,12 @@ We notice that
 \begin{pmatrix} y & x \\ 0 & 1 \end{pmatrix} \in S_q(\delta,a) \Rightarrow \begin{pmatrix} y & -x \\ 0 & 1 \end{pmatrix} \in S_q(\delta,a)
 \end{equation}
 by definition of $S_q(\delta,a)$. So we have that
-$\forall e \in \{kt \colon k \in \{1, \dots ,\frac{q-1}{t}\}\} \,\, \vert \phi^{-1}(e)\vert \le 2$, and we observe that:
+$\forall e \in \{kt \colon k \in \{1, \dots ,\frac{q-1}{t}\}\}$, $\vert \phi^{-1}(e)\vert \le 2$, and we observe that:
 \begin{equation*}
-	q+1 = \vert S_q(\delta,a)\vert = \vert \bigsqcup_{k=1}^{\frac{q-1}{t}} \phi^{-1}(kt) \vert \le \frac{2(q-1)}{t}.
+	q+1 = \vert S_q(\delta,a)\vert = \big\vert \bigsqcup_{k=1}^{\frac{q-1}{t}} \phi^{-1}(kt) \big\vert \le \frac{2(q-1)}{t}.
 \end{equation*}
 The previous equation implies $t=1$.
-Suppose $E={e_1,\dots, e_s}$. Then we have proved that $\exists a_i \in Z \colon \sum_{i=1}^s a_i e_i =t$, and so
+Suppose $E=\{e_1,\dots, e_s\}$. Then we proved that $\exists a_i \in \Z \colon \sum_{i=1}^s a_i e_i =1$, and so
 \begin{equation}
 	\begin{pmatrix} \alpha^{e_1} & x_1 \\ 0 & 1 \end{pmatrix}^{a_1} \dots 
 	\begin{pmatrix} \alpha^{e_s} & x_s \\ 0 & 1 \end{pmatrix}^{a_s}=
@@ -420,8 +420,7 @@ The following lemma will be useful later.
 	\item[3.] if $f(x)=a \prod_{i=1}^s (x-\alpha_i)^{d_i}, \, \alpha_i \neq \alpha_j$ is the factorization of $f(x)$ over
 	 its algebraic closure $\bar{\K}$, then $\gcd(d_1,\dots ,d_s)=1$.
 	\end{itemize}
-\begin{proof} We will give only a sketch of the proof.
-
+\begin{proof}
 $1. \Rightarrow 2.$ Just observe that $y^d-cf(x)=c(z-f(x)),\, z=\frac{y}{\sqrt[d]{c}}$.
 
 $2. \Rightarrow 3.$ Let $t=\gcd(d_1,\dots ,d_s)$. By contradiction suppose $t > 1$.
@@ -461,7 +460,7 @@ $m$ distinct zeros, and suppose that $y^d-f(x)$ is absolutely irreducible. Then:
 \begin{proof}
 	Define $\epsilon$ as the quadratic character on $\F_q$:
 \begin{equation*}
-	\epsilon (x)=\begin{cases}&1 \quad \text{if $x$ is a square}\\ -&1 \quad \text{if $x$ is a non square}\\ &0 \quad x=0 \end{cases}.
+	\epsilon (x)=\begin{cases}1& \quad \text{if $x$ is a square}\\ -1& \quad \text{if $x$ is a non square}\\ 0& \quad x=0 \end{cases}.
 \end{equation*}
 Let $g(y)=ay+(y-1)^2 \delta$ and $w=x+y\rd$. Then
 \begin{equation}\label{equivalence}
@@ -480,7 +479,7 @@ The second sum is equal to zero due to the orthogonality of the characters (\ref
 We have reached a form similar to the previous theorem: we need only to express the two different characters in a common form.
 
 But the characters of a cyclic group form a cyclic group of the same order ($q-1$ in our case). So let $\eta$ be a generator character.
-Then, if $d$ is the order of $\chi$, then we can write $\chi=\eta^{\frac{q-1}{d}}$ and $\epsilon=\eta^{\frac{q-1}{2}}$
+Then, if $d$ is the order of $\chi$, we can write $\chi=\eta^{\frac{q-1}{d}}$ and $\epsilon=\eta^{\frac{q-1}{2}}$
 (since the order of $\epsilon$ is trivially 2). Hence we have:
 \begin{equation}
 	\lambda_{\chi}=\sum_{y \in \F_q} \eta^{\frac{q-1}{d}}(y)\eta^{\frac{q-1}{2}}(g(y))=\sum_{y \in \F_q}
@@ -490,7 +489,7 @@ where $m=\gcd(\frac{q-1}{d},\frac{q-1}{2})$. We want to use point 3. of lemma \r
 is absolutely irreducible, where $f(y)=y^{\frac{q-1}{md}}g(y)^{\frac{q-1}{2m}}$ and $\frac{q-1}{m}$ is trivially the order
 of $\eta^m$. Now, $g(y)=\delta y^2+(a-2\delta)y+\delta$
 and its discriminant is $a(a-4\delta)$. Since $a\neq 0, 4\delta$ by hypothesis then its roots are non zero
-and distinct, say $\alpha_1. \alpha_2$. Hence $f(y)$ has 3 distinct roots $0,\alpha_1,\alpha_2$ with multiplicity 
+and distinct, say $\alpha_1, \alpha_2$. Hence $f(y)$ has 3 distinct roots $0,\alpha_1,\alpha_2$ with multiplicity 
 $\frac{q-1}{md}, \frac{q-1}{2m},\frac{q-1}{2m}$ respectively.
 Looking at point 3. of the lemma, we see that we must prove that $r=\gcd(\frac{q-1}{m},\frac{q-1}{md},\frac{q-1}{2m})=1$.
 But this is true because $r\vert \gcd(\frac{q-1}{md},\frac{q-1}{2m})=1$, where the last equality holds by definition of $m$.
