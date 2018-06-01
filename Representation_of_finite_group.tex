@@ -300,9 +300,9 @@ P=\sum_{g\in G}\pi(g)C\rho(g^{-1}),
 \end{equation*}
 which is also an $n\times m$ matrix. We have that $P\in \I(\pi, \, \rho)$, since
 \[
-\pi(g)P=\sum_{g \in G}\pi(hg)C\rho(g^{-1})=\sum_{g\in G}\pi(u)C\rho(u^{-1}h)=P\rho(h).
+\pi(g)P=\sum_{g \in G}\pi(hg)C\rho(g^{-1})=\sum_{u\in G}\pi(u)C\rho(u^{-1}h)=P\rho(h).
 \]
-were we have made the substitution $u=hg$ and  used the fact that both $\pi$ and $\rho$ are homomorphism. For point 2. of Schur's lemma we must have (since $\pi$ and $\rho$ are inequivalent) $P=0$. Now choose $C=E_{js}$, the matrix which is 1 in the $j,s$ entry and 0 elsewhere. This choice of $c$ forces the $i,r$ entry of $P$ to be 
+were we have made the substitution $u=hg$ and  used the fact that both $\pi$ and $\rho$ are homomorphism. For point 2. of Schur's lemma we must have (since $\pi$ and $\rho$ are inequivalent) $P=0$. Now choose $C=E_{js}$, the matrix which is 1 in the $j,s$ entry and 0 elsewhere. This choice of $C$ forces the $i,r$ entry of $P$ to be 
 \[
 P_{ir}=\sum_{g\in G}\pi_{ij}\overline{\rho_{rs}(g)}=0.
 \]
@@ -327,7 +327,7 @@ Where we have used the facts that the trace is linear and it satisfies the \emph
 If $\rho$ and $\pi$ are equivalent, we can assume $\rho=\pi$. Indeed if $\rho$ and $\pi$ are two equivalent representations of $G$, then there exist  an invertible matrix $T$ such that $\pi(g)=T\rho(g)T^{-1}$, for all $g\in G$. Thus by definition of character and by the cyclic property of the trace we have, for all $g\in G$, $\chi_\pi(g)=$Tr$(\pi(g))=$Tr$(T\rho(g)T^{-1})=$Tr$(T^{-1}T\rho(g))= $Tr$(\rho(g))=\chi_\rho(g)$. Then by 2. we have
 \[
 \begin{split}
-\braket{\chi_\pi,\, \chi_\pi}&=\braket{\sum_{i=1}^n\pi_{ii},\, \sum_{j=1}^n\pi_{jj} }=\sum_{i,j}\braket{\pi_{ii},\, \pi_{jj} }\\
+\braket{\chi_\pi,\, \chi_\rho}=\braket{\chi_\pi,\, \chi_\pi}&=\braket{\sum_{i=1}^n\pi_{ii},\, \sum_{j=1}^n\pi_{jj} }=\sum_{i,j}\braket{\pi_{ii},\, \pi_{jj} }\\
 &=\sum_{i}\braket{\pi_{ii},\, \pi_{ii} }=d_\pi\cdot\frac{\abs G}{d_\pi}=\abs G.
 \end{split}
 \]
@@ -358,15 +358,15 @@ where the $n_i$ and $m_j$ are nonnegative integers and $\pi_i$ are irreducible. 
 \item One implication has been already noted in part 3. of theorem \ref{thm:schurel}. 
 %\item If $\rho$ and $\pi$ are two equivalent representations of $G$, then there exist  an invertible matrix $T$ such that $\pi(g)=T\rho(g)T^{-1}$, for all $g\in G$. Thus by definition of character and by the cyclic property of the norm we have, for all $g\in G$, $\chi_\pi(g)=$Tr$(\pi(g))=$Tr$(T\rho(g)T^{-1})=$Tr$(T^{-1}T\rho(g))= \\
 %$Tr$(\rho(g))=\chi_\rho(g)$.
-For the  other one, if $\chi_\pi=\chi_\rho$ then $\braket{\chi_\pi,\, \chi_\pi} \neq 0$ and so by part 3. of theorem \ref{thm:schurel} $\pi$ and $\rho$ must be equivalent.
+For the  other one, if $\chi_\pi=\chi_\rho$ then $\braket{\chi_\pi,\, \chi_\rho}=\braket{\chi_\pi,\, \chi_\pi} \neq 0$ and so by part 3. of theorem \ref{thm:schurel} $\pi$ and $\rho$ must be equivalent.
 \item  This  follows  from  the orthogonality  of  the matrix  entries  since $\LL^{2}(G)$ is a finite-dimensional inner product  space when $G$ is finite.
-\item If $\pi$ is irreducible, this is just 3. of theorem \ref{thm:schurel}. If $\pi$ is not irreducible then in 1. of theorem \ref{thm:non_irreducible_rel} $\sum_{j=1}^rn_jm_j\geq 2$, and so  $\braket{\chi_\pi,\, \chi_\pi}>\abs{G}$ 
+\item If $\pi$ is irreducible, this is just 3. of theorem \ref{thm:schurel}. If $\pi$ is not irreducible then in 1. of theorem \ref{thm:non_irreducible_rel} $\sum_{j=1}^rn_jm_j\geq 2$, and so  $\braket{\chi_\pi,\, \chi_\pi}>\abs{G}$ .
 \end{enumerate}
 
 \end{proof}
 From the preceding corollary we see that the characters are extremely important. But they do not give us the complete  story  of Fourier  analysis on a finite
-group $G$. The fact that $\chi_\pi$ determines $\pi$ up to equivalence does not mean that there is an algorithm for writing down the matrix entries  of $\pi$ from $\chi_\pi$.
-The importance of characters is emphasized by the fact that in many science books there are character tables of useful group (for example, the  chemists  seem  to  know  these  tables  by heart for certain space groups, which are symmetry groups of certain chemical substances).
+group $G$. Indeed there is not an algorithm for writing down the matrix entries  of $\pi$ from $\chi_\pi$.
+The importance of characters is also emphasized by the fact that they are used also by other disciplines then mathematics (physics, chemistry, and so on).
 
 \begin{defn}
 The \emph{character table} of $G$ is a matrix with column indexed by conjugacy classes $\{g\}$ of $G$ and rows indexed by inequivalent, irreducible, unitary representations $\pi \in \hat{G}$. The entry of   the character table corresponding to $\pi$ and $\{g\}$ is $\chi_\pi(g)$.
@@ -376,7 +376,7 @@ The definition is well posed because the characters are constant on conjugacy cl
 Where we have used again the cyclic property of the trace.
 \end{rem}
 \begin{exmp}[$\Z/{n\Z}$]
-Since $\Z/{n\Z}$ is abelian, all irreducible representations  have  degree  1 (by the corollary after Schur's lemma)  and  there  are $n$ of them. Indeed in this case  the $e_a$'s of the example \ref{exa:characters}  are  distinct one-dimensional representation of $G$ and each representation coincides with its own character. Since $\abs {\Set{e_a\colon a \in G}}= n $ and $\dim(\LL^{2}(Z/{n\Z}))=n$ these are all possible characters of $\Z/{n\Z}$. Moreover, since the group is abelian, each conjugacy class contains only one element. Thus the character table is an $n\times n$ matrix with $a,b$ entry equal to  $\exp(2\pi iab/n)$, for $a,b \in \Z/{n\Z}$. So in this case the character table coincides with the matrix of the Fourier transform on  $\Z/{n\Z}$, using the usual basis of $\LL^{2}(G)$ of delta functions.	
+Since $G=\Z/{n\Z}$ is abelian, all irreducible representations  have  degree  1 (by the corollary after Schur's lemma)  and  there  are $n$ of them. Indeed in this case  the $e_a$'s of the example \ref{exa:characters}  are  distinct one-dimensional representation of $G$ and each representation coincides with its own character. Since $\abs {\Set{e_a\colon a \in G}}= n $ and $\dim(\LL^{2}(Z/{n\Z}))=n$ these are all possible characters of $\Z/{n\Z}$. Moreover, since the group is abelian, each conjugacy class contains only one element. Thus the character table is an $n\times n$ matrix with $a,b$ entry equal to  $\exp(2\pi iab/n)$, for $a,b \in \Z/{n\Z}$. So in this case the character table coincides with the matrix of the Fourier transform on  $\Z/{n\Z}$, using the usual basis of $\LL^{2}(G)$ of delta functions.	
 \end{exmp}
 
 Now we are ready to give the definition of Fourier transform on a group $G$, but , before that we prove a result about the left regular representation which will be useful later on.
@@ -405,14 +405,14 @@ L\cong d_{\pi_1}\pi_1\oplus\dots\oplus d_{\pi_r}\pi_r.
 \[
 \frac{1}{\abs G}\braket{\chi_L,\, \chi_\pi}=\frac{1}{\abs G}\sum_{y \in G}\chi_L(y) \overline{\chi_\pi(y)}=\frac{1}{\abs G}\abs G \chi_\pi(e)=d_\pi.
 \]
-Here  we have used  part  a to  see that  every  term  in  the  sum is  zero  except
+Here we have used $\chi_\pi(e)=\text{Tr$(I)=d_\pi$}$ and  part  a to  see that  every  term  in  the  sum is  zero  except
 that coming from $y=e$, the identity of $G$.
 \item Compare the degree of $L$ with the degree of the right-hand side of the formula given in 2.
  
 
 \end{enumerate}
 \end{proof}
-Note that an analogous result of the above theorem is valid for the right regular representation.
+Note that an analogous result of the above theorem is valid for the right regular representation $R$.
 \begin{rem}
 Suppose  that $S$  is  a  symmetric  set  of  generators  of  the finite group $G$ ($s\in S \implies s^{-1}\in S$). Consider the Cayley graph $X(G,S)$   with vertices the elements  of $G$  and edges between $x \in G$   and $xs$  for  all $s\in S$.  This is a connected undirected  graph. Then we have:
 \begin{enumerate}
@@ -420,7 +420,7 @@ Suppose  that $S$  is  a  symmetric  set  of  generators  of  the finite group $
 \[
 \A f = \sum_{s\in S}R(s)f, \quad \text{where $R$ is the right regular representation of $G$} \]
 This is true because we know that for a Cayley graph we have $y$ is adjacent to $x \iff y=xs$ for $s\in S$ and $[R(s)f](x)=f(xs)$.
-\item Now, since by previous lemma (with $R$ instead of $L$) we have $\cong d_{\pi_1}\pi_1\oplus\dots\oplus d_{\pi_r}\pi_r$, and by point 1. $\A=\sum_{s\in S}R(s)$, it follows that $A$ is similar to a block diagonal matrix $\A\simeq \sum_{s\in S}R(s)=\sum_{s\in S}(d_{\pi_1}\pi_1(s)\oplus\dots\oplus d_{\pi_r}\pi_r(s))= d_{\pi_1}M_{\pi_1}\oplus\dots\oplus d_{\pi_r}M_{\pi_r}$, where $M_\pi=\sum_{s\in S}\pi(s)$ and $\hat{G}=\{\pi_1\dots\pi_r\}$.
+\item Now, since by previous lemma (with $R$ instead of $L$) we have $\cong d_{\pi_1}\pi_1\oplus\dots\oplus d_{\pi_r}\pi_r$, and by point 1. $\A=\sum_{s\in S}R(s)$, it follows that $A$ is similar to a block diagonal matrix $\A\simeq \sum_{s\in S}R(s)=\sum_{s\in S}(d_{\pi_1}\pi_1\oplus\dots\oplus d_{\pi_r}\pi_r)(s)= d_{\pi_1}M_{\pi_1}\oplus\dots\oplus d_{\pi_r}M_{\pi_r}$, where $M_\pi=\sum_{s\in S}\pi(s)$ and $\hat{G}=\{\pi_1\dots\pi_r\}$.
 \end{enumerate}
 \end{rem}
 Now we can finally give the main definition of this section.
@@ -432,13 +432,13 @@ The \emph{Fourier transform} of $f\colon G\rightarrow \C$ is
 \end{equation}
 \end{defn}
 \begin{rem}
-Note first of all that$\hat{f}(\pi)$ is matrix valued (it is a $d_\pi\times d_\pi$ matrix). Moreover the Fourier transform  defined  above is not consistent with the definition given for abelian groups in chapter 2 of \cite{terras_1999}. To make the two definition agree we should replace $\pi(g)$ with $\pi(g^{-1})$ in \eqref{def:foureir_transform}.    We won't  worry  about this inconsistency. It is more convenient for computations to use this  definition.
+Note first of all that$\hat{f}(\pi)$ is matrix valued (it is a $d_\pi\times d_\pi$ matrix). Moreover the Fourier transform  defined  above is not consistent with the definition given for abelian groups in chapter 2 of \cite{terras_1999}. To make the two definition agree we should replace $\pi(g)$ with $\pi(g^{-1})$ in \eqref{def:foureir_transform}, but it is more convenient for computations to use this  definition.
 \end{rem}
 All the results about the Fourier transform on abelian groups, still hold in this context. We collect the most significant facts about Fourier transform on a finite group in the following theorem (for a proof, see \cite{terras_1999}).
 \begin{theorem}~
 \begin{enumerate}
 \item \textbf{Peter-Weyl Theorem.} Let
-\[\hat{G}=\{\text{inequivalent irreducible unitary representation $\pi$ of $G$}.\]
+\[\hat{G}=\{\text{inequivalent irreducible unitary representation $\pi$ of $G$}\}.\]
 The matrix entries of representations $\pi\in\hat{G}$ form a complete orthogonal set in $\LL^2(G)$.
 \item \textbf{Plancherel Theorem.} For all $f,g\in \LL^2(G)$, we have the standard inner product
 \[
@@ -452,23 +452,24 @@ Then, defining ${\norm f}_2^2=\braket{f,\, f},$ we have
 \[
 f(x)=\abs{G}^{-1}\sum_{\substack{\pi \in \hat{G} \\1\leq i,j\leq d_\pi }}d_\pi\braket{f,\pi_{i,j}}\pi_{i,j}(x).
 \]
-\item \textbf{Convolution Property of Fourier Transform on G.} 
+\item \textbf{Convolution Property of Fourier Transform on G.} For all $f,g\colon G\rightarrow \C$ we have
 \[
 \mathscr{F}(f*g)(\pi)=\mathscr{F}f(\pi)\cdot \mathscr{F}g(\pi).
 \]
 \item \textbf{  Fourier Transform changes left regular representation to multiplication by $\pi$.} For $f\in \LL^2(G)$, define $[L(g)f](x)=f(g^{-1}x)=f^g(x)$, if $x,g\in G$. Then we have 
 \[
-\mathscr{F}[f^g](\pi)=\pi(g)\mathscr{F}f(\pi), \textbf{ for all $\pi \in \hat{G}$}
+\mathscr{F}[f^g](\pi)=\pi(g)\mathscr{F}f(\pi), \text{ for all $\pi \in \hat{G}$}
 \]  
-\item \textbf{Explicit Similarity Transform} Using the appropriate basis, $\mathscr{F}\circ L(g)\circ \mathscr{F}^{-1}$ is a block diagonal matrix with diagonal blocks given by the $\pi(g)$ each listed $d_\pi$ times for $\pi \in \hat{G}$.
+\item $\abs{\hat{G}}$ equals the number of conjugacy classes in $G$.
+%\item \textbf{Explicit Similarity Transform} Using the appropriate basis, $\mathscr{F}\circ L(g)\circ \mathscr{F}^{-1}$ is a block diagonal matrix with diagonal blocks given by the $\pi(g)$ each listed $d_\pi$ times for $\pi \in \hat{G}$.
 \end{enumerate}
 \end{theorem}
 \subsection{ Irreducible Representations of the Affine Group.}
 Now we want to give some partial result about representations of the affine group over $\F_q$ defined in \eqref{def:aff_group}, which are needed in the next section. In particular we are interested in the one-dimensional representations of $\Aff(q)$. Since explaining all the details would require to write another 20 pages-report we'll just state the result we need later. If you are curious, see \cite[Chapters~16-17]{terras_1999}.
 \begin{theorem}
-A complete  list  of  the representations  in $\hat{G}$, for $G=\Aff(q)$, s  given  by the two types  of representations  below.
+A complete  list  of  the representations  in $\hat{G}$, for $G=\Aff(q)$, is  given  by the two types  of representations  below.
 \begin{enumerate}
-\item The one-dimensional representations have de form
+\item The one-dimensional representations have the form
 \[
 \widetilde{\chi}
 \begin{pmatrix}
@@ -478,7 +479,7 @@ y &x\\
 =\chi(y),
 \]
 where $\chi$ is a character of the multiplicative group of $\F_q$
-\item The ($q-1$)-dimensional  irreducible unitary representation.
+\item The ($q-1$)-dimensional  irreducible unitary representation, which we do not describe here.
 \end{enumerate}
 
 \end{theorem}
@@ -495,7 +496,7 @@ R &0 \\
 0 &\widetilde{M}
 \end{pmatrix}
 \] 
-where $R$ is $q\times q$ diagonal matrix with diagonal entries indexed  by  the  1-dimensional representations  of $\Aff(q)$ coming  from  characters $\chi$  of the multiplicative group $F_q^{*}$. The corresponding  diagonal entry  of $R$ is 
+where $R$ is $q\times q$ diagonal matrix with diagonal entries indexed  by  the  1-dimensional representations  of $\Aff(q)$ coming  from  characters $\chi$  of the multiplicative group $\F_q^{*}$. The corresponding  diagonal entry  of $R$ is 
 \[
 R_\chi=\sum_{\bigl(\begin{smallmatrix}
 y &x\\
